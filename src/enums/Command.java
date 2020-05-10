@@ -1,7 +1,10 @@
+package enums;
+
 public enum Command {
 	
 	/* Commands */
-	
+	EXIT("terminates the execution of the program."),
+	HELP("shows the available commands.");
 	
 	/* Variables */
 	private final String description;
