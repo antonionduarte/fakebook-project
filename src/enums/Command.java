@@ -4,7 +4,8 @@ public enum Command {
 	
 	/* Commands */
 	EXIT("terminates the execution of the program."),
-	HELP("shows the available commands.");
+	HELP("shows the available commands."),
+	UNKNOWN("unknown command");
 	
 	/* Variables */
 	private final String description;

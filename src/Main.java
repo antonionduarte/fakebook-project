@@ -14,20 +14,20 @@ public class Main {
 		Command command = null;
 		
 		while (command != Command.EXIT) {
-			try {
-				command = readCommand(in);
-				executeCommand(command, in, fakebook);
-			}
-			catch (IllegalArgumentException e) {
-				unknownCommand();
-			}
+			command = readCommand(in);
+			executeCommand(command, in, fakebook);
 		}
 		
 		in.close();
 	}
 	
 	private static Command readCommand(Scanner in) {
-		return Command.valueOf(in.nextLine().toUpperCase());
+		try {
+			return Command.valueOf(in.nextLine().toUpperCase());
+		}
+		catch (IllegalArgumentException e) {
+			return Command.UNKNOWN;
+		}
 	}
 	
 	private static void executeCommand(Command command, Scanner in, Fakebook fakebook) {
@@ -39,6 +39,7 @@ public class Main {
 				help();
 				break;
 			default:
+				unknownCommand();
 				break;
 		}
 	}
