@@ -15,4 +15,5 @@ public class UserAlreadyExistsException extends Exception {
     public UserAlreadyExistsException(String userId) {
         super(String.format(MESSAGE, userId));
     }
+    
 }
