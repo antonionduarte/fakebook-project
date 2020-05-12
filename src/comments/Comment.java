@@ -1,4 +1,4 @@
-package comment;
+package comments;
 
 public interface Comment {
     

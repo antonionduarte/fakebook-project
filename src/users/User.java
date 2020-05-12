@@ -1,4 +1,4 @@
-package user;
+package users;
 
 public interface User {
     

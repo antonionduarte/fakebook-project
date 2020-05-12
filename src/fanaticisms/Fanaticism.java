@@ -1,4 +1,4 @@
-package fanaticism;
+package fanaticisms;
 
 public interface Fanaticism {
     
