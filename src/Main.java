@@ -1,11 +1,9 @@
 
-import exceptions.InvalidUserKindException;
-import exceptions.InvalidFanaticismListException;
-import exceptions.UserAlreadyExistsException;
-import fakebook.Fakebook;
-import fakebook.FakebookClass;
+import exceptions.*;
+import fakebook.*;
 import enums.Command;
 import enums.Output;
+import users.User;
 
 import java.util.*;
 
@@ -57,7 +55,16 @@ public class Main {
 				help();
 				break;
 			case REGISTER:
-				register(in, fakebook);
+				registerUser(in, fakebook);
+				break;
+			case USERS:
+				listUsers(in, fakebook);
+				break;
+			case ADDFRIEND:
+				addFriend(in, fakebook);
+				break;
+			case FRIENDS:
+				listUserFriends(in, fakebook);
 				break;
 			default:
 				unknownCommand();
@@ -95,7 +102,7 @@ public class Main {
 	 * @param in Input scanner.
 	 * @param fakebook Fakebook manager.
 	 */
-	private static void register(Scanner in, Fakebook fakebook) {
+	private static void registerUser(Scanner in, Fakebook fakebook) {
 		try {
 			String userKind = in.next();
 			String userId = in.nextLine();
@@ -106,7 +113,7 @@ public class Main {
 				for (int i = 0; i < numFanaticisms; i++) {
 					/**
 					 * (Code to be added here)
-					 * (Awaiting for master Goulao's orders)
+					 * (Awaiting master Goulao's orders)
 					 */
 				}
 				
@@ -120,6 +127,81 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 		catch (InvalidFanaticismListException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	/**
+	 * Lists all registered users.
+	 * @param in Input scanner.
+	 * @param fakebook Fakebook manager.
+	 */
+	private static void listUsers(Scanner in, Fakebook fakebook) {
+		try {
+			in.nextLine();
+			Iterator<User> users = fakebook.newUsersIterator();
+			
+			while (users.hasNext()) {
+				User user = users.next();
+				System.out.printf("%s [%s] %d %d %d\n", user.getName(), user.getKind(), user.getNumFriends(),
+					user.getNumPosts(), user.getNumComments());
+			}
+		}
+		catch (NoUsersException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	/**
+	 * Creates a bidirectional friend relationship between 2 users.
+	 * @param in Input scanner.
+	 * @param fakebook Fakebook manager.
+	 */
+	private static void addFriend(Scanner in, Fakebook fakebook) {
+		try {
+			String userId1 = in.nextLine();
+			String userId2 = in.nextLine();
+			
+			fakebook.addFriend(userId1, userId2);
+			System.out.printf("%s is friend of %s.\n", userId1, userId2);
+		}
+		catch (UserDoesNotExistException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (SameUserException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (UsersAlreadyFriendsException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	/**
+	 * Lists a users' friend list.
+	 * @param in Input scanner.
+	 * @param fakebook Fakebook manager.
+	 */
+	private static void listUserFriends(Scanner in, Fakebook fakebook) {
+		try {
+			String userId = in.nextLine();
+			
+			Iterator<User> friends = fakebook.newUserFriendsIterator(userId);
+			
+			while (friends.hasNext()) {
+				User friend = friends.next();
+				
+				System.out.print(friend.getName());
+				
+				if (friends.hasNext()) {
+					System.out.print(", ");
+				}
+			}
+			System.out.println();
+		}
+		catch (UserDoesNotExistException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (UserHasNoFriendsException e) {
 			System.out.println(e.getMessage());
 		}
 	}
