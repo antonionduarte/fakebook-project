@@ -1107,7 +1107,7 @@
 											"top": 828,
 											"width": 125.00634765625,
 											"height": 13,
-											"text": "PostCollection"
+											"text": "posts.PostCollection"
 										},
 										{
 											"_type": "LabelView",
@@ -1287,7 +1287,7 @@
 											"top": 895,
 											"width": 125.6962890625,
 											"height": 13,
-											"text": "PostCollectionClass"
+											"text": "posts.PostCollectionClass"
 										},
 										{
 											"_type": "LabelView",
@@ -1464,7 +1464,7 @@
 											"top": 980,
 											"width": 98.32080078125,
 											"height": 13,
-											"text": "Post"
+											"text": "posts.Post"
 										},
 										{
 											"_type": "LabelView",
@@ -1644,7 +1644,7 @@
 											"top": 1047,
 											"width": 62.86083984375,
 											"height": 13,
-											"text": "PostClass"
+											"text": "posts.PostClass"
 										},
 										{
 											"_type": "LabelView",
@@ -8959,7 +8959,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "PostCollection"
+					"name": "posts.PostCollection"
 				},
 				{
 					"_type": "UMLClass",
@@ -8967,7 +8967,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "PostCollectionClass",
+					"name": "posts.PostCollectionClass",
 					"ownedElements": [
 						{
 							"_type": "UMLInterfaceRealization",
@@ -9018,7 +9018,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Post"
+					"name": "posts.Post"
 				},
 				{
 					"_type": "UMLClass",
@@ -9026,7 +9026,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "PostClass",
+					"name": "posts.PostClass",
 					"ownedElements": [
 						{
 							"_type": "UMLInterfaceRealization",
