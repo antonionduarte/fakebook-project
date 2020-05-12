@@ -1,5 +1,6 @@
 
 import exceptions.InvalidUserKindException;
+import exceptions.InvalidFanaticismListException;
 import exceptions.UserAlreadyExistsException;
 import fakebook.Fakebook;
 import fakebook.FakebookClass;
@@ -103,7 +104,10 @@ public class Main {
 				int numFanaticisms = in.nextInt();
 				
 				for (int i = 0; i < numFanaticisms; i++) {
-					
+					/**
+					 * (Code to be added here)
+					 * (Awaiting for master Goulao's orders)
+					 */
 				}
 				
 				in.nextLine();
@@ -113,6 +117,9 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 		catch (UserAlreadyExistsException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (InvalidFanaticismListException e) {
 			System.out.println(e.getMessage());
 		}
 	}
