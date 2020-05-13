@@ -3,6 +3,9 @@ package enums;
 public enum Output {
 	
 	/* Outputs */
+	MESSAGE_SENT("%s sent a %s post to %d friends. Post id = %d.\n"),
+	USER_POSTS("%s posts:\n"),
+	COMMENT_ADDED("Comment added!"),
 	UNKNOWN_COMMAND("Unknown command. Type help to see available commands."),
 	EXIT("Bye!");
 	

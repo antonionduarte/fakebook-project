@@ -3,6 +3,7 @@ import exceptions.*;
 import fakebook.*;
 import enums.Command;
 import enums.Output;
+import posts.Post;
 import users.User;
 
 import java.util.*;
@@ -66,6 +67,15 @@ public class Main {
 			case FRIENDS:
 				listUserFriends(in, fakebook);
 				break;
+			case POST:
+				post(in, fakebook);
+				break;
+			case USERPOSTS:
+				listUserPosts(in, fakebook);
+				break;
+			case COMMENT:
+				commentPost(in, fakebook);
+				break;
 			default:
 				unknownCommand();
 				break;
@@ -105,7 +115,7 @@ public class Main {
 	private static void registerUser(Scanner in, Fakebook fakebook) {
 		try {
 			String userKind = in.next();
-			String userId = in.nextLine();
+			String userId = in.next() + in.nextLine();
 			
 			if (fakebook.userKindIsFanatic(userKind)) {
 				int numFanaticisms = in.nextInt();
@@ -159,7 +169,7 @@ public class Main {
 	 */
 	private static void addFriend(Scanner in, Fakebook fakebook) {
 		try {
-			String userId1 = in.nextLine();
+			String userId1 = in.next() + in.nextLine();
 			String userId2 = in.nextLine();
 			
 			fakebook.addFriend(userId1, userId2);
@@ -183,7 +193,7 @@ public class Main {
 	 */
 	private static void listUserFriends(Scanner in, Fakebook fakebook) {
 		try {
-			String userId = in.nextLine();
+			String userId = in.next() + in.nextLine();
 			
 			Iterator<User> friends = fakebook.newUserFriendsIterator(userId);
 			
@@ -205,5 +215,91 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	private static void post(Scanner in, Fakebook fakebook) {
+		try {
+			String userId = in.next() + in.nextLine();
+			int numHashtags = in.nextInt();
+			
+			/**
+			 * DataStructure hashtags = new DataStructureClass();
+			 */
+			
+			for (int i = 0; i < numHashtags; i++) {
+				/**
+				 * (Code to be added here)
+				 * (Awaiting for master Goulao's tips on what data structure to use for saving a posts' hashtags)
+				 */
+			}
+			
+			String truthfulness = in.next();
+			String message = in.next() + in.nextLine();
+			
+			fakebook.postMessage(userId, hashtags, truthfulness, message);
+			System.out.printf(Output.MESSAGE_SENT.getMessage(), userId, truthfulness,
+				fakebook.getUserNumFriends(userId), fakebook.getUserNumPosts(userId));
+		}
+		catch (UserDoesNotExistException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (InvalidHashtagListException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (InvalidStanceException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	private static void listUserPosts(Scanner in, Fakebook fakebook) {
+		try {
+			String userId = in.next() + in.nextLine();
+			
+			Iterator<Post> posts = fakebook.newUserPostsIterator(userId);
+			
+			System.out.printf(Output.USER_POSTS.getMessage(), userId);
+			
+			while (posts.hasNext()) {
+				Post post = posts.next();
+				
+				System.out.printf("%d. [%s] %s [%d comments]\n", post.getId(), post.getTruthfulness(),
+					post.getMessage(), post.getNumComments());
+			}
+		}
+		catch (UserDoesNotExistException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (UserHasNoPostsException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	private static void commentPost(Scanner in, Fakebook fakebook) {
+		try {
+			String userIdComment = in.next() + in.nextLine();
+			String userIdAuthor = in.next() + in.nextLine();
+			int postId = in.nextInt();
+			String stance = in.next();
+			String comment = in.next() + in.nextLine();
+			
+			fakebook.commentPost(userIdComment, userIdAuthor, postId, stance, comment);
+			System.out.println(Output.COMMENT_ADDED.getMessage());
+		}
+		catch (UserDoesNotExistException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (PostDoesNotExistException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (UserDoesNotHaveAccessToPostException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (UserCannotCommentOnPostException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (InvalidCommentStanceException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	
 }
