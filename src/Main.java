@@ -216,6 +216,11 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * Allows a user to make a new post (visible to his friends).
+	 * @param in Input scanner.
+	 * @param fakebook Fakebook manager.
+	 */
 	private static void post(Scanner in, Fakebook fakebook) {
 		try {
 			String userId = in.next() + in.nextLine();
@@ -250,6 +255,11 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * Lists a users' posts.
+	 * @param in Input scanner.
+	 * @param fakebook Fakebook manager.
+	 */
 	private static void listUserPosts(Scanner in, Fakebook fakebook) {
 		try {
 			String userId = in.next() + in.nextLine();
@@ -273,6 +283,11 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * Allows a user to comment another users' post.
+	 * @param in Input scanner.
+	 * @param fakebook Fakebook manager.
+	 */
 	private static void commentPost(Scanner in, Fakebook fakebook) {
 		try {
 			String userIdComment = in.next() + in.nextLine();
