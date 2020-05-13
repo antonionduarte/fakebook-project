@@ -76,6 +76,30 @@ public class Main {
 			case COMMENT:
 				commentPost(in, fakebook);
 				break;
+			case READPOST:
+				readPost(in, fakebook);
+				break;
+			case COMMENTSBYUSER:
+				listUserComments(in, fakebook);
+				break;
+			case TOPICFANATICS:
+				listTopicFanatics(in, fakebook);
+				break;
+			case TOPICPOSTS:
+				listTopicPosts(in, fakebook);
+				break;
+			case POPULARPOST:
+				popularPost(fakebook);
+				break;
+			case TOPPOSTER:
+				topPoster(fakebook);
+				break;
+			case RESPONSIVE:
+				topResponsive(fakebook);
+				break;
+			case SHAMELESS:
+				topLiars(fakebook);
+				break;
 			default:
 				unknownCommand();
 				break;
