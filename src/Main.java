@@ -1,4 +1,5 @@
 
+import comments.Comment;
 import exceptions.*;
 import fakebook.*;
 import enums.Command;
@@ -309,7 +310,7 @@ public class Main {
 	}
 	
 	/**
-	 * Allows a user to comment another users' post.
+	 * Allows a user to comment another users' (or his own) post.
 	 * @param in Input scanner.
 	 * @param fakebook Fakebook manager.
 	 */
@@ -318,10 +319,10 @@ public class Main {
 			String userIdComment = in.next() + in.nextLine();
 			String userIdAuthor = in.next() + in.nextLine();
 			int postId = in.nextInt();
-			String stance = in.next();
-			String comment = in.next() + in.nextLine();
+			String commentStance = in.next();
+			String commentMessage = in.next() + in.nextLine();
 			
-			fakebook.commentPost(userIdComment, userIdAuthor, postId, stance, comment);
+			fakebook.commentPost(userIdComment, userIdAuthor, postId, commentStance, commentMessage);
 			System.out.println(Output.COMMENT_ADDED.getMessage());
 		}
 		catch (UserDoesNotExistException e) {
@@ -340,8 +341,42 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	
 	/**
+	 * Prints out detailed information on a users' post.
+	 * @param in Input scanner.
+	 * @param fakebook Fakebook manager.
+	 */
+	private static void readPost(Scanner in, Fakebook fakebook) {
+		try {
+			String userId = in.next() + in.nextLine();
+			int postId = in.nextInt();
+			in.nextLine();
+			
+			Post post = fakebook.getUserPost(userId, postId);
+			
+			System.out.printf("[%s %s] %s\n", post.getAuthorId(), post.getTruthfulness(), post.getMessage());
+			
+			Iterator<Comment> comments = post.newCommentIterator();
+			
+			while (comments.hasNext()) {
+				Comment comment = comments.next();
+				
+				System.out.printf("[%s %s] %s\n", comment.getAuthor(), comment.getStance(), comment.getMessage());
+			}
+		}
+		catch (UserDoesNotExistException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (UserDoesNotHavePostException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (PostHasNoCommentsException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+		/**
 	 * Lists the comments made by a user on a topic.
 	 * @param in Input scanner.
 	 * @param fakebook Fakebook manager.
@@ -368,4 +403,5 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 	}
+	
 }
