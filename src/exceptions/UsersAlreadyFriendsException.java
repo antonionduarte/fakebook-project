@@ -2,6 +2,11 @@ package exceptions;
 
 public class UsersAlreadyFriendsException extends Exception {
     
+    /**
+     * Serial version UID.
+     */
+    private static final long serialVersionUID = -4561608868886859692L;
+
     /* Exception message */
     private static final String MESSAGE = "%s must really admire %s!";
     

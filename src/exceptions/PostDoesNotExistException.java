@@ -2,6 +2,11 @@ package exceptions;
 
 public class PostDoesNotExistException extends Exception {
     
+    /**
+     * Serial version UID.
+     */
+    private static final long serialVersionUID = -6256241553546175330L;
+
     /* Exception message */
     private static final String MESSAGE = "%s has no post %d!";
     

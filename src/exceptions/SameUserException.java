@@ -2,6 +2,11 @@ package exceptions;
 
 public class SameUserException extends Exception {
     
+    /**
+     * Serial version UID.
+     */
+    private static final long serialVersionUID = 781512738771612364L;
+
     /* Exception message */
     private static final String MESSAGE = "%s cannot be the same as %s!";
     
