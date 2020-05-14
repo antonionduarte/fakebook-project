@@ -180,7 +180,7 @@ public class Main {
 			
 			while (users.hasNext()) {
 				User user = users.next();
-				System.out.printf("%s [%s] %d %d %d\n", user.getName(), user.getKind(), user.getNumFriends(),
+				System.out.printf("%s [%s] %d %d %d\n", user.getId(), user.getKind(), user.getNumFriends(),
 					user.getNumPosts(), user.getNumComments());
 			}
 		}
@@ -227,7 +227,7 @@ public class Main {
 			while (friends.hasNext()) {
 				User friend = friends.next();
 				
-				System.out.print(friend.getName());
+				System.out.print(friend.getId());
 				
 				if (friends.hasNext()) {
 					System.out.print(", ");
@@ -264,11 +264,11 @@ public class Main {
 				 */
 			}
 			
-			String truthfulness = in.next();
-			String message = in.next() + in.nextLine();
+			String postTruthfulness = in.next();
+			String postMessage = in.next() + in.nextLine();
 			
-			fakebook.postMessage(userId, hashtags, truthfulness, message);
-			System.out.printf(Output.MESSAGE_SENT.getMessage(), userId, truthfulness,
+			fakebook.post(userId, hashtags, postTruthfulness, postMessage);
+			System.out.printf(Output.MESSAGE_SENT.getMessage(), userId, postTruthfulness,
 				fakebook.getUserNumFriends(userId), fakebook.getUserNumPosts(userId));
 		}
 		catch (UserDoesNotExistException e) {
@@ -358,12 +358,12 @@ public class Main {
 			
 			System.out.printf("[%s %s] %s\n", post.getAuthorId(), post.getTruthfulness(), post.getMessage());
 			
-			Iterator<Comment> comments = post.newCommentIterator();
+			Iterator<Comment> comments = post.newCommentsIterator();
 			
 			while (comments.hasNext()) {
 				Comment comment = comments.next();
 				
-				System.out.printf("[%s %s] %s\n", comment.getAuthor(), comment.getStance(), comment.getMessage());
+				System.out.printf("[%s %s] %s\n", comment.getAuthorId(), comment.getStance(), comment.getMessage());
 			}
 		}
 		catch (UserDoesNotExistException e) {
@@ -378,20 +378,20 @@ public class Main {
 	}
 
 	/**
-	 * Lists the comments made by a user on a topic.
+	 * Lists the comments made by a user about a certain hashtag.
 	 * @param in Input scanner.
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void listUserComments(Scanner in, Fakebook fakebook) {
 		try {
 			String userId = in.nextLine();
-			String topic = in.nextLine();
+			String hashtag = in.nextLine();
 
-			Iterator<Comment> comments  = fakebook.newUserCommentsIterator(userId, topic);
+			Iterator<Comment> comments  = fakebook.newUserCommentsIterator(userId, hashtag);
 
 			while (comments.hasNext()) {
 				Comment comment = comments.next();
-				System.out.printf("[%s %s %d %s] %s\n", comment.getPostAuthor(), comment.getPostTruthfulness(),
+				System.out.printf("[%s %s %d %s] %s\n", comment.getPostAuthorId(), comment.getPostTruthfulness(),
 					comment.getPostId(), comment.getStance(), comment.getMessage());
 			}
 		}
@@ -481,7 +481,7 @@ public class Main {
 	 */
 	private static void topResponsive(Fakebook fakebook) {
 		try {
-			User responsive = fakebook.responsive();
+			User responsive = fakebook.getTopResponsive();
 			
 			System.out.printf("%s %d %d.\n", responsive.getId(), responsive.getNumComments(), responsive.getNumPosts());
 		}
@@ -496,10 +496,10 @@ public class Main {
 	 */
 	private static void topLiars(Fakebook fakebook) {
 		try {
-			Iterator<User> liars = fakebook.newTopLiarsIterator();
+			Iterator<LiarUser> liars = fakebook.newTopLiarsIterator();
 			
 			while (liars.hasNext()) {
-				User liar = liars.next();
+				LiarUser liar = liars.next();
 				System.out.printf("%s %d.\n", liar.getId(), liar.getNumLies());
 			}
 		}
