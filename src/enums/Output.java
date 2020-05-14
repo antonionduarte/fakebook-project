@@ -7,7 +7,7 @@ public enum Output {
 	USER_POSTS("%s posts:\n"),
 	COMMENT_ADDED("Comment added!"),
 	UNKNOWN_COMMAND("Unknown command. Type help to see available commands."),
-	INVALID_NUMBER_POSTS("Invalid number of posts to present!"),
+	INVALID_NUMBER_POSTS("Invalid number of posts to present!"), /* Might be useless */
 	EXIT("Bye!");
 	
 	/**/
