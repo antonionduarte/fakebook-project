@@ -390,10 +390,8 @@ public class Main {
 
 			while (comments.hasNext()) {
 				Comment comment = comments.next();
-				System.out.printf("[%s %s %d %s] %s\n", comment.getPostAuthor(),
-					comment.getPostTruthfulness(), comment.getPostId(),
-					comment.getPositiveness(), comment.getContent());
-
+				System.out.printf("[%s %s %d %s] %s\n", comment.getPostAuthor(), comment.getPostTruthfulness(),
+					comment.getPostId(), comment.getPositiveness(), comment.getContent());
 			}
 		}
 		catch (UserDoesNotExistException e) {
