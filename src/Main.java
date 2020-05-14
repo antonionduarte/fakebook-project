@@ -404,6 +404,53 @@ public class Main {
 		}
 	}
 
+	/**
+	 * Lists the fanatic users of a given topic in alphabetic order of user id.
+	 * @param in Input scanner.
+	 * @param fakebook Fakebook manager.
+	 */
+	private static void listTopicFanatics(Scanner in, Fakebook fakebook) {
+		String topic = in.nextLine();
+		try {
+			Iterator<User> fanatics = fakebook.topicFanatics(topic);
 
-	
+			while (fanatics.hasNext()) {
+				User fanatic = fanatics.next();
+				if (fanatics.hasNext()) {
+					System.out.printf("%s,", fanatic.getId());
+				} else
+					System.out.printf("%s.", fanatic.getId());
+			}
+		
+			System.out.println();
+		}
+		catch (InvalidFanaticismException e) {
+			System.out.printf(e.getMessage(), topic);
+		}
+	}
+
+	/**
+	 * Lists a specified number of posts posts of a given topic.
+	 * @param in Input scanner.
+	 * @param fakebook Fakebook manager.
+	 */
+	private static void listTopicPosts(Scanner in, Fakebook fakebook) {
+		try {
+			String topic = in.next();
+			int amount = in.nextInt(); in.nextLine();
+
+			/**
+			 * Awaiting Goulao's orders on if we do a counter in Main
+			 * or we do it in the fakebook class.
+			 */
+			if (amount >= 1) {
+				Iterator<Post> posts = fakebook.topicPosts(topic);
+
+
+			} else
+				System.out.println(Output.INVALID_NUMBER_POSTS);
+		}
+	}
+
+
 }
