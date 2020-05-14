@@ -88,7 +88,7 @@ public class Main {
 				listTopicPosts(in, fakebook);
 				break;
 			case POPULARPOST:
-				popularPost(fakebook);
+				mostPopularPost(fakebook);
 				break;
 			case TOPPOSTER:
 				topPoster(fakebook);
@@ -400,7 +400,7 @@ public class Main {
 	}
 
 	/**
-	 * Lists the fanatic users of a given topic in alphabetic order of user id.
+	 * Lists a given topics' fanatic users in alphabetic order of their ID.
 	 * @param in Input scanner.
 	 * @param fakebook Fakebook manager.
 	 */
@@ -427,7 +427,7 @@ public class Main {
 	}
 
 	/**
-	 * Lists a specified number of posts posts of a given topic.
+	 * Lists a specified number of posts of a given topic.
 	 * @param in Input scanner.
 	 * @param fakebook Fakebook manager.
 	 */
@@ -436,30 +436,35 @@ public class Main {
 		int amount = in.nextInt(); in.nextLine();
 		/**
 		 * TODO Awaiting Goulao's orders on if we do a counter in Main
-		* or we do it in the fakebook class. 
-		*/
+		 * or we do it in the fakebook class.
+		 */
 	}
 
 	/**
-	 * Prints information about the post with most comments.
+	 * Prints out information about the most commented post.
 	 * @param fakebook Fakebook manager.
 	 */
-	private static void popularPost(Fakebook fakebook) {
+	private static void mostPopularPost(Fakebook fakebook) {
 		try {
-			Post popular = fakebook.popularPost();
-			System.out.printf("%s %d %d: %s", popular.getUserId(), popular.getPostId(), 
-				popular.getNumComments(), popular.getMessage());
+			Post post = fakebook.getMostPopularPost();
+			
+			System.out.printf("%s %d %d: %s\n", post.getAuthorId(), post.getId(),
+				post.getNumComments(), post.getMessage());
 		}
 		catch (NoPostsException e) {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	
+	/**
+	 * Prints out information about the user with the most posts.
+	 * @param fakebook Fakebook manager.
+	 */
 	private static void topPoster(Fakebook fakebook) {
 		try {
-			User topPoster = fakebook.topPoster();
-			System.out.printf("%s %d %d", topPoster.getId(), topPoster.getNumPosts(), 
-				topPoster.getNumComments());
+			User topPoster = fakebook.getTopPoster();
+			
+			System.out.printf("%s %d %d.\n", topPoster.getId(), topPoster.getNumPosts(), topPoster.getNumComments());
 		}
 		catch (NoTopPosterException e) {
 			System.out.println(e.getMessage());
@@ -467,29 +472,30 @@ public class Main {
 	}
 
 	/**
-	 * Prints information about the user with most comments.
+	 * Prints out information about the user with most comments.
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void topResponsive(Fakebook fakebook) {
 		try {
 			User responsive = fakebook.responsive();
-			System.out.printf("%s %d %d.", responsive.getId(), responsive.getNumComments(),
-				 responsive.getNumPosts());
+			
+			System.out.printf("%s %d %d.\n", responsive.getId(), responsive.getNumComments(), responsive.getNumPosts());
 		}
-		catch (NoResponsiveException e) {
+		catch (NoTopResponsiveException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
 	/**
-	 * Prints information about the users with the most lies in the fakebook.
+	 * Prints out information about the users with the most lies.
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void topLiars(Fakebook fakebook) {
 		try {
-			Iterator<User> liars = fakebook.newLiarIterator();
+			Iterator<User> liars = fakebook.newTopLiarsIterator();
+			
 			while (liars.hasNext()) {
-				liar = iterator.next();
+				User liar = liars.next();
 				System.out.printf("%s %d.\n", liar.getId(), liar.getNumLies());
 			}
 		}

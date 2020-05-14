@@ -1,6 +1,6 @@
 package exceptions;
 
-public class NoResponsiveException extends Exception {
+public class NoTopResponsiveException extends Exception {
     
     /* Serial version UID */
     private static final long serialVersionUID = -7260620685022633278L;
@@ -9,7 +9,7 @@ public class NoResponsiveException extends Exception {
         private static final String MESSAGE = "Social distancing has reached fakebook. Please post something and then comment your own post to become the king of responsiveness.";
 
         /* Constructor */
-        public NoResponsiveException() {
+        public NoTopResponsiveException() {
             super(MESSAGE);
         }
 }
