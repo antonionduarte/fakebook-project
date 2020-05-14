@@ -2,9 +2,7 @@ package exceptions;
 
 public class PostDoesNotExistException extends Exception {
     
-    /**
-     * Serial version UID.
-     */
+    /* Serial version UID */
     private static final long serialVersionUID = -6256241553546175330L;
 
     /* Exception message */

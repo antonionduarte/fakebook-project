@@ -1,10 +1,8 @@
 package exceptions;
 
 public class NoResponsiveException extends Exception {
-
-    /**
-    * Serial version UID.
-    */
+    
+    /* Serial version UID */
     private static final long serialVersionUID = -7260620685022633278L;
 
     /* Exception message */

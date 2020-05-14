@@ -1,11 +1,9 @@
 package exceptions;
 
 public class NoTopPosterException extends Exception {
-
-
-    /**
-     * Serial version UID.
-     */
+    
+    
+    /* Serial version UID */
     private static final long serialVersionUID = 7109479092766658286L;
     
     /* Exception message */

@@ -2,9 +2,7 @@ package exceptions;
 
 public class SameUserException extends Exception {
     
-    /**
-     * Serial version UID.
-     */
+    /* Serial version UID */
     private static final long serialVersionUID = 781512738771612364L;
 
     /* Exception message */

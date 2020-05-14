@@ -405,22 +405,24 @@ public class Main {
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void listTopicFanatics(Scanner in, Fakebook fakebook) {
-		String topic = in.nextLine();
 		try {
-			Iterator<User> fanatics = fakebook.topicFanatics(topic);
+			String hashtag = in.nextLine();
+			
+			Iterator<User> fanatics = fakebook.newTopicFanaticsIterator(hashtag);
 
 			while (fanatics.hasNext()) {
 				User fanatic = fanatics.next();
+				
+				System.out.printf("%s", fanatic.getId());
+				
 				if (fanatics.hasNext()) {
-					System.out.printf("%s,", fanatic.getId());
-				} else
-					System.out.printf("%s.", fanatic.getId());
+					System.out.print(", ");
+				}
 			}
-		
-			System.out.println();
+			System.out.println(".");
 		}
 		catch (InvalidFanaticismException e) {
-			System.out.printf(e.getMessage(), topic);
+			System.out.println(e.getMessage());
 		}
 	}
 

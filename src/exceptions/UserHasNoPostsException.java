@@ -2,9 +2,7 @@ package exceptions;
 
 public class UserHasNoPostsException extends Exception {
     
-    /**
-     * Serial version UID.
-     */
+    /* Serial version UID */
     private static final long serialVersionUID = -4767632046512590820L;
 
     /* Exception message */

@@ -1,10 +1,8 @@
 package exceptions;
 
 public class NoLiesException extends Exception {
-
-    /**
-     * Serial version UID.
-     */
+    
+    /* Serial version UID */
     private static final long serialVersionUID = -3368150928696255511L;
 
     /* Exception message */

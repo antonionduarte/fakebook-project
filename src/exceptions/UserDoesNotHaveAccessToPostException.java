@@ -2,9 +2,7 @@ package exceptions;
 
 public class UserDoesNotHaveAccessToPostException extends Exception {
     
-    /**
-     * Serial version UID.
-     */
+    /* Serial version UID */
     private static final long serialVersionUID = 9185586726477864031L;
 
     /* Exception message */
