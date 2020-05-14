@@ -1,6 +1,6 @@
 package exceptions;
 
-public class InvalidHashtagListException extends Exception {
+public class InvalidHashtagListException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = 6959377380529681823L;

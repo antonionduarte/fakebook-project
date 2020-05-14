@@ -1,6 +1,6 @@
 package exceptions;
 
-public class UserHasNoCommentsException extends Exception {
+public class UserHasNoCommentsException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = 1L;

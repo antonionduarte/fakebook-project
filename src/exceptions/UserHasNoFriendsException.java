@@ -1,6 +1,6 @@
 package exceptions;
 
-public class UserHasNoFriendsException extends Exception {
+public class UserHasNoFriendsException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = 6289365015163704640L;

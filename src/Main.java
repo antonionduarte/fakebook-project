@@ -149,8 +149,12 @@ public class Main {
 					 * (Awaiting master Goulao's orders)
 					 */
 				}
-				
 				in.nextLine();
+				
+				fakebook.registerFanatic(userId, fanaticisms);
+			}
+			else {
+				fakebook.registerUser(userKind, userId);
 			}
 		}
 		catch (InvalidUserKindException e) {
@@ -503,10 +507,5 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 	}
-
-
-
-
-
 
 }

@@ -1,6 +1,6 @@
 package exceptions;
 
-public class InvalidStanceException extends Exception {
+public class InvalidStanceException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = 413239227084256764L;

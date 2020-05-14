@@ -1,6 +1,6 @@
 package exceptions;
 
-public class UserHasNoPostsException extends Exception {
+public class UserHasNoPostsException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = -4767632046512590820L;

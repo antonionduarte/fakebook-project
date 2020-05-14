@@ -1,6 +1,6 @@
 package exceptions;
 
-public class NoUsersException extends Exception {
+public class NoUsersException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = 2124299706527122145L;

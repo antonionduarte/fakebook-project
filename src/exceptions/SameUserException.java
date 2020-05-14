@@ -1,6 +1,6 @@
 package exceptions;
 
-public class SameUserException extends Exception {
+public class SameUserException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = 781512738771612364L;

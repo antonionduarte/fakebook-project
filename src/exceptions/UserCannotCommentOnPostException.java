@@ -1,6 +1,6 @@
 package exceptions;
 
-public class UserCannotCommentOnPostException extends Exception {
+public class UserCannotCommentOnPostException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = -7746132248927028171L;

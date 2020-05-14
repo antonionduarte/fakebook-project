@@ -1,6 +1,6 @@
 package exceptions;
 
-public class PostHasNoCommentsException extends Exception {
+public class PostHasNoCommentsException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = 2725549232612704858L;

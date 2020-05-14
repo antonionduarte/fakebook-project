@@ -1,6 +1,6 @@
 package exceptions;
 
-public class UserDoesNotExistException extends Exception {
+public class UserDoesNotExistException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = -6368849754665328060L;

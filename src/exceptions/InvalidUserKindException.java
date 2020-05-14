@@ -1,6 +1,6 @@
 package exceptions;
 
-public class InvalidUserKindException extends Exception {
+public class InvalidUserKindException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = 2247045929902441380L;

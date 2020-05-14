@@ -1,6 +1,6 @@
 package exceptions;
 
-public class NoTopPosterException extends Exception {
+public class NoTopPosterException extends RuntimeException {
     
     
     /* Serial version UID */

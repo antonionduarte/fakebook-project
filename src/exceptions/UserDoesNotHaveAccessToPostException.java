@@ -1,6 +1,6 @@
 package exceptions;
 
-public class UserDoesNotHaveAccessToPostException extends Exception {
+public class UserDoesNotHaveAccessToPostException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = 9185586726477864031L;

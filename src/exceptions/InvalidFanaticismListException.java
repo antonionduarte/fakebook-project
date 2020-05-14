@@ -1,6 +1,6 @@
 package exceptions;
 
-public class InvalidFanaticismListException extends Exception {
+public class InvalidFanaticismListException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = 4730950725835496032L;

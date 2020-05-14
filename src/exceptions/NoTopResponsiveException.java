@@ -1,6 +1,6 @@
 package exceptions;
 
-public class NoTopResponsiveException extends Exception {
+public class NoTopResponsiveException extends RuntimeException {
     
     /* Serial version UID */
     private static final long serialVersionUID = -7260620685022633278L;
