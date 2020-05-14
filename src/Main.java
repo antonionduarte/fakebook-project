@@ -376,7 +376,7 @@ public class Main {
 		}
 	}
 
-		/**
+	/**
 	 * Lists the comments made by a user on a topic.
 	 * @param in Input scanner.
 	 * @param fakebook Fakebook manager.
@@ -403,5 +403,7 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 	}
+
+
 	
 }
