@@ -433,22 +433,75 @@ public class Main {
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void listTopicPosts(Scanner in, Fakebook fakebook) {
+		String topic = in.next();
+		int amount = in.nextInt(); in.nextLine();
+		/**
+		 * TODO Awaiting Goulao's orders on if we do a counter in Main
+		* or we do it in the fakebook class. 
+		*/
+	}
+
+	/**
+	 * Prints information about the post with most comments.
+	 * @param fakebook Fakebook manager.
+	 */
+	private static void popularPost(Fakebook fakebook) {
 		try {
-			String topic = in.next();
-			int amount = in.nextInt(); in.nextLine();
-
-			/**
-			 * Awaiting Goulao's orders on if we do a counter in Main
-			 * or we do it in the fakebook class.
-			 */
-			if (amount >= 1) {
-				Iterator<Post> posts = fakebook.topicPosts(topic);
-
-
-			} else
-				System.out.println(Output.INVALID_NUMBER_POSTS);
+			Post popular = fakebook.popularPost();
+			System.out.printf("%s %d %d: %s", popular.getUserId(), popular.getPostId(), 
+				popular.getNumComments(), popular.getMessage());
+		}
+		catch (NoPostsException e) {
+			System.out.println(e.getMessage());
 		}
 	}
+
+	private static void topPoster(Fakebook fakebook) {
+		try {
+			User topPoster = fakebook.topPoster();
+			System.out.printf("%s %d %d", topPoster.getId(), topPoster.getNumPosts(), 
+				topPoster.getNumComments());
+		}
+		catch (NoTopPosterException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	/**
+	 * Prints information about the user with most comments.
+	 * @param fakebook Fakebook manager.
+	 */
+	private static void topResponsive(Fakebook fakebook) {
+		try {
+			User responsive = fakebook.responsive();
+			System.out.printf("%s %d %d.", responsive.getId(), responsive.getNumComments(),
+				 responsive.getNumPosts());
+		}
+		catch (NoResponsiveException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	/**
+	 * Prints information about the users with the most lies in the fakebook.
+	 * @param fakebook Fakebook manager.
+	 */
+	private static void topLiars(Fakebook fakebook) {
+		try {
+			Iterator<User> liars = fakebook.newLiarIterator();
+			while (liars.hasNext()) {
+				liar = iterator.next();
+				System.out.printf("%s %d.\n", liar.getId(), liar.getNumLies());
+			}
+		}
+		catch (NoLiesException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+
+
+
 
 
 }
