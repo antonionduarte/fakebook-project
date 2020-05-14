@@ -1,11 +1,8 @@
-
-import comments.Comment;
 import exceptions.*;
 import fakebook.*;
-import enums.Command;
-import enums.Output;
-import posts.Post;
-import users.User;
+import enums.*;
+import posts.*;
+import users.*;
 import comments.*;
 import java.util.*;
 
