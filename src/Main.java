@@ -386,14 +386,12 @@ public class Main {
 			String userId = in.nextLine();
 			String topic = in.nextLine();
 
-			Iterator<Comment> comments  = fakebook.userComments(userId, topic);
+			Iterator<Comment> comments  = fakebook.newUserCommentsIterator(userId, topic);
 
 			while (comments.hasNext()) {
 				Comment comment = comments.next();
-				System.out.printf("[%s %s %d %s] %s\n", comment.getPostAuthor(),
-					comment.getPostTruthfulness(), comment.getPostId(),
-					comment.getPositiveness(), comment.getContent());
-
+				System.out.printf("[%s %s %d %s] %s\n", comment.getPostAuthor(), comment.getPostTruthfulness(),
+					comment.getPostId(), comment.getStance(), comment.getMessage());
 			}
 		}
 		catch (UserDoesNotExistException e) {
