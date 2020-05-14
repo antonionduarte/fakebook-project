@@ -5,8 +5,9 @@ import enums.Command;
 import enums.Output;
 import posts.Post;
 import users.User;
-
+import comments.*;
 import java.util.*;
+
 
 public class Main {
 	
@@ -339,6 +340,32 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 	}
-	
-	
+
+	/**
+	 * Lists the comments made by a user on a topic.
+	 * @param in Input scanner.
+	 * @param fakebook Fakebook manager.
+	 */
+	private static void listUserComments(Scanner in, Fakebook fakebook) {
+		try {
+			String userId = in.nextLine();
+			String topic = in.nextLine();
+
+			Iterator<Comment> comments  = fakebook.userComments(userId, topic);
+
+			while (comments.hasNext()) {
+				Comment comment = comments.next();
+				System.out.printf("[%s %s %d %s] %s\n", comment.getPostAuthor(),
+					comment.getPostTruthfulness(), comment.getPostId(),
+					comment.getPositiveness(), comment.getContent());
+
+			}
+		}
+		catch (UserDoesNotExistException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (UserHasNoCommentsException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }
