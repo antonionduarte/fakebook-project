@@ -62,12 +62,12 @@ public interface Fakebook {
     /**
      * Allows a user to comment on another users' (or his own) post.
      * @param userIdComment ID of the user that wants to comment on the post.
-     * @param userIdAuthor ID of the author of the post.
+     * @param userIdPost ID of the author of the post.
      * @param postId The posts' ID.
      * @param commentStance The comments' stance.
      * @param commentMessage The comments' message.
      */
-    void commentPost(String userIdComment, String userIdAuthor, int postId, String commentStance, String commentMessage);
+    void commentPost(String userIdComment, String userIdPost, int postId, String commentStance, String commentMessage);
     
     /**
      * Gets a users' specified post.
@@ -91,6 +91,11 @@ public interface Fakebook {
      * @return The top responsive user.
      */
     User getTopResponsive();
+    
+    /**
+     * @return The user with the most lies.
+     */
+    LiarUser getTopLiar();
     
     /**
      * @return New users iterator.
@@ -125,11 +130,5 @@ public interface Fakebook {
      * @return New topic fanatics iterator.
      */
     Iterator<User> newTopicFanaticsIterator(String hashtag);
-    
-    /**
-     * @return New top liars iterator.
-     */
-    Iterator<LiarUser> newTopLiarsIterator();
-    
     
 }

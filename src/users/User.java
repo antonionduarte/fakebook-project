@@ -1,5 +1,8 @@
 package users;
 
+import comments.Comment;
+import posts.Post;
+
 public interface User {
     
     /**
@@ -26,4 +29,18 @@ public interface User {
      * @return Number of comments.
      */
     int getNumComments();
+    
+    /**
+     * Adds another user as a friend.
+     * @param user2 The other user.
+     */
+    void addFriend(User user2);
+    
+    void post(DataStructure postHashtags, String postTruthfulness, String postMessage);
+    
+    void newComment(Comment comment);
+    
+    void commentPost(Comment comment);
+    
+    Post getPost(String postId);
 }

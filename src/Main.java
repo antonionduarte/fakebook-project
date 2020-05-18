@@ -16,12 +16,12 @@ public class Main {
 	public static void main(String[] args) {
 		Fakebook fakebook = new FakebookClass();
 		Scanner in = new Scanner(System.in);
-		Command command = null;
+		Command command;
 		
-		while (command != Command.EXIT) {
+		do {
 			command = readCommand(in);
 			executeCommand(command, in, fakebook);
-		}
+		} while (command != Command.EXIT);
 		
 		in.close();
 	}
@@ -97,10 +97,10 @@ public class Main {
 				topResponsive(fakebook);
 				break;
 			case SHAMELESS:
-				topLiars(fakebook);
+				topLiar(fakebook);
 				break;
 			default:
-				unknownCommand();
+				unknownCommand(in);
 				break;
 		}
 	}
@@ -108,8 +108,9 @@ public class Main {
 	/**
 	 * Prints out the unknown command message.
 	 */
-	private static void unknownCommand() {
+	private static void unknownCommand(Scanner in) {
 		System.out.println(Output.UNKNOWN_COMMAND.getMessage());
+		in.nextLine();
 	}
 	
 	/**
@@ -318,12 +319,12 @@ public class Main {
 	private static void commentPost(Scanner in, Fakebook fakebook) {
 		try {
 			String userIdComment = in.next() + in.nextLine();
-			String userIdAuthor = in.next() + in.nextLine();
+			String userIdPost = in.next() + in.nextLine();
 			int postId = in.nextInt();
 			String commentStance = in.next();
 			String commentMessage = in.next() + in.nextLine();
 			
-			fakebook.commentPost(userIdComment, userIdAuthor, postId, commentStance, commentMessage);
+			fakebook.commentPost(userIdComment, userIdPost, postId, commentStance, commentMessage);
 			System.out.println(Output.COMMENT_ADDED.getMessage());
 		}
 		catch (UserDoesNotExistException e) {
@@ -494,14 +495,11 @@ public class Main {
 	 * Prints out information about the users with the most lies.
 	 * @param fakebook Fakebook manager.
 	 */
-	private static void topLiars(Fakebook fakebook) {
+	private static void topLiar(Fakebook fakebook) {
 		try {
-			Iterator<LiarUser> liars = fakebook.newTopLiarsIterator();
+			LiarUser liar = fakebook.getTopLiar();
 			
-			while (liars.hasNext()) {
-				LiarUser liar = liars.next();
-				System.out.printf("%s %d.\n", liar.getId(), liar.getNumLies());
-			}
+			System.out.printf("%s %d.\n", liar.getId(), liar.getNumLies());
 		}
 		catch (NoLiesException e) {
 			System.out.println(e.getMessage());
