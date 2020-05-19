@@ -237,11 +237,20 @@ public class UserCollectionClass implements UserCollection {
     /* Private methods */
     
     private void updateTopPost(Post post) {
-    
+        
         if (topPost == null || post.getNumComments() > topPost.getNumComments() ||
             post.getNumComments() == topPost.getNumComments() && post.getAuthorId().compareTo(topPost.getAuthorId()) < 0 ||
             post.getNumComments() == topPost.getNumComments() && post.getAuthorId().compareTo(topPost.getAuthorId()) == 0 && post.getId() > topPost.getId()) {
             topPost = post;
+        }
+    }
+    
+    private void updateTopPoster(User poster) {
+        
+        if (topPoster == null || poster.getNumComments() > topPoster.getNumComments() ||
+            poster.getNumComments() == topPoster.getNumComments() && poster.getId().compareTo(topPoster.getId()) < 0 ||
+            poster.getNumComments() == topPoster.getNumComments() && poster.getId().compareTo(topPoster.getId()) == 0 && poster.getId().compareTo(topPoster.getId()) < 0) {
+            topPoster = poster;
         }
     }
 }
