@@ -36,11 +36,30 @@ public interface User {
      */
     void addFriend(User user2);
     
+    /**
+     * Makes a new post (visible to friends).
+     * @param postHashtags The posts' hashtags.
+     * @param postTruthfulness The posts' truthfulness.
+     * @param postMessage The posts' message.
+     */
     void post(DataStructure postHashtags, String postTruthfulness, String postMessage);
     
-    void newComment(Comment comment);
-    
+    /**
+     * Adds another users' comment to a post.
+     * @param comment The other users' comment.
+     */
     void commentPost(Comment comment);
     
-    Post getPost(String postId);
+    /**
+     * Adds a new comment made to another users' post.
+     * @param comment The comment made to another users' post.
+     */
+    void newComment(Comment comment);
+    
+    /**
+     * Gets a post.
+     * @param postId The posts' ID.
+     * @return The post.
+     */
+    Post getPost(int postId);
 }

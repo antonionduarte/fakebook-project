@@ -67,7 +67,7 @@ public interface UserCollection {
      * @param postId The posts' ID.
      * @return The users' post.
      */
-    Post getUserPost(String userId, String postId);
+    Post getUserPost(String userId, int postId);
     
     /**
      * @return The most popular post.
@@ -87,7 +87,7 @@ public interface UserCollection {
     /**
      * @return The user with the most lies.
      */
-    LiarUser getTopLiar();
+    LiarUserClass getTopLiar();
     
     /**
      * @return New users iterator.

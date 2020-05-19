@@ -115,6 +115,8 @@ public class UserCollectionClass implements UserCollection {
         
         userComment.newComment(comment);
         userPost.commentPost(comment);
+        
+        updateTopPost(userPost.getPost(postId));
     }
     
     /**
@@ -124,7 +126,7 @@ public class UserCollectionClass implements UserCollection {
      * @return The users' post.
      */
     @Override
-    public Post getUserPost(String userId, String postId) {
+    public Post getUserPost(String userId, int postId) {
         return users.get(userId).getPost(postId);
     }
     
@@ -166,7 +168,7 @@ public class UserCollectionClass implements UserCollection {
      * @return The user with the most lies.
      */
     @Override
-    public LiarUser getTopLiar() {
+    public LiarUserClass getTopLiar() {
         return null;
     }
     
