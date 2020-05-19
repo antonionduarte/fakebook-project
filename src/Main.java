@@ -456,7 +456,7 @@ public class Main {
 			System.out.printf("%s %d %d: %s\n", post.getAuthorId(), post.getId(),
 				post.getNumComments(), post.getMessage());
 		}
-		catch (NoPostsException e) {
+		catch (NoTopPostException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -501,7 +501,7 @@ public class Main {
 			
 			System.out.printf("%s %d.\n", liar.getId(), liar.getNumLies());
 		}
-		catch (NoLiesException e) {
+		catch (NoTopLiarException e) {
 			System.out.println(e.getMessage());
 		}
 	}

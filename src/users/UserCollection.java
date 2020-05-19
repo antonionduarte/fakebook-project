@@ -87,7 +87,7 @@ public interface UserCollection {
     /**
      * @return The user with the most lies.
      */
-    LiarUserClass getTopLiar();
+    LiarUser getTopLiar();
     
     /**
      * @return New users iterator.
@@ -121,6 +121,6 @@ public interface UserCollection {
      * @param hashtag The specified hashtag.
      * @return New topic fanatics iterator.
      */
-    Iterator<User> newTopFanaticsIterator(String hashtag);
+    Iterator<FanaticUser> newTopicFanaticsIterator(String hashtag);
     
 }

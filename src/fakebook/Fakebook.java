@@ -2,6 +2,7 @@ package fakebook;
 
 import comments.Comment;
 import posts.Post;
+import users.LiarUser;
 import users.LiarUserClass;
 import users.User;
 
@@ -95,7 +96,7 @@ public interface Fakebook {
     /**
      * @return The user with the most lies.
      */
-    LiarUserClass getTopLiar();
+    LiarUser getTopLiar();
     
     /**
      * @return New users iterator.

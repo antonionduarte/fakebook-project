@@ -2,26 +2,31 @@ package users;
 
 import comments.Comment;
 import comments.CommentClass;
-import exceptions.NoPostsException;
+import exceptions.NoTopLiarException;
+import exceptions.NoTopPostException;
 import exceptions.NoTopPosterException;
+import exceptions.NoTopResponsiveException;
 import posts.Post;
 
-import java.util.Iterator;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 public class UserCollectionClass implements UserCollection {
     
     /* Variables */
     private SortedMap<String, User> users;
     private Post topPost;
-    private User topPoster;
+    private User topPoster, topResponsive;
+    private LiarUser topLiar;
+    private Map<String, SortedMap<String, FanaticUser>> topicsFanatics;
     
     /* Constructor */
     public UserCollectionClass() {
         users = new TreeMap<>();
         topPost = null;
         topPoster = null;
+        topResponsive = null;
+        topLiar = null;
+        topicsFanatics = new HashMap<>();
     }
     
     /**
@@ -136,10 +141,10 @@ public class UserCollectionClass implements UserCollection {
      * @return The most popular post.
      */
     @Override
-    public Post getTopPost() throws NoPostsException {
+    public Post getTopPost() throws NoTopPostException {
         
         if (topPost == null) {
-            throw new NoPostsException();
+            throw new NoTopPostException();
         }
         
         return topPost;
@@ -162,15 +167,24 @@ public class UserCollectionClass implements UserCollection {
      * @return The top responsive user.
      */
     @Override
-    public User getTopResponsive() {
-        return null;
+    public User getTopResponsive() throws NoTopResponsiveException {
+        
+        if (topResponsive == null) {
+            throw new NoTopResponsiveException();
+        }
+        
+        return topResponsive;
     }
     
     /**
      * @return The user with the most lies.
      */
     @Override
-    public LiarUserClass getTopLiar() {
+    public LiarUser getTopLiar() throws NoTopLiarException {
+        
+        if (topLiar == null) {
+            throw new NoTopLiarException();
+        }
         return null;
     }
     
@@ -179,7 +193,7 @@ public class UserCollectionClass implements UserCollection {
      */
     @Override
     public Iterator<User> newUsersIterator() {
-        return null;
+        return users.values().iterator();
     }
     
     /**
@@ -189,7 +203,7 @@ public class UserCollectionClass implements UserCollection {
      */
     @Override
     public Iterator<User> newUserFriendsIterator(String userId) {
-        return null;
+        return users.get(userId).newFriendsIterator();
     }
     
     /**
@@ -199,7 +213,7 @@ public class UserCollectionClass implements UserCollection {
      */
     @Override
     public Iterator<Post> newUserPostsIterator(String userId) {
-        return null;
+        return users.get(userId).newPostsIterator();
     }
     
     /**
@@ -210,7 +224,7 @@ public class UserCollectionClass implements UserCollection {
      */
     @Override
     public Iterator<Comment> newUserCommentsIterator(String userId, String hashtag) {
-        return null;
+        return users.get(userId).newCommentsIterator(hashtag);
     }
     
     /**
@@ -219,8 +233,8 @@ public class UserCollectionClass implements UserCollection {
      * @return New topic fanatics iterator.
      */
     @Override
-    public Iterator<User> newTopFanaticsIterator(String hashtag) {
-        return null;
+    public Iterator<FanaticUser> newTopicFanaticsIterator(String hashtag) {
+        return topicsFanatics.get(hashtag).values().iterator();
     }
     
     /* Private methods */
@@ -234,12 +248,19 @@ public class UserCollectionClass implements UserCollection {
         }
     }
     
-    private void updateTopPoster(User poster) {
+    private void updateTopPoster(User user) {
         
-        if (topPoster == null || poster.getNumPosts() > topPoster.getNumPosts() ||
-            poster.getNumPosts() == topPoster.getNumPosts() && poster.getNumComments() > topPoster.getNumComments() ||
-            poster.getNumPosts() == topPoster.getNumPosts() && poster.getNumComments() == topPoster.getNumComments() && poster.getId().compareTo(topPoster.getId()) < 0) {
-            topPoster = poster;
+        if (topPoster == null || user.getNumPosts() > topPoster.getNumPosts() ||
+            user.getNumPosts() == topPoster.getNumPosts() && user.getNumComments() > topPoster.getNumComments() ||
+            user.getNumPosts() == topPoster.getNumPosts() && user.getNumComments() == topPoster.getNumComments() && user.getId().compareTo(topPoster.getId()) < 0) {
+            topPoster = user;
         }
     }
+    
+    private void updateTopResponsive(User user) {
+    
+    }
+    
+    private void update
+    
 }

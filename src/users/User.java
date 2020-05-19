@@ -4,6 +4,8 @@ import comments.Comment;
 import posts.Post;
 import java.util.Map;
 
+import java.util.Iterator;
+
 public interface User {
     
     /**
@@ -64,4 +66,21 @@ public interface User {
      * @return The post.
      */
     Post getPost(int postId);
+    
+    /**
+     * @return New friends iterator.
+     */
+    Iterator<User> newFriendsIterator();
+    
+    /**
+     * @return New posts iterator.
+     */
+    Iterator<Post> newPostsIterator();
+    
+    /**
+     * Creates a new iterator for all the comments about a certain hashtag.
+     * @param hashtag The posts' hashtag.
+     * @return New user comments iterator.
+     */
+    Iterator<Comment> newCommentsIterator(String hashtag);
 }

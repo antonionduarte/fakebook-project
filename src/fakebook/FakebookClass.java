@@ -2,10 +2,7 @@ package fakebook;
 
 import comments.Comment;
 import posts.Post;
-import users.LiarUserClass;
-import users.User;
-import users.UserCollection;
-import users.UserCollectionClass;
+import users.*;
 
 import java.util.Iterator;
 
@@ -142,7 +139,7 @@ public class FakebookClass implements Fakebook {
      * @return The user with the most lies.
      */
     @Override
-    public LiarUserClass getTopLiar() {
+    public LiarUser getTopLiar() {
         return users.getTopLiar();
     }
     
@@ -192,7 +189,7 @@ public class FakebookClass implements Fakebook {
      */
     @Override
     public Iterator<User> newTopicFanaticsIterator(String hashtag) {
-        return users.newTopFanaticsIterator(hashtag);
+        return users.newTopicFanaticsIterator(hashtag);
     }
     
 }
