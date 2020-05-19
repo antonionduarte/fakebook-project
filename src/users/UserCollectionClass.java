@@ -117,6 +117,7 @@ public class UserCollectionClass implements UserCollection {
         userPost.commentPost(comment);
         
         updateTopPost(userPost.getPost(postId));
+        updateTopPoster(userPost);
     }
     
     /**
@@ -234,9 +235,9 @@ public class UserCollectionClass implements UserCollection {
     
     private void updateTopPoster(User poster) {
         
-        if (topPoster == null || poster.getNumComments() > topPoster.getNumComments() ||
-            poster.getNumComments() == topPoster.getNumComments() && poster.getId().compareTo(topPoster.getId()) < 0 ||
-            poster.getNumComments() == topPoster.getNumComments() && poster.getId().compareTo(topPoster.getId()) == 0 && poster.getId().compareTo(topPoster.getId()) < 0) {
+        if (topPoster == null || poster.getNumPosts() > topPoster.getNumPosts() ||
+            poster.getNumPosts() == topPoster.getNumPosts() && poster.getNumComments() > topPoster.getNumComments() ||
+            poster.getNumPosts() == topPoster.getNumPosts() && poster.getNumComments() == topPoster.getNumComments() && poster.getId().compareTo(topPoster.getId()) < 0) {
             topPoster = poster;
         }
     }
