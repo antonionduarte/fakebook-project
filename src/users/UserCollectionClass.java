@@ -146,21 +146,6 @@ public class UserCollectionClass implements UserCollection {
      */
     @Override
     public User getTopPoster() throws NoTopPosterException {
-        User topPoster = null;
-        
-        for (User user: users.values()) {
-            
-            if (topPoster == null || user.getNumPosts() > topPoster.getNumPosts()) {
-                topPoster = user;
-            }
-            else if (user.getNumPosts() == topPoster.getNumPosts() && user.getNumComments() > topPoster.getNumComments()) {
-                topPoster = user;
-            }
-            else if (user.getNumPosts() == topPoster.getNumPosts() && user.getNumComments() == topPoster.getNumComments() &&
-                user.getId().compareTo(topPoster.getId()) < 0) {
-                topPoster = user;
-            }
-        }
         
         if (topPoster == null) {
             throw new NoTopPosterException();
