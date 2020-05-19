@@ -118,8 +118,8 @@ public class FakebookClass implements Fakebook {
      * @return The most popular post.
      */
     @Override
-    public Post getMostPopularPost() {
-        return users.getMostPopularPost();
+    public Post getTopPost() {
+        return users.getTopPost();
     }
     
     /**

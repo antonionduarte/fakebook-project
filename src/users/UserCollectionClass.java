@@ -14,10 +14,14 @@ public class UserCollectionClass implements UserCollection {
     
     /* Variables */
     private SortedMap<String, User> users;
+    private Post topPost;
+    private User topPoster;
     
     /* Constructor */
     public UserCollectionClass() {
         users = new TreeMap<>();
+        topPost = null;
+        topPoster = null;
     }
     
     /**
@@ -128,24 +132,7 @@ public class UserCollectionClass implements UserCollection {
      * @return The most popular post.
      */
     @Override
-    public Post getMostPopularPost() throws NoPostsException {
-        Post topPost = null;
-        
-        for (User user: users.values()) {
-            Post userTopPost = user.getMostPopularPost();
-            
-            if (topPost == null || userTopPost.getNumComments() > topPost.getNumComments()) {
-                topPost = userTopPost;
-            }
-            else if (userTopPost.getNumComments() == topPost.getNumComments() &&
-                user.getId().compareTo(topPost.getAuthorId()) < 0) {
-                topPost = userTopPost;
-            }
-            else if (userTopPost.getNumComments() == topPost.getNumComments() &&
-                user.getId().compareTo(topPost.getAuthorId()) == 0 && userTopPost.getId() > topPost.getId()) {
-                topPost = userTopPost;
-            }
-        }
+    public Post getTopPost() throws NoPostsException {
         
         if (topPost == null) {
             throw new NoPostsException();
@@ -245,5 +232,22 @@ public class UserCollectionClass implements UserCollection {
     @Override
     public Iterator<User> newTopFanaticsIterator(String hashtag) {
         return null;
+    }
+    
+    /* Private methods */
+    
+    private void updateTopPost(Post post) {
+        
+        if (topPost == null || post.getNumComments() > topPost.getNumComments()) {
+            topPost = post;
+        }
+        else if (post.getNumComments() == topPost.getNumComments() &&
+            post.getAuthorId().compareTo(topPost.getAuthorId()) < 0) {
+            topPost = post;
+        }
+        else if (post.getNumComments() == topPost.getNumComments() &&
+            post.getAuthorId().compareTo(topPost.getAuthorId()) == 0 && post.getId() > topPost.getId()) {
+            topPost = post;
+        }
     }
 }

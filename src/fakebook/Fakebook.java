@@ -80,7 +80,7 @@ public interface Fakebook {
     /**
      * @return The most popular post.
      */
-    Post getMostPopularPost();
+    Post getTopPost();
     
     /**
      * @return The top poster.

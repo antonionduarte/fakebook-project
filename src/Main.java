@@ -88,7 +88,7 @@ public class Main {
 				listTopicPosts(in, fakebook);
 				break;
 			case POPULARPOST:
-				mostPopularPost(fakebook);
+				topPost(fakebook);
 				break;
 			case TOPPOSTER:
 				topPoster(fakebook);
@@ -449,9 +449,9 @@ public class Main {
 	 * Prints out information about the most commented post.
 	 * @param fakebook Fakebook manager.
 	 */
-	private static void mostPopularPost(Fakebook fakebook) {
+	private static void topPost(Fakebook fakebook) {
 		try {
-			Post post = fakebook.getMostPopularPost();
+			Post post = fakebook.getTopPost();
 			
 			System.out.printf("%s %d %d: %s\n", post.getAuthorId(), post.getId(),
 				post.getNumComments(), post.getMessage());
