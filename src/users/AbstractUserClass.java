@@ -70,11 +70,11 @@ public abstract class AbstractUserClass implements User {
     }
 
     public void addFriend(User user2) {
-
+        
     } 
 
     public void post(DataStructure postHashtags, String postTruthfulness, String postMessage) {
-
+        
     }
 
     public 
