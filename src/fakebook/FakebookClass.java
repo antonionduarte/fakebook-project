@@ -2,7 +2,7 @@ package fakebook;
 
 import comments.Comment;
 import posts.Post;
-import users.LiarUser;
+import users.LiarUserClass;
 import users.User;
 import users.UserCollection;
 import users.UserCollectionClass;
@@ -142,7 +142,7 @@ public class FakebookClass implements Fakebook {
      * @return The user with the most lies.
      */
     @Override
-    public LiarUser getTopLiar() {
+    public LiarUserClass getTopLiar() {
         return users.getTopLiar();
     }
     

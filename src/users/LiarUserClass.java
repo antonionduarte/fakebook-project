@@ -1,5 +1,5 @@
 package users;
 
-public class LiarUserClass extends AbstractUserClass implements LiarUser {
+public class LiarUserClass extends AbstractUser implements LiarUserClass {
     
 }

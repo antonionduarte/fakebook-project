@@ -1,5 +1,5 @@
 package users;
 
-public class FanaticUserClass extends AbstractUserClass implements FanaticUser {
+public class FanaticUserClass extends AbstractUser implements FanaticUser {
     
 }
