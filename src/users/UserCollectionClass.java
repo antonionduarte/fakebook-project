@@ -77,6 +77,7 @@ public class UserCollectionClass implements UserCollection {
     @Override
     public void post(String userId, DataStructure postHashtags, String postTruthfulness, String postMessage) {
         users.get(userId).post(postHashtags, postTruthfulness, postMessage);
+        updateTopPoster(users.get(userId));
     }
     
     /**
