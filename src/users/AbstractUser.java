@@ -9,15 +9,10 @@ import posts.*;
 public abstract class AbstractUser implements User {
 
     /* Variables */
-
     private String userId, userKind;
-
     private int numFriends, numComments, numPosts;
-
     private SortedMap<String, User> friends;
-    
     private PostCollection posts;
-
     private CommentCollection comments;
 
     /**

@@ -258,9 +258,18 @@ public class UserCollectionClass implements UserCollection {
     }
     
     private void updateTopResponsive(User user) {
-    
+        
+        if (topResponsive == null || user.getResponsiveness() > topResponsive.getResponsiveness() ||
+            user.getId().compareTo(topResponsive.getId()) < 0) {
+            topResponsive = user;
+        }
     }
     
-    private void update
+    private void updateTopLiar(LiarUser user) {
+        
+        if (topLiar == null || user.getNumLies() > topLiar.getNumLies()) {
+            topLiar = user;
+        }
+    }
     
 }
