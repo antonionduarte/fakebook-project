@@ -52,23 +52,33 @@ public class PostClass implements Post {
     }
 
     /**
-     * 
+     * @return The posts' message.
      */
     @Override
     public String getMessage() {
         return message;
     }
 
+    /**
+     * @return Number of comments on the post.
+     */
     @Override
     public int getNumComments() {
         return numComments;
     }
 
+        
+    /**
+     * @return The posts authors' ID.
+     */
     @Override
     public String getAuthorId() {
         return author.getId();
     }
 
+    /**
+     * @return New comments iterator.
+     */
     @Override
     public Iterator<Comment> newCommentsIterator() {
         return comments.newCommentsIterator();
