@@ -11,11 +11,6 @@ public class AbstractUser implements User {
 
     /* Variables */
     private String userId, userKind;
-<<<<<<< HEAD
-
-=======
-    private int numFriends, numComments, numPosts;
->>>>>>> 2bf4658d9c2c30be16e3ff89f9ee66d013904e32
     private SortedMap<String, User> friends;
     private PostCollection posts;
     private CommentCollection comments;
