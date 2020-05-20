@@ -68,6 +68,11 @@ public interface User {
     Post getPost(int postId);
     
     /**
+     * @return The percentage of commented posts in relation to the total posts available to the user.
+     */
+    boolean getResponsiveness();
+    
+    /**
      * @return New friends iterator.
      */
     Iterator<User> newFriendsIterator();
@@ -83,4 +88,5 @@ public interface User {
      * @return New user comments iterator.
      */
     Iterator<Comment> newCommentsIterator(String hashtag);
+    
 }
