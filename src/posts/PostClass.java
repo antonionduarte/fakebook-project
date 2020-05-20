@@ -2,19 +2,21 @@ package posts;
 
 import java.util.Iterator;
 import users.*;
-import comments.Comment;
+import comments.*;
 
 public class PostClass implements Post {
 
     /* Variables */
 
-    private int postId, numComments;
+    private int postId;
 
     private User author;
 
     private boolean truthfulness;
 
     private String message;
+
+    private CommentCollection comments;
 
     /* Constructor */
 
@@ -28,8 +30,8 @@ public class PostClass implements Post {
         this.postId = postId;
         this.truthfulness = truthfulness;
         this.message = message;
-        this.numComments = 0;
         this.author = author;
+        this.comments = new CommentCollectionClass();
     }
 
     /* Methods */
@@ -64,7 +66,7 @@ public class PostClass implements Post {
      */
     @Override
     public int getNumComments() {
-        return numComments;
+        return comments.getSize();
     }
 
         
