@@ -2,6 +2,7 @@ package users;
 
 import comments.Comment;
 import posts.Post;
+import java.util.Map;
 
 public interface User {
     
@@ -32,9 +33,9 @@ public interface User {
     
     /**
      * Adds another user as a friend.
-     * @param user2 The other user.
+     * @param user The other user.
      */
-    void addFriend(User user2);
+    void addFriend(User user);
     
     /**
      * Makes a new post (visible to friends).
@@ -42,13 +43,14 @@ public interface User {
      * @param postTruthfulness The posts' truthfulness.
      * @param postMessage The posts' message.
      */
-    void post(DataStructure postHashtags, String postTruthfulness, String postMessage);
+    void post(Map postHashtags, String postTruthfulness, String postMessage);
     
     /**
      * Adds another users' comment to a post.
      * @param comment The other users' comment.
+     * @param postId The ID of the post to add the comment to.
      */
-    void commentPost(Comment comment);
+    void commentPost(String postId, Comment comment);
     
     /**
      * Adds a new comment made to another users' post.

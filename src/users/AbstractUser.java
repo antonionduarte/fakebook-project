@@ -1,19 +1,37 @@
 package users;
 
-import comments.Comment;
-import posts.Post;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.Map;
+import comments.*;
+import posts.*;
 
 public abstract class AbstractUser implements User {
 
     /* Variables */
+
     private String userId, userKind;
+
+    private int numFriends, numComments, numPosts;
+
+    private SortedMap<String, User> friends;
     
+    private PostCollection posts;
+
+    private CommentCollection comments;
+
     /**
      * Constructor.
-     * @param userId
-     * @param userKind
+     * @param userId The users' ID.
+     * @param userKind The users' kind.
      */
     protected AbstractUser(String userId, String userKind) {
+        this.friends = new TreeMap<String, User>();
+        this.posts = new PostCollectionClass();
+        this.comments = new CommentCollectionClass();
+        this.numPosts = 0;
+        this.numComments = 0;
+        this.numFriends = 0;
         this.userId = userId;
         this.userKind = userKind;
     }
@@ -23,7 +41,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public String getId() {
-        return null;
+        return userId;
     }
     
     /**
@@ -31,7 +49,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public String getKind() {
-        return null;
+        return userKind;
     }
     
     /**
@@ -39,7 +57,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public int getNumFriends() {
-        return 0;
+        return numFriends;
     }
     
     /**
@@ -47,7 +65,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public int getNumPosts() {
-        return 0;
+        return numPosts;
     }
     
     /**
@@ -55,16 +73,16 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public int getNumComments() {
-        return 0;
+        return numComments;
     }
     
     /**
      * Adds another user as a friend.
-     * @param user2 The other user.
+     * @param user The other user.
      */
     @Override
-    public void addFriend(User user2) {
-    
+    public void addFriend(User user) {
+        friends.put(user.getId(), user);
     }
     
     /**
@@ -74,17 +92,18 @@ public abstract class AbstractUser implements User {
      * @param postMessage The posts' message.
      */
     @Override
-    public void post(DataStructure postHashtags, String postTruthfulness, String postMessage) {
-    
+    public void post(Map postHashtags, String postTruthfulness, String postMessage) {
+        posts.addPost(postHashtags, postTruthfulness, postMessage);
     }
     
     /**
      * Adds another users' comment to a post.
      * @param comment The other users' comment.
+     * @param postId The ID of the post to add the comment to.
      */
     @Override
-    public void commentPost(Comment comment) {
-    
+    public void commentPost(String postId, Comment comment) {
+        posts.addComment(postId, comment);
     }
     
     /**
@@ -93,7 +112,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public void newComment(Comment comment) {
-    
+        comments.addComment(comment);
     }
     
     /**
@@ -103,6 +122,6 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public Post getPost(int postId) {
-        return null;
+        return posts.getPost(postId);
     }
 }

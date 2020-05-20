@@ -14,7 +14,7 @@ public interface Post {
     /**
      * @return The posts' truthfulness.
      */
-    String getTruthfulness();
+    boolean getTruthfulness();
     
     /**
      * @return The posts' message.
