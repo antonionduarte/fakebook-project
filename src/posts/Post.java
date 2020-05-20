@@ -27,7 +27,7 @@ public interface Post {
     int getNumComments();
     
     /**
-     * @return The posts authors' ID.
+     * @return The post authors' ID.
      */
     String getAuthorId();
     

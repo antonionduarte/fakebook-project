@@ -3,13 +3,10 @@ package users;
 public class LiarUserClass extends AbstractUser implements LiarUser {
 
     /* Variables */
-    
     int numLies;
-        
-    /* Constructor */
-
+    
     /**
-     * The constructor of Liar Users.
+     * Constructor.
      * @param userId The ID of the liar user.
      * @param userKind The kind of the user (liar).
      */
@@ -25,4 +22,5 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
     public int getNumLies() {
         return numLies;
     }
+    
 }

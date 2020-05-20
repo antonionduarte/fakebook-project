@@ -7,21 +7,14 @@ import comments.*;
 public class PostClass implements Post {
 
     /* Variables */
-
     private int postId;
-
     private User author;
-
     private boolean truthfulness;
-
     private String message;
-
     private CommentCollection comments;
 
-    /* Constructor */
-
     /**
-     * The Constructor of PostClass.
+     * Constructor.
      * @param postId The ID of the post.
      * @param truthfulness The truthfulness of the post.
      * @param message The message of the post.
@@ -33,9 +26,6 @@ public class PostClass implements Post {
         this.author = author;
         this.comments = new CommentCollectionClass();
     }
-
-    /* Methods */
-
 
     /**
      * @return The posts authors' ID.
@@ -68,10 +58,9 @@ public class PostClass implements Post {
     public int getNumComments() {
         return comments.getSize();
     }
-
-        
+ 
     /**
-     * @return The posts authors' ID.
+     * @return The post authors' ID.
      */
     @Override
     public String getAuthorId() {
