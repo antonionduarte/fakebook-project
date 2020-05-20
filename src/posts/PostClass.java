@@ -16,8 +16,6 @@ public class PostClass implements Post {
 
     private String message;
 
-    private
-
     /* Constructor */
 
     /**
@@ -36,16 +34,26 @@ public class PostClass implements Post {
 
     /* Methods */
 
+
+    /**
+     * @return The posts authors' ID.
+     */
     @Override
     public int getId() {
         return postId;
     }
 
+    /**
+     * @return The posts' truthfulness.
+     */
     @Override
     public boolean getTruthfulness() {
         return truthfulness;
     }
 
+    /**
+     * 
+     */
     @Override
     public String getMessage() {
         return message;

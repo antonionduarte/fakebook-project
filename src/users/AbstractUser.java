@@ -12,8 +12,6 @@ public abstract class AbstractUser implements User {
 
     private String userId, userKind;
 
-    private int numFriends, numComments, numPosts;
-
     private SortedMap<String, User> friends;
     
     private PostCollection posts;
@@ -29,9 +27,6 @@ public abstract class AbstractUser implements User {
         this.friends = new TreeMap<String, User>();
         this.posts = new PostCollectionClass();
         this.comments = new CommentCollectionClass();
-        this.numPosts = 0;
-        this.numComments = 0;
-        this.numFriends = 0;
         this.userId = userId;
         this.userKind = userKind;
     }
@@ -57,7 +52,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public int getNumFriends() {
-        return numFriends;
+        return friends.size();
     }
     
     /**
@@ -65,7 +60,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public int getNumPosts() {
-        return numPosts;
+        return posts.getSize();
     }
     
     /**
@@ -73,7 +68,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public int getNumComments() {
-        return numComments;
+        return comments.getSize();
     }
     
     /**
