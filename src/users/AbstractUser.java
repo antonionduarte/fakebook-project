@@ -1,12 +1,13 @@
 package users;
 
+import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.Map;
 import comments.*;
 import posts.*;
 
-public abstract class AbstractUser implements User {
+public class AbstractUser implements User {
 
     /* Variables */
     private String userId, userKind;
@@ -118,5 +119,39 @@ public abstract class AbstractUser implements User {
     @Override
     public Post getPost(int postId) {
         return posts.getPost(postId);
+    }
+    
+    /**
+     * @return The percentage of commented posts in relation to the total posts available to the user.
+     */
+    @Override
+    public boolean getResponsiveness() {
+        return false;
+    }
+    
+    /**
+     * @return New friends iterator.
+     */
+    @Override
+    public Iterator<User> newFriendsIterator() {
+        return null;
+    }
+    
+    /**
+     * @return New posts iterator.
+     */
+    @Override
+    public Iterator<Post> newPostsIterator() {
+        return null;
+    }
+    
+    /**
+     * Creates a new iterator for all the comments about a certain hashtag.
+     * @param hashtag The posts' hashtag.
+     * @return New user comments iterator.
+     */
+    @Override
+    public Iterator<Comment> newCommentsIterator(String hashtag) {
+        return null;
     }
 }
