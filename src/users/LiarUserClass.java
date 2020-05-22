@@ -3,15 +3,14 @@ package users;
 public class LiarUserClass extends AbstractUser implements LiarUser {
 
     /* Variables */
-    int numLies;
+    private int numLies;
     
     /**
      * Constructor.
      * @param userId The ID of the liar user.
-     * @param userKind The kind of the user (liar).
      */
-    public LiarUserClass(String userId, String userKind) {
-        super(userId, userKind);
+    public LiarUserClass(String userId {
+        super(userId, "liar");
         this.numLies = 0;
     }
 
