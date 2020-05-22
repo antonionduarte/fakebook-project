@@ -145,15 +145,15 @@ public class Main {
 		try {
 			if (fakebook.userKindIsFanatic(userKind)) {
 				int numFanaticisms = in.nextInt();
-				Map<String, String> fanaticismsChecker = new HashMap<>();
+				Set<String> fanaticismsChecker = new HashSet<>();
 				List<Fanaticism> fanaticisms = new ArrayList<>();
 				
 				for (int i = 0; i < numFanaticisms; i++) {
 					String stance = in.next();
 					String hashtag = in.next();
 					
-					if (!fanaticismsChecker.containsKey(hashtag)) {
-						fanaticismsChecker.put(hashtag, stance);
+					if (!fanaticismsChecker.contains(hashtag)) {
+						fanaticismsChecker.add(hashtag);
 						fanaticisms.add(new FanaticismClass(hashtag, stance));
 					}
 					else {
