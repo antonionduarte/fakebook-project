@@ -3,6 +3,7 @@ package enums;
 public enum Output {
 	
 	/* Outputs */
+	USER_REGISTERED("% registered.\n"),
 	MESSAGE_SENT("%s sent a %s post to %d friends. Post id = %d.\n"),
 	USER_POSTS("%s posts:\n"),
 	COMMENT_ADDED("Comment added!"),

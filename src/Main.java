@@ -167,6 +167,8 @@ public class Main {
 			else {
 				fakebook.registerUser(userKind, userId);
 			}
+			
+			System.out.printf(Output.USER_REGISTERED.getMessage(), userId);
 		}
 		catch (InvalidUserKindException e) {
 			System.out.println(e.getMessage());
