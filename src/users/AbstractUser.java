@@ -7,7 +7,7 @@ import java.util.Map;
 import comments.*;
 import posts.*;
 
-public class AbstractUser implements User {
+public abstract class AbstractUser implements User {
 
     /* Variables */
     private String userId, userKind;

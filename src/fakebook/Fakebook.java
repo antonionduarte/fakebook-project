@@ -2,6 +2,7 @@ package fakebook;
 
 import comments.Comment;
 import posts.Post;
+import users.FanaticUser;
 import users.LiarUser;
 import users.LiarUserClass;
 import users.User;
@@ -9,12 +10,6 @@ import users.User;
 import java.util.Iterator;
 
 public interface Fakebook {
-    
-    /**
-     * Checks if the specified user kind is "fanatic".
-     * @param userKind User kind.
-     */
-    boolean userKindIsFanatic(String userKind);
     
     /**
      * Registers a new user.
@@ -76,7 +71,7 @@ public interface Fakebook {
      * @param postId The posts' ID.
      * @return The users' post.
      */
-    Post getUserPost(String userId, String postId);
+    Post getUserPost(String userId, int postId);
     
     /**
      * @return The most popular post.
@@ -130,6 +125,6 @@ public interface Fakebook {
      * @param hashtag The specified hashtag.
      * @return New topic fanatics iterator.
      */
-    Iterator<User> newTopicFanaticsIterator(String hashtag);
+    Iterator<FanaticUser> newTopicFanaticsIterator(String hashtag);
     
 }
