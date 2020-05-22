@@ -2,10 +2,8 @@ package fakebook;
 
 import comments.Comment;
 import comments.CommentClass;
-import exceptions.NoTopLiarException;
-import exceptions.NoTopPostException;
-import exceptions.NoTopPosterException;
-import exceptions.NoTopResponsiveException;
+import exceptions.*;
+import fanaticisms.Fanaticism;
 import posts.Post;
 import users.*;
 
@@ -36,17 +34,34 @@ public class FakebookClass implements Fakebook {
      * @param userId The new users' ID.
      */
     @Override
-    public void registerUser(String userKind, String userId) {
+    public void registerUser(String userKind, String userId) throws InvalidUserKindException, UserAlreadyExistsException {
+        if (users.containsKey(userId)) {
+            throw new UserAlreadyExistsException(userId);
+        }
         
-        if (userKind.equals("naive")) {
-            users.put(userId, new NaiveUserClass(userId));
+        switch (userKind) {
+            case "naive":
+                users.put(userId, new NaiveUserClass(userId));
+                break;
+            case "liar":
+                users.put(userId, new LiarUserClass(userId));
+                break;
+            case "selfcentered":
+                users.put(userId, new SelfcenteredUserClass(userId));
+                break;
+            default:
+                throw new InvalidUserKindException(userKind);
         }
-        else if (userKind.equals("liar")) {
-            users.put(userId, new LiarUserClass(userId));
-        }
-        else if (userKind.equals("selfcentered")) {
-            users.put(userId, new SelfcenteredUserClass(userId));
-        }
+    }
+    
+    /**
+     * Checks if a user kind is "fanatic".
+     * @param userKind The user kind.
+     * @return True if the user kind is "fanatic".
+     */
+    @Override
+    public boolean userKindIsFanatic(String userKind) {
+        return userKind.equals("fanatic");
     }
     
     /**
@@ -55,7 +70,11 @@ public class FakebookClass implements Fakebook {
      * @param fanaticisms The new users' fanaticisms.
      */
     @Override
-    public void registerFanatic(String userId, DataStructure fanaticisms) {
+    public void registerFanatic(String userId, List<Fanaticism> fanaticisms) throws UserAlreadyExistsException {
+        if (users.containsKey(userId)) {
+            throw new UserAlreadyExistsException(userId);
+        }
+        
         users.put(userId, new FanaticUserClass(userId, fanaticisms));
     }
     

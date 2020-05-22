@@ -1,13 +1,16 @@
 package fakebook;
 
 import comments.Comment;
+import exceptions.InvalidUserKindException;
+import exceptions.UserAlreadyExistsException;
+import fanaticisms.Fanaticism;
 import posts.Post;
 import users.FanaticUser;
 import users.LiarUser;
-import users.LiarUserClass;
 import users.User;
 
 import java.util.Iterator;
+import java.util.List;
 
 public interface Fakebook {
     
@@ -16,14 +19,21 @@ public interface Fakebook {
      * @param userKind User kind.
      * @param userId The new users' ID.
      */
-    void registerUser(String userKind, String userId);
+    void registerUser(String userKind, String userId) throws InvalidUserKindException, UserAlreadyExistsException;
+    
+    /**
+     * Checks if a user kind is "fanatic".
+     * @param userKind The user kind.
+     * @return True if the user kind is "fanatic".
+     */
+    boolean userKindIsFanatic(String userKind);
     
     /**
      * Registers a new fanatic user.
      * @param userId The new users' ID.
      * @param fanaticisms The new users' fanaticisms.
      */
-    void registerFanatic(String userId, DataStructure fanaticisms);
+    void registerFanatic(String userId, List<Fanaticism> fanaticisms) throws UserAlreadyExistsException;
     
     /**
      * Creates a bidirectional friend relationship between 2 users.

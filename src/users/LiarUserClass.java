@@ -9,7 +9,7 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
      * Constructor.
      * @param userId The ID of the liar user.
      */
-    public LiarUserClass(String userId {
+    public LiarUserClass(String userId) {
         super(userId, "liar");
         this.numLies = 0;
     }

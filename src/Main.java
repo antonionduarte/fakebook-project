@@ -1,6 +1,8 @@
 import exceptions.*;
 import fakebook.*;
 import enums.*;
+import fanaticisms.Fanaticism;
+import fanaticisms.FanaticismClass;
 import posts.*;
 import users.*;
 import comments.*;
@@ -137,18 +139,26 @@ public class Main {
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void registerUser(Scanner in, Fakebook fakebook) {
+		String userKind = in.next();
+		String userId = in.next() + in.nextLine();
+		
 		try {
-			String userKind = in.next();
-			String userId = in.next() + in.nextLine();
-			
 			if (fakebook.userKindIsFanatic(userKind)) {
 				int numFanaticisms = in.nextInt();
+				Map<String, String> fanaticismsChecker = new HashMap<>();
+				List<Fanaticism> fanaticisms = new ArrayList<>();
 				
 				for (int i = 0; i < numFanaticisms; i++) {
-					/**
-					 * (Code to be added here)
-					 * (Awaiting master Goulao's orders)
-					 */
+					String stance = in.next();
+					String hashtag = in.next();
+					
+					if (!fanaticismsChecker.containsKey(hashtag)) {
+						fanaticismsChecker.put(hashtag, stance);
+						fanaticisms.add(new FanaticismClass(hashtag, stance));
+					}
+					else {
+						throw new InvalidFanaticismListException();
+					}
 				}
 				in.nextLine();
 				
