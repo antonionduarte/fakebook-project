@@ -1,10 +1,12 @@
 package users;
 
-import java.util.Iterator;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.Map;
+import java.util.*;
+
 import comments.*;
+import exceptions.UserHasNoCommentsException;
+import exceptions.UserHasNoFriendsException;
+import exceptions.UserHasNoPostsException;
+import exceptions.UsersAlreadyFriendsException;
 import posts.*;
 
 public abstract class AbstractUser implements User {
@@ -12,8 +14,8 @@ public abstract class AbstractUser implements User {
     /* Variables */
     private String userId, userKind;
     private SortedMap<String, User> friends;
-    private PostCollection posts;
-    private CommentCollection comments;
+    private SortedMap<Integer, Post> posts;
+    private List<Comment> comments;
 
     /**
      * Constructor.
@@ -22,8 +24,8 @@ public abstract class AbstractUser implements User {
      */
     protected AbstractUser(String userId, String userKind) {
         this.friends = new TreeMap<String, User>();
-        this.posts = new PostCollectionClass();
-        this.comments = new CommentCollectionClass();
+        this.posts = new TreeMap<>();
+        this.comments = new LinkedList<>();
         this.userId = userId;
         this.userKind = userKind;
     }
@@ -73,7 +75,11 @@ public abstract class AbstractUser implements User {
      * @param user The other user.
      */
     @Override
-    public void addFriend(User user) {
+    public void addFriend(User user) throws UsersAlreadyFriendsException {
+        if (friends.containsKey(user.getId())) {
+            throw new UsersAlreadyFriendsException(userId, user.getId());
+        }
+        
         friends.put(user.getId(), user);
     }
     
@@ -84,8 +90,8 @@ public abstract class AbstractUser implements User {
      * @param postMessage The posts' message.
      */
     @Override
-    public void post(Map postHashtags, String postTruthfulness, String postMessage) {
-        posts.addPost(postHashtags, postTruthfulness, postMessage);
+    public void post(Map<> postHashtags, String postTruthfulness, String postMessage) {
+        posts.put(posts.size()+1, new PostClass(posts.size()+1, postHashtags, postTruthfulness, postMessage));
     }
     
     /**
@@ -95,7 +101,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public void commentPost(String postId, Comment comment) {
-        posts.addComment(postId, comment);
+        posts.get(postId).addComment(comment);
     }
     
     /**
@@ -104,7 +110,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public void newComment(Comment comment) {
-        comments.addComment(comment);
+        comments.add(comment);
     }
     
     /**
@@ -114,7 +120,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public Post getPost(int postId) {
-        return posts.getPost(postId);
+        return posts.get(postId);
     }
     
     /**
@@ -129,16 +135,24 @@ public abstract class AbstractUser implements User {
      * @return New friends iterator.
      */
     @Override
-    public Iterator<User> newFriendsIterator() {
-        return null;
+    public Iterator<User> newFriendsIterator() throws UserHasNoFriendsException {
+        if (friends.isEmpty()) {
+            throw new UserHasNoFriendsException(userId);
+        }
+        
+        return friends.values().iterator();
     }
     
     /**
      * @return New posts iterator.
      */
     @Override
-    public Iterator<Post> newPostsIterator() {
-        return null;
+    public Iterator<Post> newPostsIterator() throws UserHasNoPostsException {
+        if (posts.isEmpty()) {
+            throw new UserHasNoPostsException(userId);
+        }
+        
+        return posts.values().iterator();
     }
     
     /**
@@ -147,7 +161,11 @@ public abstract class AbstractUser implements User {
      * @return New user comments iterator.
      */
     @Override
-    public Iterator<Comment> newCommentsIterator(String hashtag) {
-        return null;
+    public Iterator<Comment> newCommentsIterator(String hashtag) throws UserHasNoCommentsException {
+        if (comments.isEmpty()) {
+            throw new UserHasNoCommentsException();
+        }
+        
+        return comments.iterator();
     }
 }

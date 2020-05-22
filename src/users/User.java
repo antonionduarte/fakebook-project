@@ -1,6 +1,10 @@
 package users;
 
 import comments.Comment;
+import exceptions.UserHasNoCommentsException;
+import exceptions.UserHasNoFriendsException;
+import exceptions.UserHasNoPostsException;
+import exceptions.UsersAlreadyFriendsException;
 import posts.Post;
 import java.util.Map;
 
@@ -37,7 +41,7 @@ public interface User {
      * Adds another user as a friend.
      * @param user The other user.
      */
-    void addFriend(User user);
+    void addFriend(User user) throws UsersAlreadyFriendsException;
     
     /**
      * Makes a new post (visible to friends).
@@ -75,18 +79,18 @@ public interface User {
     /**
      * @return New friends iterator.
      */
-    Iterator<User> newFriendsIterator();
+    Iterator<User> newFriendsIterator() throws UserHasNoFriendsException;
     
     /**
      * @return New posts iterator.
      */
-    Iterator<Post> newPostsIterator();
+    Iterator<Post> newPostsIterator() throws UserHasNoPostsException;
     
     /**
      * Creates a new iterator for all the comments about a certain hashtag.
      * @param hashtag The posts' hashtag.
      * @return New user comments iterator.
      */
-    Iterator<Comment> newCommentsIterator(String hashtag);
+    Iterator<Comment> newCommentsIterator(String hashtag) throws UserHasNoCommentsException;
     
 }

@@ -22,6 +22,12 @@ public interface Post {
     String getMessage();
     
     /**
+     * Adds a new comment to the post.
+     * @param comment New comment.
+     */
+    void addComment(Comment comment);
+    
+    /**
      * @return Number of comments on the post.
      */
     int getNumComments();

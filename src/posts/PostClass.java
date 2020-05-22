@@ -1,6 +1,9 @@
 package posts;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 import users.*;
 import comments.*;
 
@@ -11,7 +14,7 @@ public class PostClass implements Post {
     private User author;
     private boolean truthfulness;
     private String message;
-    private CommentCollection comments;
+    private List<Comment> comments;
 
     /**
      * Constructor.
@@ -24,7 +27,7 @@ public class PostClass implements Post {
         this.truthfulness = truthfulness;
         this.message = message;
         this.author = author;
-        this.comments = new CommentCollectionClass();
+        this.comments = new LinkedList<>();
     }
 
     /**
@@ -50,13 +53,22 @@ public class PostClass implements Post {
     public String getMessage() {
         return message;
     }
+    
+    /**
+     * Adds a new comment to the post.
+     * @param comment New comment.
+     */
+    @Override
+    public void addComment(Comment comment) {
+        comments.add(comment);
+    }
 
     /**
      * @return Number of comments on the post.
      */
     @Override
     public int getNumComments() {
-        return comments.getSize();
+        return comments.size();
     }
  
     /**
@@ -72,7 +84,7 @@ public class PostClass implements Post {
      */
     @Override
     public Iterator<Comment> newCommentsIterator() {
-        return comments.newCommentsIterator();
+        return comments.iterator();
     }
     
 }

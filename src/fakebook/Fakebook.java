@@ -1,8 +1,7 @@
 package fakebook;
 
 import comments.Comment;
-import exceptions.InvalidUserKindException;
-import exceptions.UserAlreadyExistsException;
+import exceptions.*;
 import fanaticisms.Fanaticism;
 import posts.Post;
 import users.FanaticUser;
@@ -40,7 +39,7 @@ public interface Fakebook {
      * @param userId1 The first user.
      * @param userId2 The second user.
      */
-    void addFriend(String userId1, String userId2);
+    void addFriend(String userId1, String userId2) throws UserDoesNotExistException, SameUserException;
     
     /**
      * Allows a user to make a new post (visible to his friends).
@@ -106,14 +105,14 @@ public interface Fakebook {
     /**
      * @return New users iterator.
      */
-    Iterator<User> newUsersIterator();
+    Iterator<User> newUsersIterator() throws NoUsersException;
     
     /**
      * Creates a new iterator for a users' friends.
      * @param userId The users' ID.
      * @return New users' friends iterator.
      */
-    Iterator<User> newUserFriendsIterator(String userId);
+    Iterator<User> newUserFriendsIterator(String userId) throws UserDoesNotExistException;
     
     /**
      * Creates a new iterator for a users' posts.

@@ -84,10 +84,19 @@ public class FakebookClass implements Fakebook {
      * @param userId2 The second user.
      */
     @Override
-    public void addFriend(String userId1, String userId2) {
+    public void addFriend(String userId1, String userId2) throws UserDoesNotExistException, SameUserException {
+        if (!users.containsKey(userId1)) {
+            throw new UserDoesNotExistException(userId1);
+        }
+        if (!users.containsKey(userId2)) {
+            throw new UserDoesNotExistException(userId2);
+        }
+        if (userId1.equals(userId2)) {
+            throw new SameUserException(userId1);
+        }
+        
         User user1 = users.get(userId1);
         User user2 = users.get(userId2);
-        
         user1.addFriend(user2);
         user2.addFriend(user1);
     }
@@ -212,7 +221,11 @@ public class FakebookClass implements Fakebook {
      * @return New users iterator.
      */
     @Override
-    public Iterator<User> newUsersIterator() {
+    public Iterator<User> newUsersIterator() throws NoUsersException {
+        if (users.isEmpty()) {
+            throw new NoUsersException();
+        }
+        
         return users.values().iterator();
     }
     
@@ -222,7 +235,11 @@ public class FakebookClass implements Fakebook {
      * @return New users' friends iterator.
      */
     @Override
-    public Iterator<User> newUserFriendsIterator(String userId) {
+    public Iterator<User> newUserFriendsIterator(String userId) throws UserDoesNotExistException {
+        if (!users.containsKey(userId)) {
+            throw new UserDoesNotExistException(userId);
+        }
+        
         return users.get(userId).newFriendsIterator();
     }
     
