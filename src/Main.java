@@ -138,7 +138,7 @@ public class Main {
 	 * @param in Input scanner.
 	 * @param fakebook Fakebook manager.
 	 */
-	private static void registerUser(Scanner in, Fakebook fakebook) {
+	private static void registerUser(Scanner in, Fakebook fakebook) throws InvalidFanaticismListException {
 		String userKind = in.next();
 		String userId = in.next() + in.nextLine();
 		
