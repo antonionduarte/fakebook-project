@@ -59,7 +59,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public int getNumPosts() {
-        return posts.getSize();
+        return posts.size();
     }
     
     /**
@@ -67,7 +67,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public int getNumComments() {
-        return comments.getSize();
+        return comments.size();
     }
     
     /**
@@ -90,8 +90,8 @@ public abstract class AbstractUser implements User {
      * @param postMessage The posts' message.
      */
     @Override
-    public void post(Map<> postHashtags, String postTruthfulness, String postMessage) {
-        posts.put(posts.size()+1, new PostClass(posts.size()+1, postHashtags, postTruthfulness, postMessage));
+    public void post(Set<String> postHashtags, String postTruthfulness, String postMessage) {
+        posts.put(posts.size()+1, new PostClass(posts.size()+1, postHashtags, postTruthfulness, postMessage, this));
     }
     
     /**

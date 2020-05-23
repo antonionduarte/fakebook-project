@@ -3,6 +3,7 @@ package posts;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import users.*;
 import comments.*;
@@ -11,9 +12,10 @@ public class PostClass implements Post {
 
     /* Variables */
     private int postId;
-    private User author;
+    private Set<String> hashtags;
     private boolean truthfulness;
     private String message;
+    private User author;
     private List<Comment> comments;
 
     /**
@@ -22,9 +24,10 @@ public class PostClass implements Post {
      * @param truthfulness The truthfulness of the post.
      * @param message The message of the post.
      */
-    public PostClass(int postId, boolean truthfulness, String message, User author) {
+    public PostClass(int postId, Set<String> hashtags, String truthfulness, String message, User author) {
         this.postId = postId;
-        this.truthfulness = truthfulness;
+        this.hashtags = hashtags;
+        this.truthfulness = truthfulness.equals("honest");
         this.message = message;
         this.author = author;
         this.comments = new LinkedList<>();

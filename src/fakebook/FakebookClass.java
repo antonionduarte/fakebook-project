@@ -109,7 +109,11 @@ public class FakebookClass implements Fakebook {
      * @param postMessage The posts' message.
      */
     @Override
-    public void post(String userId, DataStructure postHashtags, String postTruthfulness, String postMessage) {
+    public void post(String userId, Set<String> postHashtags, String postTruthfulness, String postMessage) throws UserDoesNotExistException {
+        if (!users.containsKey(userId)) {
+            throw new UserDoesNotExistException(userId);
+        }
+        
         users.get(userId).post(postHashtags, postTruthfulness, postMessage);
         updateTopPoster(users.get(userId));
     }

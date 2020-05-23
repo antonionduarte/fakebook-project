@@ -9,6 +9,7 @@ import posts.Post;
 import java.util.Map;
 
 import java.util.Iterator;
+import java.util.Set;
 
 public interface User {
     
@@ -49,7 +50,7 @@ public interface User {
      * @param postTruthfulness The posts' truthfulness.
      * @param postMessage The posts' message.
      */
-    void post(Map postHashtags, String postTruthfulness, String postMessage);
+    void post(Set<String> postHashtags, String postTruthfulness, String postMessage);
     
     /**
      * Adds another users' comment to a post.

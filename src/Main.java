@@ -187,8 +187,9 @@ public class Main {
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void listUsers(Scanner in, Fakebook fakebook) {
+		in.nextLine();
+		
 		try {
-			in.nextLine();
 			Iterator<User> users = fakebook.newUsersIterator();
 			
 			while (users.hasNext()) {
@@ -208,10 +209,10 @@ public class Main {
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void addFriend(Scanner in, Fakebook fakebook) {
+		String userId1 = in.next() + in.nextLine();
+		String userId2 = in.nextLine();
+		
 		try {
-			String userId1 = in.next() + in.nextLine();
-			String userId2 = in.nextLine();
-			
 			fakebook.addFriend(userId1, userId2);
 			System.out.printf("%s is friend of %s.\n", userId1, userId2);
 		}
@@ -232,9 +233,9 @@ public class Main {
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void listUserFriends(Scanner in, Fakebook fakebook) {
+		String userId = in.next() + in.nextLine();
+		
 		try {
-			String userId = in.next() + in.nextLine();
-			
 			Iterator<User> friends = fakebook.newUserFriendsIterator(userId);
 			
 			while (friends.hasNext()) {
@@ -261,20 +262,26 @@ public class Main {
 	 * @param in Input scanner.
 	 * @param fakebook Fakebook manager.
 	 */
-	private static void post(Scanner in, Fakebook fakebook) {
+	private static void post(Scanner in, Fakebook fakebook) throws InvalidHashtagListException {
+		String userId = in.next() + in.nextLine();
+		int numHashtags = in.nextInt();
+		
 		try {
-			String userId = in.next() + in.nextLine();
-			int numHashtags = in.nextInt();
+			if (numHashtags < 0) {
+				throw new InvalidHashtagListException();
+			}
 			
-			/**
-			 * DataStructure hashtags = new DataStructureClass();
-			 */
+			Set<String> hashtags = new HashSet<>();
 			
 			for (int i = 0; i < numHashtags; i++) {
-				/**
-				 * (Code to be added here)
-				 * (Awaiting for master Goulao's tips on what data structure to use for saving a posts' hashtags)
-				 */
+				String hashtag = in.next();
+				
+				if (!hashtags.contains(hashtag)) {
+					hashtags.add(hashtag);
+				}
+				else {
+					throw new InvalidHashtagListException();
+				}
 			}
 			
 			String postTruthfulness = in.next();

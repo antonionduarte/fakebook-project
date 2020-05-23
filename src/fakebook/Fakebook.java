@@ -10,6 +10,7 @@ import users.User;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public interface Fakebook {
     
@@ -48,7 +49,7 @@ public interface Fakebook {
      * @param postTruthfulness The posts' truthfulness.
      * @param postMessage The posts' message.
      */
-    void post(String userId, DataStructure postHashtags, String postTruthfulness, String postMessage);
+    void post(String userId, Set<String> postHashtags, String postTruthfulness, String postMessage);
     
     /**
      * Gets a users' number of friends.

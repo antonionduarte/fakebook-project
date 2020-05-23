@@ -1,5 +1,9 @@
 package users;
 
+import posts.PostClass;
+
+import java.util.Set;
+
 public class LiarUserClass extends AbstractUser implements LiarUser {
 
     /* Variables */
@@ -20,6 +24,17 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
     @Override
     public int getNumLies() {
         return numLies;
+    }
+    
+    /**
+     * Makes a new post (visible to friends).
+     * @param postHashtags The posts' hashtags.
+     * @param postTruthfulness The posts' truthfulness.
+     * @param postMessage The posts' message.
+     */
+    @Override
+    public void post(Set<String> postHashtags, String postTruthfulness, String postMessage) {
+        posts.put(posts.size()+1, new PostClass(posts.size()+1, postHashtags, postTruthfulness, postMessage, this));
     }
     
 }
