@@ -147,7 +147,14 @@ public class FakebookClass implements Fakebook {
      * @param commentMessage The comments' message.
      */
     @Override
-    public void commentPost(String userIdComment, String userIdPost, int postId, String commentStance, String commentMessage) {
+    public void commentPost(String userIdComment, String userIdPost, int postId, String commentStance, String commentMessage) throws UserDoesNotExistException {
+        if (!users.containsKey(userIdComment)) {
+            throw new UserDoesNotExistException(userIdComment);
+        }
+        if (!users.containsKey(userIdPost)) {
+            throw new UserDoesNotExistException(userIdPost);
+        }
+
         User userComment = users.get(userIdComment);
         User userPost = users.get(userIdPost);
         Post post = userPost.getPost(postId);
@@ -308,7 +315,7 @@ public class FakebookClass implements Fakebook {
     }
     
     private void updateTopLiar(LiarUser user) {
-        
+
         if (topLiar == null || user.getNumLies() > topLiar.getNumLies()) {
             topLiar = user;
         }

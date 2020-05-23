@@ -5,6 +5,7 @@ import exceptions.UserHasNoCommentsException;
 import exceptions.UserHasNoFriendsException;
 import exceptions.UserHasNoPostsException;
 import exceptions.UsersAlreadyFriendsException;
+import exceptions.PostDoesNotExistException;
 import posts.Post;
 import java.util.Map;
 
@@ -70,7 +71,7 @@ public interface User {
      * @param postId The posts' ID.
      * @return The post.
      */
-    Post getPost(int postId);
+    Post getPost(int postId) throws PostDoesNotExistException;
     
     /**
      * @return The percentage of commented posts in relation to the total posts available to the user.

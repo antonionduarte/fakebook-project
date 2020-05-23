@@ -73,7 +73,7 @@ public interface Fakebook {
      * @param commentStance The comments' stance.
      * @param commentMessage The comments' message.
      */
-    void commentPost(String userIdComment, String userIdPost, int postId, String commentStance, String commentMessage);
+    void commentPost(String userIdComment, String userIdPost, int postId, String commentStance, String commentMessage) throws UserDoesNotExistException;
     
     /**
      * Gets a users' specified post.

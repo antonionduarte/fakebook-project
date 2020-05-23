@@ -3,6 +3,7 @@ package users;
 import java.util.*;
 
 import comments.*;
+import exceptions.PostDoesNotExistException;
 import exceptions.UserHasNoCommentsException;
 import exceptions.UserHasNoFriendsException;
 import exceptions.UserHasNoPostsException;
@@ -119,7 +120,10 @@ public abstract class AbstractUser implements User {
      * @return The post.
      */
     @Override
-    public Post getPost(int postId) {
+    public Post getPost(int postId) throws PostDoesNotExistException {
+        if (!posts.containsKey(postId)) {
+            throw new PostDoesNotExistException(userId, postId);
+        }
         return posts.get(postId);
     }
     
