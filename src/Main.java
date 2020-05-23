@@ -308,11 +308,10 @@ public class Main {
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void listUserPosts(Scanner in, Fakebook fakebook) {
+		String userId = in.next() + in.nextLine();
+		
 		try {
-			String userId = in.next() + in.nextLine();
-			
 			Iterator<Post> posts = fakebook.newUserPostsIterator(userId);
-			
 			System.out.printf(Output.USER_POSTS.getMessage(), userId);
 			
 			while (posts.hasNext()) {
@@ -336,13 +335,13 @@ public class Main {
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void commentPost(Scanner in, Fakebook fakebook) {
+		String userIdComment = in.next() + in.nextLine();
+		String userIdPost = in.next() + in.nextLine();
+		int postId = in.nextInt();
+		String commentStance = in.next();
+		String commentMessage = in.next() + in.nextLine();
+		
 		try {
-			String userIdComment = in.next() + in.nextLine();
-			String userIdPost = in.next() + in.nextLine();
-			int postId = in.nextInt();
-			String commentStance = in.next();
-			String commentMessage = in.next() + in.nextLine();
-			
 			fakebook.commentPost(userIdComment, userIdPost, postId, commentStance, commentMessage);
 			System.out.println(Output.COMMENT_ADDED.getMessage());
 		}

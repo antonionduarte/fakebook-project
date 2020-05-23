@@ -261,7 +261,11 @@ public class FakebookClass implements Fakebook {
      * @return New users' posts iterator.
      */
     @Override
-    public Iterator<Post> newUserPostsIterator(String userId) {
+    public Iterator<Post> newUserPostsIterator(String userId) throws UserDoesNotExistException {
+        if (!users.containsKey(userId)) {
+            throw new UserDoesNotExistException(userId);
+        }
+        
         return users.get(userId).newPostsIterator();
     }
     
