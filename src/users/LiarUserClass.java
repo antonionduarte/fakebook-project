@@ -1,5 +1,6 @@
 package users;
 
+import exceptions.InvalidStanceException;
 import posts.PostClass;
 
 import java.util.Set;
@@ -33,7 +34,11 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
      * @param postMessage The posts' message.
      */
     @Override
-    public void post(Set<String> postHashtags, String postTruthfulness, String postMessage) {
+    public void post(Set<String> postHashtags, String postTruthfulness, String postMessage) throws InvalidStanceException {
+        if (postTruthfulness.equals("honest")) {
+            throw new InvalidStanceException();
+        }
+        
         posts.put(posts.size()+1, new PostClass(posts.size()+1, postHashtags, postTruthfulness, postMessage, this));
     }
     

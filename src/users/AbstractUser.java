@@ -14,7 +14,7 @@ public abstract class AbstractUser implements User {
     /* Variables */
     private String userId, userKind;
     private SortedMap<String, User> friends;
-    private SortedMap<Integer, Post> posts;
+    protected SortedMap<Integer, Post> posts;
     private List<Comment> comments;
 
     /**
