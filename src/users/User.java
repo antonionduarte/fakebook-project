@@ -58,7 +58,7 @@ public interface User {
      * @param comment The other users' comment.
      * @param postId The ID of the post to add the comment to.
      */
-    void commentPost(String postId, Comment comment);
+    void commentPost(int postId, Comment comment);
     
     /**
      * Adds a new comment made to another users' post.

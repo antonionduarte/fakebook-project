@@ -161,7 +161,7 @@ public class FakebookClass implements Fakebook {
         Comment comment = new CommentClass(userComment, post, commentStance, commentMessage);
         
         userComment.newComment(comment);
-        userPost.commentPost(userIdPost, comment);
+        userPost.commentPost(postId, comment);
         
         updateTopPost(userPost.getPost(postId));
         updateTopPoster(userPost);
