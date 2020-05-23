@@ -150,10 +150,11 @@ public class FakebookClass implements Fakebook {
     public void commentPost(String userIdComment, String userIdPost, int postId, String commentStance, String commentMessage) {
         User userComment = users.get(userIdComment);
         User userPost = users.get(userIdPost);
-        Comment comment = new CommentClass(userComment, postId, commentStance, commentMessage);
+        Post post = userPost.getPost(postId);
+        Comment comment = new CommentClass(userComment, post, commentStance, commentMessage);
         
         userComment.newComment(comment);
-        userPost.commentPost(comment);
+        userPost.commentPost(userIdPost, comment);
         
         updateTopPost(userPost.getPost(postId));
         updateTopPoster(userPost);
