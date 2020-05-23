@@ -1,5 +1,6 @@
 package comments;
 
+import enums.*;
 import users.*;
 import posts.*;
 
@@ -11,13 +12,14 @@ public class CommentClass implements Comment {
 
     private Post post;
 
-    private String stance, message;
+    private String message;
+
+    private Stance stance;
     
     public CommentClass(User userComment, Post post, String commentStance, String commentMessage) {
-        this.stance = commentStance;
         this.userComment = userComment;
         this.post = post;
-        this.stance = commentStance;
+        this.stance = Stance.valueOf(commentStance.toUpperCase());
         this.message = commentMessage;
     }
 
@@ -34,7 +36,7 @@ public class CommentClass implements Comment {
      */
     @Override
     public String getStance() {
-        return stance;
+        return stance.getMessage();
     }
 
     /**
