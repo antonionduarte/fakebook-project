@@ -1,12 +1,12 @@
 package enums;
 
-public enum View {
+public enum Stance {
 
-    /* Truthfulness */
+    /* Truthfulness (posts) */
     HONEST("honest"),
     FAKE("fake"),
 
-    /* Stance */
+    /* Stance (comments) */
     POSITIVE("positive"),
     NEGATIVE("negative");
 
@@ -17,7 +17,7 @@ public enum View {
      * Constructor.
      * @param message The string of the characteristic.
      */
-    View(String message) {
+    Stance(String message) {
         this.message = message;
     }
 
