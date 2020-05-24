@@ -102,7 +102,8 @@ public abstract class AbstractUser implements User {
      * @param toComment The user to comment on the post.
      */
     @Override
-    public void commentPost(int postId, Comment comment, User toComment) {
+    public void commentPost(int postId, Comment comment, User toComment) throws PostDoesNotExistException {
+        if (!posts.containsKey(postId)) throw new PostDoesNotExistException(userId, postId);
         posts.get(postId).addComment(comment, toComment);
     }
     

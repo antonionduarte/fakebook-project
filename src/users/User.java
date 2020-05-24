@@ -59,7 +59,7 @@ public interface User {
      * @param postId The ID of the post to add the comment to.
      * @param toComment The user to comment on the post.
      */
-    void commentPost(int postId, Comment comment, User toComment);
+    void commentPost(int postId, Comment comment, User toComment) throws PostDoesNotExistException;
     
     /**
      * Adds a new comment made to another users' post.
