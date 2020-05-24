@@ -99,10 +99,11 @@ public abstract class AbstractUser implements User {
      * Adds another users' comment to a post.
      * @param comment The other users' comment.
      * @param postId The ID of the post to add the comment to.
+     * @param toComment The user to comment on the post.
      */
     @Override
-    public void commentPost(int postId, Comment comment) {
-        posts.get(postId).addComment(comment);
+    public void commentPost(int postId, Comment comment, User toComment) {
+        posts.get(postId).addComment(comment, toComment);
     }
     
     /**

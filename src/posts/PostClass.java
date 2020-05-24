@@ -9,6 +9,7 @@ import java.util.Set;
 
 import users.*;
 import comments.*;
+import exceptions.UserDoesNotHaveAccessToPostException;
 
 public class PostClass implements Post {
 
@@ -66,7 +67,8 @@ public class PostClass implements Post {
      * @param comment New comment.
      */
     @Override
-    public void addComment(Comment comment) {
+    public void addComment(Comment comment, User toComment) throws UserDoesNotHaveAccessToPostException {
+        if (!authorFriends.containsKey(toComment.getId())) throw new UserDoesNotHaveAccessToPostException(toComment.getId(), postId, author.getId());
         comments.add(comment);
     }
 

@@ -2,6 +2,7 @@ package posts;
 
 import comments.*;
 import users.*;
+import exceptions.*;
 
 import java.util.SortedMap;
 import java.util.Iterator;
@@ -26,8 +27,9 @@ public interface Post {
     /**
      * Adds a new comment to the post.
      * @param comment New comment.
+     * @param toComment The user to comment on the post.
      */
-    void addComment(Comment comment);
+    void addComment(Comment comment, User toComment) throws UserDoesNotHaveAccessToPostException;
     
     /**
      * @return Number of comments on the post.
