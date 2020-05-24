@@ -155,7 +155,7 @@ public class FakebookClass implements Fakebook {
         if (!users.containsKey(userIdPost)) {
             throw new UserDoesNotExistException(userIdPost);
         }
-
+        
         User userComment = users.get(userIdComment);
         User userPost = users.get(userIdPost);
         Post post = userPost.getPost(postId);
@@ -262,7 +262,11 @@ public class FakebookClass implements Fakebook {
      * @return New users' posts iterator.
      */
     @Override
-    public Iterator<Post> newUserPostsIterator(String userId) {
+    public Iterator<Post> newUserPostsIterator(String userId) throws UserDoesNotExistException {
+        if (!users.containsKey(userId)) {
+            throw new UserDoesNotExistException(userId);
+        }
+        
         return users.get(userId).newPostsIterator();
     }
     
