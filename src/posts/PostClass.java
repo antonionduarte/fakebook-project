@@ -9,6 +9,7 @@ import java.util.Set;
 
 import users.*;
 import comments.*;
+import enums.Stance;
 import exceptions.UserDoesNotHaveAccessToPostException;
 
 public class PostClass implements Post {
@@ -16,7 +17,7 @@ public class PostClass implements Post {
     /* Variables */
     private int postId;
     private Set<String> hashtags;
-    private boolean truthfulness;
+    private Stance truthfulness;
     private String message;
     private User author;
     private List<Comment> comments;
@@ -31,7 +32,7 @@ public class PostClass implements Post {
     public PostClass(int postId, Set<String> hashtags, String truthfulness, String message, User author) {
         this.postId = postId;
         this.hashtags = hashtags;
-        this.truthfulness = truthfulness.equals("honest");
+        this.truthfulness = Stance.valueOf(truthfulness.toUpperCase());
         this.message = message;
         this.author = author;
         this.comments = new LinkedList<>();
@@ -50,7 +51,7 @@ public class PostClass implements Post {
      * @return The posts' truthfulness.
      */
     @Override
-    public boolean getTruthfulness() {
+    public Stance getTruthfulness() {
         return truthfulness;
     }
 

@@ -3,6 +3,7 @@ package posts;
 import comments.*;
 import users.*;
 import exceptions.*;
+import enums.*;
 
 import java.util.SortedMap;
 import java.util.Iterator;
@@ -17,7 +18,7 @@ public interface Post {
     /**
      * @return The posts' truthfulness.
      */
-    boolean getTruthfulness();
+    Stance getTruthfulness();
     
     /**
      * @return The posts' message.
