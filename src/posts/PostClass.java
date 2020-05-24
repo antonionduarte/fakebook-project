@@ -7,6 +7,7 @@ import java.util.TreeMap;
 import java.util.List;
 import java.util.Set;
 
+import exceptions.PostHasNoCommentsException;
 import users.*;
 import comments.*;
 import enums.Stance;
@@ -68,8 +69,11 @@ public class PostClass implements Post {
      * @param comment New comment.
      */
     @Override
-    public void addComment(Comment comment, User toComment) throws UserDoesNotHaveAccessToPostException {
-        if (!authorFriends.containsKey(toComment.getId())) throw new UserDoesNotHaveAccessToPostException(toComment.getId(), postId, author.getId());
+    public void addComment(Comment comment, User userComment) throws UserDoesNotHaveAccessToPostException {
+        if (!authorFriends.containsKey(userComment.getId())) {
+            throw new UserDoesNotHaveAccessToPostException(userComment.getId(), postId, author.getId());
+        }
+        
         comments.add(comment);
     }
 
@@ -93,12 +97,16 @@ public class PostClass implements Post {
      * @return New comments iterator.
      */
     @Override
-    public Iterator<Comment> newCommentsIterator() {
+    public Iterator<Comment> newCommentsIterator() throws PostHasNoCommentsException {
+        if (comments.isEmpty()) {
+            throw new PostHasNoCommentsException();
+        }
+        
         return comments.iterator();
     }
 
     /**
-     * Returns the friend list of the author of the post, at the time of creation.
+     * Returns the friend list of the author of the post, at the time of its' creation.
      * @return The friend list of the post's author at creation time.
      */
     @Override

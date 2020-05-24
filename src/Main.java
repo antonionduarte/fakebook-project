@@ -368,13 +368,12 @@ public class Main {
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void readPost(Scanner in, Fakebook fakebook) {
+		String userId = in.next() + in.nextLine();
+		int postId = in.nextInt();
+		in.nextLine();
+		
 		try {
-			String userId = in.next() + in.nextLine();
-			int postId = in.nextInt();
-			in.nextLine();
-			
 			Post post = fakebook.getUserPost(userId, postId);
-			
 			System.out.printf("[%s %s] %s\n", post.getAuthorId(), post.getTruthfulness(), post.getMessage());
 			
 			Iterator<Comment> comments = post.newCommentsIterator();

@@ -81,7 +81,7 @@ public interface Fakebook {
      * @param postId The posts' ID.
      * @return The users' post.
      */
-    Post getUserPost(String userId, int postId);
+    Post getUserPost(String userId, int postId) throws UserDoesNotExistException;
     
     /**
      * @return The most popular post.

@@ -45,12 +45,12 @@ public interface Post {
     /**
      * @return New comments iterator.
      */
-    Iterator<Comment> newCommentsIterator();
+    Iterator<Comment> newCommentsIterator() throws PostHasNoCommentsException;
 
     /**
      * Returns the friend list of the author of the post, at the time of creation.
      * @return The friend list of the post's author at creation time.
      */
-    public SortedMap<String, User> getAuthorFriends();
+    SortedMap<String, User> getAuthorFriends();
     
 }

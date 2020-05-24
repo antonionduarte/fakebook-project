@@ -175,7 +175,11 @@ public class FakebookClass implements Fakebook {
      * @return The users' post.
      */
     @Override
-    public Post getUserPost(String userId, int postId) {
+    public Post getUserPost(String userId, int postId) throws UserDoesNotExistException {
+        if (!users.containsKey(userId)) {
+            throw new UserDoesNotExistException(userId);
+        }
+        
         return users.get(userId).getPost(postId);
     }
     
@@ -184,7 +188,6 @@ public class FakebookClass implements Fakebook {
      */
     @Override
     public Post getTopPost() throws NoTopPostException {
-        
         if (topPost == null) {
             throw new NoTopPostException();
         }
@@ -197,7 +200,6 @@ public class FakebookClass implements Fakebook {
      */
     @Override
     public User getTopPoster() throws NoTopPosterException {
-        
         if (topPoster == null) {
             throw new NoTopPosterException();
         }
@@ -210,7 +212,6 @@ public class FakebookClass implements Fakebook {
      */
     @Override
     public User getTopResponsive() throws NoTopResponsiveException {
-        
         if (topResponsive == null) {
             throw new NoTopResponsiveException();
         }
@@ -223,7 +224,6 @@ public class FakebookClass implements Fakebook {
      */
     @Override
     public LiarUser getTopLiar() throws NoTopLiarException {
-        
         if (topLiar == null) {
             throw new NoTopLiarException();
         }
