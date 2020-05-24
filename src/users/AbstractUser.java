@@ -203,9 +203,8 @@ public abstract class AbstractUser implements User {
      * Checks if the user can comment on a specific post.
      * @param post The post that user would comment on.
      * @param comment The comment to place on the post.
-     * @return True if the user can comment, false if otherwise.
      */    
     @Override
-    public abstract boolean canCommentPost(Post post, Comment comment);
+    public abstract void canCommentPost(Post post, Comment comment);
 
 }

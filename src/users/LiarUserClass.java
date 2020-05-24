@@ -51,9 +51,9 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
      * @return True if the user can comment, false if otherwise.
      */
     @Override
-    public boolean canCommentPost(Post post, Comment comment) {
+    public void canCommentPost(Post post, Comment comment) throws InvalidStanceException {
         Stance postTruthfulness = post.getTruthfulness();
         Stance commentStance = comment.getStance();
-        return postTruthfulness.getValue() != commentStance.getValue();
+        if (!postTruthfulness.getValue() != commentStance.getValue()) throw new InvalidStanceException();
     }
 }

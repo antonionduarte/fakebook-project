@@ -106,8 +106,7 @@ public interface User {
      * Checks if the user can comment on a specific post.
      * @param post The post that user would comment on.
      * @param comment The comment to put on the post.
-     * @return True if true user can comment, false if otherwise.
      */
-    public boolean canCommentPost(Post post, Comment comment);
+    public void canCommentPost(Post post, Comment comment);
     
 }

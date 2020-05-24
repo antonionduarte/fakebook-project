@@ -46,9 +46,8 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
      * @return True if the user can comment, false if otherwise.
      */
     @Override
-    public boolean canCommentPost(Post post, Comment comment) {
+    public void canCommentPost(Post post, Comment comment) {
         // TODO: Method stub
-        return false;
     }
 
     /* Private methods */
