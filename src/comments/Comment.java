@@ -2,6 +2,8 @@ package comments;
 
 import java.util.Iterator;
 
+import enums.*;
+
 public interface Comment {
     
     /**
@@ -12,7 +14,7 @@ public interface Comment {
     /**
      * @return The comments' stance.
      */
-    String getStance();
+    Stance getStance();
     
     /**
      * @return The comments' message.

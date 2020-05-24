@@ -148,7 +148,8 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public double getResponsiveness() {
-        return ;
+        // TODO: Method stub
+        return 0;
     }
     
     /**
@@ -197,4 +198,14 @@ public abstract class AbstractUser implements User {
     public SortedMap<String, User> getFriends() {
         return friends;
     }
+
+    /**
+     * Checks if the user can comment on a specific post.
+     * @param post The post that user would comment on.
+     * @param comment The comment to place on the post.
+     * @return True if theu user can comment, false if otherwise.
+     */    
+    @Override
+    public abstract boolean canCommentPost(Post post, Comment comment);
+
 }

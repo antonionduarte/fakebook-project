@@ -33,9 +33,11 @@ public class CommentClass implements Comment {
      * @return The comments' stance.
      */
     @Override
-    public String getStance() {
-        return stance.getMessage();
+    public Stance getStance() {
+        return stance;
     }
+
+
 
     /**
      * @return The comments' message.
