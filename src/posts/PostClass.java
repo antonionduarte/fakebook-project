@@ -2,6 +2,8 @@ package posts;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.List;
 import java.util.Set;
 
@@ -17,6 +19,7 @@ public class PostClass implements Post {
     private String message;
     private User author;
     private List<Comment> comments;
+    private SortedMap<String, User> authorFriends; 
 
     /**
      * Constructor.
@@ -31,6 +34,7 @@ public class PostClass implements Post {
         this.message = message;
         this.author = author;
         this.comments = new LinkedList<>();
+        this.authorFriends = new TreeMap<>(author.getFriends());
     }
 
     /**
@@ -88,6 +92,15 @@ public class PostClass implements Post {
     @Override
     public Iterator<Comment> newCommentsIterator() {
         return comments.iterator();
+    }
+
+    /**
+     * Returns the friend list of the author of the post, at the time of creation.
+     * @return The friend list of the post's author at creation time.
+     */
+    @Override
+    public SortedMap<String, User> getAuthorFriends() {
+        return authorFriends;
     }
     
 }

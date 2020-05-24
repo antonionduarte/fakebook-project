@@ -1,7 +1,9 @@
 package posts;
 
-import comments.Comment;
+import comments.*;
+import users.*;
 
+import java.util.SortedMap;
 import java.util.Iterator;
 
 public interface Post {
@@ -41,5 +43,11 @@ public interface Post {
      * @return New comments iterator.
      */
     Iterator<Comment> newCommentsIterator();
+
+    /**
+     * Returns the friend list of the author of the post, at the time of creation.
+     * @return The friend list of the post's author at creation time.
+     */
+    public SortedMap<String, User> getAuthorFriends();
     
 }

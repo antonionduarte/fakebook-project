@@ -172,4 +172,13 @@ public abstract class AbstractUser implements User {
         
         return comments.iterator();
     }
+
+    /**
+     * Returns the friends of the User.
+     * @return The map of the users' friends.
+     */
+    @Override
+    public SortedMap<String, User> getFriends() {
+        return friends;
+    }
 }

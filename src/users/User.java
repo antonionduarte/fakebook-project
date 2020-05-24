@@ -7,9 +7,9 @@ import exceptions.UserHasNoPostsException;
 import exceptions.UsersAlreadyFriendsException;
 import exceptions.PostDoesNotExistException;
 import posts.Post;
-import java.util.Map;
 
 import java.util.Iterator;
+import java.util.SortedMap;
 import java.util.Set;
 
 public interface User {
@@ -94,5 +94,11 @@ public interface User {
      * @return New user comments iterator.
      */
     Iterator<Comment> newCommentsIterator(String hashtag) throws UserHasNoCommentsException;
+
+     /**
+     * Returns the friends of the User.
+     * @return The map of the users' friends.
+     */
+    public SortedMap<String, User> getFriends();
     
 }
