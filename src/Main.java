@@ -427,15 +427,15 @@ public class Main {
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void listTopicFanatics(Scanner in, Fakebook fakebook) {
+		String hashtag = in.next();
+		in.nextLine();
+		
 		try {
-			String hashtag = in.nextLine();
-			
-			Iterator<User> fanatics = fakebook.newTopicFanaticsIterator(hashtag);
+			Iterator<FanaticUser> fanatics = fakebook.newTopicFanaticsIterator(hashtag);
 
 			while (fanatics.hasNext()) {
 				User fanatic = fanatics.next();
-				
-				System.out.printf("%s", fanatic.getId());
+				System.out.print(fanatic.getId());
 				
 				if (fanatics.hasNext()) {
 					System.out.print(", ");
@@ -454,12 +454,24 @@ public class Main {
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void listTopicPosts(Scanner in, Fakebook fakebook) {
-		String topic = in.next();
-		int amount = in.nextInt(); in.nextLine();
-		/**
-		 * TODO Awaiting Goulao's orders on if we do a counter in Main
-		 * or we do it in the fakebook class.
-		 */
+		String hashtag = in.next();
+		int amount = in.nextInt();
+		in.nextLine();
+		
+		try {
+			Iterator<Post> posts = fakebook.newTopicPostsIterator(hashtag, amount);
+			
+			while (posts.hasNext()) {
+				Post post = posts.next();
+				System.out.printf("%s %d %d: %s\n", post.getAuthorId(), post.getId(), post.getNumComments(), post.getMessage());
+			}
+		}
+		catch (InvalidNumberOfPostsException e) {
+			System.out.println(e.getMessage());
+		}
+		catch (InvalidHashtagException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	/**

@@ -17,7 +17,7 @@ public class FakebookClass implements Fakebook {
     private User topPoster, topResponsive;
     private LiarUser topLiar;
     private Map<String, SortedMap<String, FanaticUser>> topicsFanatics;
-    private Map<String, SortedMap<String, Post>> topicPosts;
+    private Map<String, SortedMap<Integer, Post>> topicsPosts;
     
     /* Constructor */
     public FakebookClass() {
@@ -291,18 +291,28 @@ public class FakebookClass implements Fakebook {
      * @return New topic fanatics iterator.
      */
     @Override
-    public Iterator<FanaticUser> newTopicFanaticsIterator(String hashtag) {
+    public Iterator<FanaticUser> newTopicFanaticsIterator(String hashtag) throws InvalidFanaticismException {
+        if (!topicsFanatics.containsKey(hashtag)) {
+            throw new InvalidFanaticismException(hashtag);
+        }
+        
         return topicsFanatics.get(hashtag).values().iterator();
     }
 
-    public Iterator<Post> newTopicPostIterator(String topic, int amount) {
+    public Iterator<Post> newTopicPostsIterator(String hashtag, int amount) throws InvalidNumberOfPostsException, InvalidHashtagException {
+        if (amount < 1) {
+            throw new InvalidNumberOfPostsException();
+        }
+        if (!topicsPosts.containsKey(hashtag)) {
+            throw new InvalidHashtagException(hashtag);
+        }
         
-    } 
+        return topicsPosts.get(hashtag).subMap(1, amount+1).values().iterator();
+    }
     
     /* Private methods */
     
     private void updateTopPost(Post post) {
-        
         if (topPost == null || post.getNumComments() > topPost.getNumComments() ||
             post.getNumComments() == topPost.getNumComments() && post.getAuthorId().compareTo(topPost.getAuthorId()) < 0 ||
             post.getNumComments() == topPost.getNumComments() && post.getAuthorId().compareTo(topPost.getAuthorId()) == 0 && post.getId() > topPost.getId()) {
@@ -311,7 +321,6 @@ public class FakebookClass implements Fakebook {
     }
     
     private void updateTopPoster(User user) {
-        
         if (topPoster == null || user.getNumPosts() > topPoster.getNumPosts() ||
             user.getNumPosts() == topPoster.getNumPosts() && user.getNumComments() > topPoster.getNumComments() ||
             user.getNumPosts() == topPoster.getNumPosts() && user.getNumComments() == topPoster.getNumComments() && user.getId().compareTo(topPoster.getId()) < 0) {
@@ -320,7 +329,6 @@ public class FakebookClass implements Fakebook {
     }
     
     private void updateTopResponsive(User user) {
-        
         if (topResponsive == null || user.getResponsiveness() > topResponsive.getResponsiveness() ||
             user.getId().compareTo(topResponsive.getId()) < 0) {
             topResponsive = user;
@@ -328,7 +336,6 @@ public class FakebookClass implements Fakebook {
     }
     
     private void updateTopLiar(LiarUser user) {
-
         if (topLiar == null || user.getNumLies() > topLiar.getNumLies()) {
             topLiar = user;
         }

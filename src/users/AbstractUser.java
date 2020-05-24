@@ -147,8 +147,8 @@ public abstract class AbstractUser implements User {
      * @return The percentage of commented posts in relation to the total posts available to the user.
      */
     @Override
-    public boolean getResponsiveness() {
-        return false;
+    public double getResponsiveness() {
+        return ;
     }
     
     /**

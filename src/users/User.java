@@ -77,7 +77,7 @@ public interface User {
     /**
      * @return The percentage of commented posts in relation to the total posts available to the user.
      */
-    boolean getResponsiveness();
+    double getResponsiveness();
     
     /**
      * @return New friends iterator.

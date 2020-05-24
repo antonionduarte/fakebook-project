@@ -137,4 +137,12 @@ public interface Fakebook {
      */
     Iterator<FanaticUser> newTopicFanaticsIterator(String hashtag);
     
+    /**
+     *
+     * @param hashtag Topic hashtag to iterate posts from.
+     * @param amount Amout of posts to iterate.
+     * @return New topic posts iterator.
+     */
+    Iterator<Post> newTopicPostsIterator(String hashtag, int amount) throws InvalidNumberOfPostsException, InvalidHashtagException;
+    
 }
