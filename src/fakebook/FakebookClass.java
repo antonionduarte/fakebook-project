@@ -17,6 +17,7 @@ public class FakebookClass implements Fakebook {
     private User topPoster, topResponsive;
     private LiarUser topLiar;
     private Map<String, SortedMap<String, FanaticUser>> topicsFanatics;
+    private Map<String, SortedMap<String, Post>> topicPosts;
     
     /* Constructor */
     public FakebookClass() {
@@ -285,6 +286,10 @@ public class FakebookClass implements Fakebook {
     public Iterator<FanaticUser> newTopicFanaticsIterator(String hashtag) {
         return topicsFanatics.get(hashtag).values().iterator();
     }
+
+    public Iterator<Post> newTopicPostIterator(String topic, int amount) {
+        
+    } 
     
     /* Private methods */
     
