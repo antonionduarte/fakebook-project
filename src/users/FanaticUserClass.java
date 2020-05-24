@@ -1,7 +1,9 @@
 package users;
 
+import comments.Comment;
 import exceptions.InvalidStanceException;
 import fanaticisms.Fanaticism;
+import posts.Post;
 import posts.PostClass;
 
 import java.util.Iterator;
@@ -36,15 +38,26 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
         
         posts.put(posts.size()+1, new PostClass(posts.size()+1, postHashtags, postTruthfulness, postMessage, this));
     }
-    
+
+    /**
+     * Checks if the user can comment on a specific post.
+     * @param post The post that user would comment on.
+     * @param comment The comment to place on the post.
+     * @return True if the user can comment, false if otherwise.
+     */
+    @Override
+    public boolean canCommentPost(Post post, Comment comment) {
+        return false;
+    }
+
     /* Private methods */
     
     private boolean validPostHashtags(Set<String> postHashtags) {
         Iterator<Fanaticism> iterator = fanaticisms.iterator();
-        
+
         while (iterator.hasNext()) {
             Fanaticism fanaticism = iterator.next();
-            
+
             if (postHashtags.contains(fanaticism.getHashtag()) && !fanaticism.getStance()) {
                 return false;
             }

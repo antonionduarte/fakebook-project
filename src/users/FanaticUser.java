@@ -1,5 +1,6 @@
 package users;
 
+import comments.*;
 import exceptions.*;
 import posts.*;
 
@@ -13,7 +14,7 @@ public interface FanaticUser extends User {
      * Checks if the user can comment on a specific post.
      * @param post The post that user would comment on.
      * @param comment The comment to place on the post.
-     * @return True if theu user can comment, false if otherwise.
+     * @return True if the user can comment, false if otherwise.
      */
-    boolean canCommentPost(Post post);
+    boolean canCommentPost(Post post, Comment comment);
 }
