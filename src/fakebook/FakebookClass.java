@@ -154,7 +154,7 @@ public class FakebookClass implements Fakebook {
         if (!users.containsKey(userIdPost)) {
             throw new UserDoesNotExistException(userIdPost);
         }
-
+        
         User userComment = users.get(userIdComment);
         User userPost = users.get(userIdPost);
         Post post = userPost.getPost(postId);

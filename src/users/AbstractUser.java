@@ -124,6 +124,7 @@ public abstract class AbstractUser implements User {
         if (!posts.containsKey(postId)) {
             throw new PostDoesNotExistException(userId, postId);
         }
+        
         return posts.get(postId);
     }
     
