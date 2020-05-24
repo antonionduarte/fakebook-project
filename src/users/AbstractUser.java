@@ -16,7 +16,7 @@ public abstract class AbstractUser implements User {
     private String userId, userKind;
     private SortedMap<String, User> friends;
     protected SortedMap<Integer, Post> posts;
-    private List<Comment> comments;
+    private Map<String, List<Comment>> comments;
 
     /**
      * Constructor.
@@ -26,7 +26,7 @@ public abstract class AbstractUser implements User {
     protected AbstractUser(String userId, String userKind) {
         this.friends = new TreeMap<String, User>();
         this.posts = new TreeMap<>();
-        this.comments = new LinkedList<>();
+        this.comments = new HashMap<>();
         this.userId = userId;
         this.userKind = userKind;
     }
@@ -116,7 +116,17 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public void newComment(Comment comment) {
-        comments.add(comment);
+        Iterator<String> postHashtags = comment.newPostHashtagsIterator();
+        
+        while (postHashtags.hasNext()) {
+            String hashtag = postHashtags.next();
+            
+            if (!comments.containsKey(hashtag)) {
+                comments.put(hashtag, new LinkedList<>());
+            }
+            
+            comments.get(hashtag).add(comment);
+        }
     }
     
     /**
@@ -172,11 +182,11 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public Iterator<Comment> newCommentsIterator(String hashtag) throws UserHasNoCommentsException {
-        if (comments.isEmpty()) {
+        if (!comments.containsKey(hashtag)) {
             throw new UserHasNoCommentsException();
         }
         
-        return comments.iterator();
+        return comments.get(hashtag).iterator();
     }
 
     /**

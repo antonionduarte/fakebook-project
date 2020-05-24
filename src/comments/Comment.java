@@ -1,5 +1,7 @@
 package comments;
 
+import java.util.Iterator;
+
 public interface Comment {
     
     /**
@@ -31,5 +33,10 @@ public interface Comment {
      * @return ID of the post where the comment is located in.
      */
     int getPostId();
+    
+    /**
+     * @return New post hashtags iterator.
+     */
+    Iterator<String> newPostHashtagsIterator();
     
 }

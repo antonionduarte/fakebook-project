@@ -401,11 +401,11 @@ public class Main {
 	 * @param fakebook Fakebook manager.
 	 */
 	private static void listUserComments(Scanner in, Fakebook fakebook) {
+		String userId = in.next() + in.nextLine();
+		String hashtag = in.nextLine();
+		
 		try {
-			String userId = in.nextLine();
-			String hashtag = in.nextLine();
-
-			Iterator<Comment> comments  = fakebook.newUserCommentsIterator(userId, hashtag);
+			Iterator<Comment> comments = fakebook.newUserCommentsIterator(userId, hashtag);
 
 			while (comments.hasNext()) {
 				Comment comment = comments.next();

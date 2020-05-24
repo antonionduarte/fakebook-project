@@ -46,6 +46,11 @@ public interface Post {
      * @return New comments iterator.
      */
     Iterator<Comment> newCommentsIterator() throws PostHasNoCommentsException;
+    
+    /**
+     * @return The posts' hashtags.
+     */
+    Iterator<String> newHashtagsIterator();
 
     /**
      * Returns the friend list of the author of the post, at the time of creation.

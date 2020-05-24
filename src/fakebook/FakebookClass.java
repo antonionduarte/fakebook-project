@@ -277,7 +277,11 @@ public class FakebookClass implements Fakebook {
      * @return New user comments iterator.
      */
     @Override
-    public Iterator<Comment> newUserCommentsIterator(String userId, String hashtag) {
+    public Iterator<Comment> newUserCommentsIterator(String userId, String hashtag) throws UserDoesNotExistException {
+        if (!users.containsKey(userId)) {
+            throw new UserDoesNotExistException(userId);
+        }
+        
         return users.get(userId).newCommentsIterator(hashtag);
     }
     

@@ -104,6 +104,14 @@ public class PostClass implements Post {
         
         return comments.iterator();
     }
+    
+    /**
+     * @return The posts' hashtags.
+     */
+    @Override
+    public Iterator<String> newHashtagsIterator() {
+        return hashtags.iterator();
+    }
 
     /**
      * Returns the friend list of the author of the post, at the time of its' creation.

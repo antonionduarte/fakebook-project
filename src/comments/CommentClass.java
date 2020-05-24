@@ -4,16 +4,14 @@ import enums.*;
 import users.*;
 import posts.*;
 
+import java.util.Iterator;
+
 public class CommentClass implements Comment {
 
     /* Variables */
-
     private User userComment;
-
     private Post post;
-
     private String message;
-
     private Stance stance;
     
     public CommentClass(User userComment, Post post, String commentStance, String commentMessage) {
@@ -70,6 +68,14 @@ public class CommentClass implements Comment {
     @Override
     public int getPostId() {
         return post.getId();
+    }
+    
+    /**
+     * @return New post hashtags iterator.
+     */
+    @Override
+    public Iterator<String> newPostHashtagsIterator() {
+        return post.newHashtagsIterator();
     }
     
 }
