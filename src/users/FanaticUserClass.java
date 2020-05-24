@@ -47,6 +47,7 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
      */
     @Override
     public boolean canCommentPost(Post post, Comment comment) {
+        // TODO: Method stub
         return false;
     }
 
