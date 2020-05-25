@@ -79,16 +79,4 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
         }
         return true;
     }
-
-
-
-    // private void postCoiso() {
-    //     int coiso = fanaticisms.indexOf(fanaticism);
-    // }
-    
-    /**
-     * Olhando para aquilo up there, a ideia vai ser comparar
-     * a posição na Lista dos fanaticismos. (ig)?
-     */
-    
 }
