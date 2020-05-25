@@ -2,6 +2,10 @@ package fakebook;
 
 import comments.Comment;
 import comments.CommentClass;
+import comparators.TopLiarComparator;
+import comparators.TopPostComparator;
+import comparators.TopPosterComparator;
+import comparators.TopResponsiveComparator;
 import exceptions.*;
 import fanaticisms.Fanaticism;
 import posts.Post;
@@ -324,29 +328,25 @@ public class FakebookClass implements Fakebook {
     /* Private methods */
     
     private void updateTopPost(Post post) {
-        if (/* Comparator here, no idea how to add it. */) {
+        if (new TopPostComparator().compare(post, topPost) > 0) {
             topPost = post;
         }
     }
     
     private void updateTopPoster(User user) {
-        if (topPoster == null || user.getNumPosts() > topPoster.getNumPosts() ||
-            user.getNumPosts() == topPoster.getNumPosts() && user.getNumComments() > topPoster.getNumComments() ||
-            user.getNumPosts() == topPoster.getNumPosts() && user.getNumComments() == topPoster.getNumComments() && user.getId().compareTo(topPoster.getId()) < 0) {
+        if (new TopPosterComparator().compare(user, topPoster) > 0) {
             topPoster = user;
         }
     }
     
     private void updateTopResponsive(User user) {
-        if (topResponsive == null || user.getResponsiveness() > topResponsive.getResponsiveness() ||
-            user.getId().compareTo(topResponsive.getId()) < 0) {
+        if (new TopResponsiveComparator().compare(user,topResponsive) > 0) {
             topResponsive = user;
         }
     }
     
     private void updateTopLiar(LiarUser user) {
-        if (topLiar == null || user.getNumLies() > topLiar.getNumLies() ||
-            user.getNumLies() > topLiar.getNumLies() && user.getNumPosts() + user.getNumComments() > topLiar.getNumPosts() + topLiar.getNumComments()) {
+        if (new TopLiarComparator().compare(user, topLiar) > 0) {
             topLiar = user;
         }
     }

@@ -8,7 +8,6 @@ public class TopPostComparator implements Comparator<Post> {
     
     @Override
     public int compare(Post post, Post topPost) {
-    
         if (topPost == null) {
             return 1;
         }
