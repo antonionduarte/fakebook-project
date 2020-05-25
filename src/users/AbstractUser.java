@@ -17,6 +17,7 @@ public abstract class AbstractUser implements User {
     private SortedMap<String, User> friends;
     protected SortedMap<Integer, Post> posts;
     private Map<String, List<Comment>> comments;
+    private Set<Post> commentedPosts;
 
     /**
      * Constructor.
@@ -24,11 +25,12 @@ public abstract class AbstractUser implements User {
      * @param userKind The users' kind.
      */
     protected AbstractUser(String userId, String userKind) {
-        this.friends = new TreeMap<String, User>();
-        this.posts = new TreeMap<>();
-        this.comments = new HashMap<>();
         this.userId = userId;
         this.userKind = userKind;
+        friends = new TreeMap<>();
+        posts = new TreeMap<>();
+        comments = new HashMap<>();
+        commentedPosts = new HashSet<>();
     }
     
     /**
@@ -127,6 +129,8 @@ public abstract class AbstractUser implements User {
             
             comments.get(hashtag).add(comment);
         }
+        
+        commentedPosts.add(comment.getPost());
     }
     
     /**
@@ -148,8 +152,13 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public double getResponsiveness() {
-        // TODO: Method stub
-        return 0;
+        int numAvailablePosts = 0;
+        
+        for (User friend: friends.values()) {
+            numAvailablePosts += friend.getNumPosts();
+        }
+        
+        return commentedPosts.size()/(double)numAvailablePosts;
     }
     
     /**

@@ -481,9 +481,7 @@ public class Main {
 	private static void topPost(Fakebook fakebook) {
 		try {
 			Post post = fakebook.getTopPost();
-			
-			System.out.printf("%s %d %d: %s\n", post.getAuthorId(), post.getId(),
-				post.getNumComments(), post.getMessage());
+			System.out.printf("%s %d %d: %s\n", post.getAuthorId(), post.getId(), post.getNumComments(), post.getMessage());
 		}
 		catch (NoTopPostException e) {
 			System.out.println(e.getMessage());
@@ -497,7 +495,6 @@ public class Main {
 	private static void topPoster(Fakebook fakebook) {
 		try {
 			User topPoster = fakebook.getTopPoster();
-			
 			System.out.printf("%s %d %d.\n", topPoster.getId(), topPoster.getNumPosts(), topPoster.getNumComments());
 		}
 		catch (NoTopPosterException e) {
@@ -512,7 +509,6 @@ public class Main {
 	private static void topResponsive(Fakebook fakebook) {
 		try {
 			User responsive = fakebook.getTopResponsive();
-			
 			System.out.printf("%s %d %d.\n", responsive.getId(), responsive.getNumComments(), responsive.getNumPosts());
 		}
 		catch (NoTopResponsiveException e) {
@@ -527,7 +523,6 @@ public class Main {
 	private static void topLiar(Fakebook fakebook) {
 		try {
 			LiarUser liar = fakebook.getTopLiar();
-			
 			System.out.printf("%s %d.\n", liar.getId(), liar.getNumLies());
 		}
 		catch (NoTopLiarException e) {

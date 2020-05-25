@@ -73,6 +73,14 @@ public class CommentClass implements Comment {
     }
     
     /**
+     * @return Post in which the comment is located in.
+     */
+    @Override
+    public Post getPost() {
+        return post;
+    }
+    
+    /**
      * @return New post hashtags iterator.
      */
     @Override
