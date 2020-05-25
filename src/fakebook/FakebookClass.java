@@ -2,6 +2,7 @@ package fakebook;
 
 import comments.Comment;
 import comments.CommentClass;
+import comparators.UpdateTopPostComparator;
 import exceptions.*;
 import fanaticisms.Fanaticism;
 import posts.Post;
@@ -324,9 +325,7 @@ public class FakebookClass implements Fakebook {
     /* Private methods */
     
     private void updateTopPost(Post post) {
-        if (topPost == null || post.getNumComments() > topPost.getNumComments() ||
-            post.getNumComments() == topPost.getNumComments() && post.getAuthorId().compareTo(topPost.getAuthorId()) < 0 ||
-            post.getNumComments() == topPost.getNumComments() && post.getAuthorId().compareTo(topPost.getAuthorId()) == 0 && post.getId() > topPost.getId()) {
+        if (/* Comparator here, no idea how to add it. */) {
             topPost = post;
         }
     }
