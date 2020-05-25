@@ -3,6 +3,7 @@ package comments;
 import java.util.Iterator;
 
 import enums.*;
+import posts.Post;
 
 public interface Comment {
     
@@ -35,6 +36,11 @@ public interface Comment {
      * @return ID of the post where the comment is located in.
      */
     int getPostId();
+    
+    /**
+     * @return Post in which the comment is located in.
+     */
+    Post getPost();
     
     /**
      * @return New post hashtags iterator.

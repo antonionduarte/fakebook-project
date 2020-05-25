@@ -54,6 +54,9 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
     public void canCommentPost(Post post, Comment comment) throws InvalidStanceException {
         Stance postTruthfulness = post.getTruthfulness();
         Stance commentStance = comment.getStance();
-        if (!postTruthfulness.getValue() != commentStance.getValue()) throw new InvalidStanceException();
+        
+        if (postTruthfulness.getValue() == commentStance.getValue()) {
+            throw new InvalidStanceException();
+        }
     }
 }

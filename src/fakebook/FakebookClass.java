@@ -115,8 +115,9 @@ public class FakebookClass implements Fakebook {
             throw new UserDoesNotExistException(userId);
         }
         
-        users.get(userId).post(postHashtags, postTruthfulness, postMessage);
-        updateTopPoster(users.get(userId));
+        User user = users.get(userId);
+        user.post(postHashtags, postTruthfulness, postMessage);
+        updateTopPoster(user);
     }
     
     /**
@@ -165,8 +166,9 @@ public class FakebookClass implements Fakebook {
         userPost.commentPost(postId, comment, userComment);
         userComment.newComment(comment);
         
-        updateTopPost(userPost.getPost(postId));
+        updateTopPost(post);
         updateTopPoster(userPost);
+        updateTopResponsive(userComment);
     }
     
     /**
@@ -337,7 +339,8 @@ public class FakebookClass implements Fakebook {
     }
     
     private void updateTopLiar(LiarUser user) {
-        if (topLiar == null || user.getNumLies() > topLiar.getNumLies()) {
+        if (topLiar == null || user.getNumLies() > topLiar.getNumLies() ||
+            user.getNumLies() > topLiar.getNumLies() && user.getNumPosts() + user.getNumComments() > topLiar.getNumPosts() + topLiar.getNumComments()) {
             topLiar = user;
         }
     }
