@@ -7,7 +7,7 @@ public class TopicPostsComparator implements Comparator<Post> {
 
     @Override
     public int compare(Post post1, Post post2) {
-        if ((post1.getNumComments() - post1.getNumComments()) != 0) {
+        if ((post1.getNumComments() != post1.getNumComments())) {
             return post2.getNumComments() - post1.getNumComments();
         }
         
