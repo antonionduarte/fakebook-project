@@ -27,5 +27,4 @@ public interface LiarUser extends User {
      * @param comment The comment to place on the post.
      */
     void canCommentPost(Post post, Comment comment) throws InvalidStanceException;
-    
 }

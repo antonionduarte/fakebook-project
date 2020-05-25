@@ -25,5 +25,4 @@ public class NaiveUserClass extends AbstractUser implements NaiveUser {
         Stance commentStance = comment.getStance();
         if (!commentStance.getValue()) throw new InvalidStanceException();
     }
-    
 }

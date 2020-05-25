@@ -344,5 +344,4 @@ public class FakebookClass implements Fakebook {
             topLiar = user;
         }
     }
-    
 }

@@ -108,5 +108,4 @@ public interface User {
      * @param comment The comment to put on the post.
      */
     public void canCommentPost(Post post, Comment comment);
-    
 }

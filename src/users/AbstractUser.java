@@ -215,5 +215,4 @@ public abstract class AbstractUser implements User {
      */    
     @Override
     public abstract void canCommentPost(Post post, Comment comment);
-
 }
