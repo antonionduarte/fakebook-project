@@ -118,6 +118,10 @@ public class FakebookClass implements Fakebook {
         User user = users.get(userId);
         user.post(postHashtags, postTruthfulness, postMessage);
         updateTopPoster(user);
+        
+        if (user instanceof LiarUser) {
+            updateTopLiar((LiarUser) user);
+        }
     }
     
     /**
@@ -169,6 +173,10 @@ public class FakebookClass implements Fakebook {
         updateTopPost(post);
         updateTopPoster(userPost);
         updateTopResponsive(userComment);
+    
+        if (userComment instanceof LiarUser) {
+            updateTopLiar((LiarUser) userComment);
+        }
     }
     
     /**
