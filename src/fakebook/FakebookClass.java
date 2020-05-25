@@ -2,7 +2,6 @@ package fakebook;
 
 import comments.Comment;
 import comments.CommentClass;
-import comparators.UpdateTopPostComparator;
 import exceptions.*;
 import fanaticisms.Fanaticism;
 import posts.Post;

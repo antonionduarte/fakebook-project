@@ -4,7 +4,7 @@ import posts.Post;
 
 import java.util.Comparator;
 
-public class UpdateTopPostComparator implements Comparator<Post> {
+public class TopPostComparator implements Comparator<Post> {
     
     @Override
     public int compare(Post post, Post topPost) {
