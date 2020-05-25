@@ -1,10 +1,12 @@
 package users;
 
 import comments.Comment;
+import exceptions.InvalidCommentStanceException;
 import exceptions.InvalidStanceException;
 import fanaticisms.Fanaticism;
 import posts.Post;
 import posts.PostClass;
+import enums.*;
 
 import java.util.Iterator;
 import java.util.List;
@@ -43,11 +45,24 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
      * Checks if the user can comment on a specific post.
      * @param post The post that user would comment on.
      * @param comment The comment to place on the post.
-     * @return True if the user can comment, false if otherwise.
      */
     @Override
-    public void canCommentPost(Post post, Comment comment) {
-        // TODO: Method stub
+    public void canCommentPost(Post post, Comment comment) throws InvalidCommentStanceException {
+        Stance commentStance = comment.getStance();
+        Stance postTruthfulness = post.getTruthfulness();
+        Iterator<String> postHashtags = post.newHashtagsIterator();
+        Iterator<Fanaticism> userFanaticisms = fanaticisms.iterator();
+
+        while (postHashtags.hasNext()) {
+            String hashtag = postHashtags.next();
+            while (userFanaticisms.hasNext()) {
+                Fanaticism fanaticism = userFanaticisms.next();
+                if (hashtag.equals(fanaticism.getHashtag())) {
+                    if (fanaticism.getStance() ^ commentStance.getValue() ^ postTruthfulness.getValue()) return; 
+                    if (!(fanaticism.getStance() ^ commentStance.getValue() ^ postTruthfulness.getValue())) throw new InvalidCommentStanceException();
+                }
+            }
+        }
     }
 
     /* Private methods */
