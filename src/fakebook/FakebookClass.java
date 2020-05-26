@@ -354,6 +354,7 @@ public class FakebookClass implements Fakebook {
             auxiliaryList.add(nextPost);
         }
         
+        auxiliaryList.sort(new TopicPostsComparator());
         return auxiliaryList.iterator();
     }
     
