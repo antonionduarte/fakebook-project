@@ -1,11 +1,7 @@
 package users;
 
 import comments.Comment;
-import exceptions.UserHasNoCommentsException;
-import exceptions.UserHasNoFriendsException;
-import exceptions.UserHasNoPostsException;
-import exceptions.UsersAlreadyFriendsException;
-import exceptions.PostDoesNotExistException;
+import exceptions.*;
 import posts.Post;
 
 import java.util.Iterator;
@@ -59,7 +55,7 @@ public interface User {
      * @param postId The ID of the post to add the comment to.
      * @param toComment The user to comment on the post.
      */
-    void commentPost(int postId, Comment comment, User toComment) throws PostDoesNotExistException;
+    void commentPost(int postId, Comment comment, User toComment) throws UserDoesNotHavePostException;
     
     /**
      * Adds a new comment made to another users' post.
@@ -72,7 +68,7 @@ public interface User {
      * @param postId The posts' ID.
      * @return The post.
      */
-    Post getPost(int postId) throws PostDoesNotExistException;
+    Post getPost(int postId) throws UserDoesNotHavePostException;
     
     /**
      * @return The percentage of commented posts in relation to the total posts available to the user.

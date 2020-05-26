@@ -103,9 +103,9 @@ public abstract class AbstractUser implements User {
      * @param userComment The user to comment on the post.
      */
     @Override
-    public void commentPost(int postId, Comment comment, User userComment) throws PostDoesNotExistException {
+    public void commentPost(int postId, Comment comment, User userComment) throws UserDoesNotHavePostException {
         if (!posts.containsKey(postId)) {
-            throw new PostDoesNotExistException(userId, postId);
+            throw new UserDoesNotHavePostException(userId, postId);
         }
         
         posts.get(postId).addComment(comment, userComment);
@@ -135,9 +135,9 @@ public abstract class AbstractUser implements User {
      * @return The post.
      */
     @Override
-    public Post getPost(int postId) throws PostDoesNotExistException {
+    public Post getPost(int postId) throws UserDoesNotHavePostException {
         if (!posts.containsKey(postId)) {
-            throw new PostDoesNotExistException(userId, postId);
+            throw new UserDoesNotHavePostException(userId, postId);
         }
         
         return posts.get(postId);

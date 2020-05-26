@@ -351,7 +351,7 @@ public class Main {
 		catch (UserDoesNotExistException e) {
 			System.out.println(e.getMessage());
 		}
-		catch (PostDoesNotExistException e) {
+		catch (UserDoesNotHavePostException e) {
 			System.out.println(e.getMessage());
 		}
 		catch (UserDoesNotHaveAccessToPostException e) {
