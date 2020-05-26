@@ -345,16 +345,16 @@ public class FakebookClass implements Fakebook {
         if (!topicsPosts.containsKey(hashtag)) {
              throw new InvalidHashtagException(hashtag);
         }
-
-        List<Post> auxiliarList = new LinkedList<Post>();
-        Iterator<Post> auxiliarIterator = topicsPosts.get(hashtag).iterator();
-
-        for (int i = 0; i < amount && auxiliarIterator.hasNext(); i++) {
-            Post nextPost = auxiliarIterator.next();
-            auxiliarList.add(nextPost);
+        
+        List<Post> auxiliaryList = new LinkedList<Post>();
+        Iterator<Post> auxiliaryIterator = topicsPosts.get(hashtag).iterator();
+        
+        for (int i = 0; i < amount && auxiliaryIterator.hasNext(); i++) {
+            Post nextPost = auxiliaryIterator.next();
+            auxiliaryList.add(nextPost);
         }
-
-        return auxiliarList.iterator();
+        
+        return auxiliaryList.iterator();
     }
     
     /* Private methods */
