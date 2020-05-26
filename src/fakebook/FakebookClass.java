@@ -22,7 +22,7 @@ public class FakebookClass implements Fakebook {
     private User topPoster, topResponsive;
     private LiarUser topLiar;
     private Map<String, SortedMap<String, FanaticUser>> topicsFanatics;
-    private Map<String, SortedMap<Integer, Post>> topicsPosts;
+    private Map<String, SortedSet<Post>> topicsPosts;
     
     /* Constructor */
     public FakebookClass() {
@@ -32,6 +32,7 @@ public class FakebookClass implements Fakebook {
         topResponsive = null;
         topLiar = null;
         topicsFanatics = new HashMap<>();
+        topicsPosts = new HashMap<>();
     }
     
     /**
@@ -139,6 +140,14 @@ public class FakebookClass implements Fakebook {
         
         if (user instanceof LiarUser) {
             updateTopLiar((LiarUser) user);
+        }
+    
+        for (String hashtag: postHashtags) {
+            if (!topicsPosts.containsKey(hashtag)) {
+                topicsPosts.put(hashtag, new TreeSet<>());
+            }
+            
+            topicsPosts.get(hashtag).add(user.getPost(user.getNumPosts()));
         }
     }
     
@@ -336,7 +345,7 @@ public class FakebookClass implements Fakebook {
             throw new InvalidHashtagException(hashtag);
         }
         
-        return topicsPosts.get(hashtag).subMap(1, amount+1).values().iterator();
+        return topicsPosts.get(hashtag).subSet(1, amount+1).values().iterator();
     }
     
     /* Private methods */
