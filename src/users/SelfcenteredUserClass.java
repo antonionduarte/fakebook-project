@@ -1,5 +1,6 @@
 package users;
 
+import exceptions.UserDoesNotHaveAccessToPostException;
 import posts.*;
 import comments.*;
 import exceptions.UserCannotCommentOnPostException;
@@ -21,6 +22,8 @@ public class SelfcenteredUserClass extends AbstractUser implements SelfcenteredU
      */
     @Override
     public void canCommentPost(Post post, Comment comment) throws UserCannotCommentOnPostException {
-        if (!post.getAuthorId().equals(this.getId())) throw new UserCannotCommentOnPostException(this.getId());
+        if (!post.getAuthorId().equals(this.getId())) {
+            throw new UserCannotCommentOnPostException(this.getId());
+        }
     }
 }

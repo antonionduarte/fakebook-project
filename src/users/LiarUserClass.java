@@ -1,6 +1,7 @@
 package users;
 
 import exceptions.InvalidStanceException;
+import exceptions.UserDoesNotHaveAccessToPostException;
 import posts.*;
 import comments.*;
 import enums.*;
@@ -52,10 +53,10 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
      */
     @Override
     public void canCommentPost(Post post, Comment comment) throws InvalidStanceException {
-        Stance postTruthfulness = post.getTruthfulness();
-        Stance commentStance = comment.getStance();
-        
-        if (postTruthfulness.getValue() == commentStance.getValue()) {
+        if (!post.getAuthorFriends().containsKey(this.getId()) && !post.getAuthorId().equals(this.getId())) {
+            throw new UserDoesNotHaveAccessToPostException(this.getId(), post.getId(), post.getAuthorId());
+        }
+        if (post.getTruthfulness().getValue() == comment.getStance().getValue()) {
             throw new InvalidStanceException();
         }
     }

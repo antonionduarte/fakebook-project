@@ -3,11 +3,7 @@ package users;
 import java.util.*;
 
 import comments.*;
-import exceptions.PostDoesNotExistException;
-import exceptions.UserHasNoCommentsException;
-import exceptions.UserHasNoFriendsException;
-import exceptions.UserHasNoPostsException;
-import exceptions.UsersAlreadyFriendsException;
+import exceptions.*;
 import posts.*;
 
 public abstract class AbstractUser implements User {
@@ -215,4 +211,5 @@ public abstract class AbstractUser implements User {
      */    
     @Override
     public abstract void canCommentPost(Post post, Comment comment);
+    
 }

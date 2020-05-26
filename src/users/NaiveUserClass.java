@@ -1,5 +1,6 @@
 package users;
 
+import exceptions.UserDoesNotHaveAccessToPostException;
 import posts.*;
 import comments.*;
 import enums.*;
@@ -22,6 +23,9 @@ public class NaiveUserClass extends AbstractUser implements NaiveUser {
      */ 
     @Override
     public void canCommentPost(Post post, Comment comment) throws InvalidStanceException {
+        if (!(post.getAuthorFriends().containsKey(this.getId()) || post.getAuthorId().equals(this.getId()))) {
+            throw new UserDoesNotHaveAccessToPostException(this.getId(), post.getId(), post.getAuthorId());
+        }
         if (!comment.getStance().getValue()) {
             throw new InvalidStanceException();
         }

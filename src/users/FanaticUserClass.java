@@ -3,6 +3,7 @@ package users;
 import comments.Comment;
 import exceptions.InvalidCommentStanceException;
 import exceptions.InvalidStanceException;
+import exceptions.UserDoesNotHaveAccessToPostException;
 import fanaticisms.Fanaticism;
 import posts.Post;
 import posts.PostClass;
@@ -47,19 +48,24 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
      * @param comment The comment to place on the post.
      */
     @Override
-    public void canCommentPost(Post post, Comment comment) throws InvalidCommentStanceException {
-        Stance commentStance = comment.getStance();
-        Stance postTruthfulness = post.getTruthfulness();
+    public void canCommentPost(Post post, Comment comment) throws UserDoesNotHaveAccessToPostException, InvalidCommentStanceException {
+        if (!post.getAuthorFriends().containsKey(this.getId()) && !post.getAuthorId().equals(this.getId())) {
+            throw new UserDoesNotHaveAccessToPostException(this.getId(), post.getId(), post.getAuthorId());
+        }
+        
         Iterator<String> postHashtags = post.newHashtagsIterator();
-        Iterator<Fanaticism> userFanaticisms = fanaticisms.iterator();
 
         while (postHashtags.hasNext()) {
             String hashtag = postHashtags.next();
-            while (userFanaticisms.hasNext()) {
-                Fanaticism fanaticism = userFanaticisms.next();
+            
+            for (Fanaticism fanaticism: fanaticisms) {
                 if (hashtag.equals(fanaticism.getHashtag())) {
-                    if (fanaticism.getStance() ^ commentStance.getValue() ^ postTruthfulness.getValue()) return; 
-                    if (!(fanaticism.getStance() ^ commentStance.getValue() ^ postTruthfulness.getValue())) throw new InvalidCommentStanceException();
+                    if (fanaticism.getStance() ^ comment.getStance().getValue() ^ post.getTruthfulness().getValue()) {
+                        return;
+                    }
+                    else {
+                        throw new InvalidCommentStanceException();
+                    }
                 }
             }
         }
