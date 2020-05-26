@@ -48,14 +48,14 @@ public class FakebookClass implements Fakebook {
             throw new UserAlreadyExistsException(userId);
         }
         
-        switch (userKind) {
-            case "naive":
+        switch (UserKind.valueOf(userKind.toUpperCase())) {
+            case NAIVE:
                 users.put(userId, new NaiveUserClass(userId));
                 break;
-            case "liar":
+            case LIAR:
                 users.put(userId, new LiarUserClass(userId));
                 break;
-            case "selfcentered":
+            case SELFCENTERED:
                 users.put(userId, new SelfcenteredUserClass(userId));
                 break;
         }
