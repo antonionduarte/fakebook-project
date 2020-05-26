@@ -16,6 +16,7 @@ public abstract class AbstractUser implements User {
     protected SortedMap<Integer, Post> posts;
     private Map<String, List<Comment>> comments;
     private Set<Post> commentedPosts;
+    private int numComments;
 
     /**
      * Constructor.
@@ -68,7 +69,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public int getNumComments() {
-        return comments.size();
+        return numComments;
     }
     
     /**
@@ -125,6 +126,7 @@ public abstract class AbstractUser implements User {
         }
         
         commentedPosts.add(comment.getPost());
+        numComments++;
     }
     
     /**
