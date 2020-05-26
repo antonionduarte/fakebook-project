@@ -6,6 +6,7 @@ import comparators.TopLiarComparator;
 import comparators.TopPostComparator;
 import comparators.TopPosterComparator;
 import comparators.TopResponsiveComparator;
+import comparators.TopicPostsComparator;
 import enums.UserKind;
 import exceptions.*;
 import fanaticisms.Fanaticism;
@@ -144,7 +145,7 @@ public class FakebookClass implements Fakebook {
     
         for (String hashtag: postHashtags) {
             if (!topicsPosts.containsKey(hashtag)) {
-                topicsPosts.put(hashtag, new TreeSet<>());
+                topicsPosts.put(hashtag, new TreeSet<>(new TopicPostsComparator()));
             }
             
             topicsPosts.get(hashtag).add(user.getPost(user.getNumPosts()));
