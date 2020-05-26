@@ -23,7 +23,7 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
      * @param userId The ID of the fanatic user.
      */
     public FanaticUserClass(String userId, List<Fanaticism> fanaticisms) {
-        super(userId, "fanatic");
+        super(userId, UserKind.FANATIC);
         this.fanaticisms = fanaticisms;
     }
     
@@ -49,23 +49,19 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
      */
     @Override
     public void canCommentPost(Post post, Comment comment) throws UserDoesNotHaveAccessToPostException, InvalidCommentStanceException {
-        if (!post.getAuthorFriends().containsKey(this.getId()) && !post.getAuthorId().equals(this.getId())) {
+        if (!(post.getAuthorFriends().containsKey(this.getId()) || post.getAuthorId().equals(this.getId()))) {
             throw new UserDoesNotHaveAccessToPostException(this.getId(), post.getId(), post.getAuthorId());
         }
         
-        Iterator<String> postHashtags = post.newHashtagsIterator();
-
-        while (postHashtags.hasNext()) {
-            String hashtag = postHashtags.next();
-            
-            for (Fanaticism fanaticism: fanaticisms) {
-                if (hashtag.equals(fanaticism.getHashtag())) {
-                    if (fanaticism.getStance() ^ comment.getStance().getValue() ^ post.getTruthfulness().getValue()) {
-                        return;
-                    }
-                    else {
-                        throw new InvalidCommentStanceException();
-                    }
+        Set<String> postHashtags = post.getHashtags();
+        
+        for (Fanaticism fanaticism: fanaticisms) {
+            if (postHashtags.contains(fanaticism.getHashtag())) {
+                if (fanaticism.getStance() ^ comment.getStance().getValue() ^ post.getTruthfulness().getValue()) {
+                    return;
+                }
+                else {
+                    throw new InvalidCommentStanceException();
                 }
             }
         }

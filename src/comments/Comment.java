@@ -1,6 +1,7 @@
 package comments;
 
 import java.util.Iterator;
+import java.util.Set;
 
 import enums.*;
 import posts.Post;
@@ -45,6 +46,6 @@ public interface Comment {
     /**
      * @return New post hashtags iterator.
      */
-    Iterator<String> newPostHashtagsIterator();
+    Set<String> getPostHashtags();
     
 }

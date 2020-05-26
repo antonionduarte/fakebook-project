@@ -109,8 +109,8 @@ public class PostClass implements Post {
      * @return The posts' hashtags.
      */
     @Override
-    public Iterator<String> newHashtagsIterator() {
-        return hashtags.iterator();
+    public Set<String> getHashtags() {
+        return hashtags;
     }
 
     /**

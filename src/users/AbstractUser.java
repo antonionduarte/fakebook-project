@@ -3,13 +3,15 @@ package users;
 import java.util.*;
 
 import comments.*;
+import enums.UserKind;
 import exceptions.*;
 import posts.*;
 
 public abstract class AbstractUser implements User {
 
     /* Variables */
-    private String userId, userKind;
+    private String userId;
+    private UserKind userKind;
     private SortedMap<String, User> friends;
     protected SortedMap<Integer, Post> posts;
     private Map<String, List<Comment>> comments;
@@ -20,7 +22,7 @@ public abstract class AbstractUser implements User {
      * @param userId The users' ID.
      * @param userKind The users' kind.
      */
-    protected AbstractUser(String userId, String userKind) {
+    protected AbstractUser(String userId, UserKind userKind) {
         this.userId = userId;
         this.userKind = userKind;
         friends = new TreeMap<>();
@@ -42,7 +44,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public String getKind() {
-        return userKind;
+        return userKind.toString().toLowerCase();
     }
     
     /**
@@ -114,15 +116,11 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public void newComment(Comment comment) {
-        Iterator<String> postHashtags = comment.newPostHashtagsIterator();
-        
-        while (postHashtags.hasNext()) {
-            String hashtag = postHashtags.next();
-            
+        for (String hashtag : comment.getPostHashtags()) {
             if (!comments.containsKey(hashtag)) {
                 comments.put(hashtag, new LinkedList<>());
             }
-            
+        
             comments.get(hashtag).add(comment);
         }
         

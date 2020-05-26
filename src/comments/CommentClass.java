@@ -5,6 +5,7 @@ import users.*;
 import posts.*;
 
 import java.util.Iterator;
+import java.util.Set;
 
 public class CommentClass implements Comment {
 
@@ -84,8 +85,8 @@ public class CommentClass implements Comment {
      * @return New post hashtags iterator.
      */
     @Override
-    public Iterator<String> newPostHashtagsIterator() {
-        return post.newHashtagsIterator();
+    public Set<String> getPostHashtags() {
+        return post.getHashtags();
     }
     
 }

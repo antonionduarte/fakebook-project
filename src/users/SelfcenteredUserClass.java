@@ -1,5 +1,6 @@
 package users;
 
+import enums.UserKind;
 import exceptions.UserDoesNotHaveAccessToPostException;
 import posts.*;
 import comments.*;
@@ -12,7 +13,7 @@ public class SelfcenteredUserClass extends AbstractUser implements SelfcenteredU
      * @param userId The ID of the selfcentered user.
      */
     public SelfcenteredUserClass(String userId) {
-        super(userId, "selfcentered");
+        super(userId, UserKind.SELFCENTERED);
     } 
     
     /**

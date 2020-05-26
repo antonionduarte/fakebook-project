@@ -18,7 +18,7 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
      * @param userId The ID of the liar user.
      */
     public LiarUserClass(String userId) {
-        super(userId, "liar");
+        super(userId, UserKind.LIAR);
         this.numLies = 0;
     }
 
@@ -38,7 +38,7 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
      */
     @Override
     public void post(Set<String> postHashtags, String postTruthfulness, String postMessage) throws InvalidStanceException {
-        if (postTruthfulness.equals("honest")) {
+        if (postTruthfulness.equals(Stance.HONEST.getMessage())) {
             throw new InvalidStanceException();
         }
         

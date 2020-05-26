@@ -13,16 +13,16 @@ public class NaiveUserClass extends AbstractUser implements NaiveUser {
      * @param userId The ID of the naive user.
      */
     public NaiveUserClass(String userId) {
-        super(userId, "naive");
+        super(userId, UserKind.NAIVE);
     }
 
     /**
      * Checks if the user can comment on a specific post.
-     * @param post The post that user would comment on.
+     * @param post The post the user wants to comment on.
      * @param comment The comment to place on the post.
      */ 
     @Override
-    public void canCommentPost(Post post, Comment comment) throws InvalidStanceException {
+    public void canCommentPost(Post post, Comment comment) throws UserDoesNotHaveAccessToPostException, InvalidStanceException {
         if (!(post.getAuthorFriends().containsKey(this.getId()) || post.getAuthorId().equals(this.getId()))) {
             throw new UserDoesNotHaveAccessToPostException(this.getId(), post.getId(), post.getAuthorId());
         }
@@ -30,4 +30,5 @@ public class NaiveUserClass extends AbstractUser implements NaiveUser {
             throw new InvalidStanceException();
         }
     }
+    
 }

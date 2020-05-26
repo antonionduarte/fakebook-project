@@ -5,6 +5,7 @@ import users.*;
 import exceptions.*;
 import enums.*;
 
+import java.util.Set;
 import java.util.SortedMap;
 import java.util.Iterator;
 
@@ -50,7 +51,7 @@ public interface Post {
     /**
      * @return The posts' hashtags.
      */
-    Iterator<String> newHashtagsIterator();
+    Set<String> getHashtags();
 
     /**
      * Returns the friend list of the author of the post, at the time of creation.
