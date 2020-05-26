@@ -4,7 +4,6 @@ import enums.*;
 import users.*;
 import posts.*;
 
-import java.util.Iterator;
 import java.util.Set;
 
 public class CommentClass implements Comment {

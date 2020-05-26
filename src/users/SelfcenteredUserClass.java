@@ -1,7 +1,6 @@
 package users;
 
 import enums.UserKind;
-import exceptions.UserDoesNotHaveAccessToPostException;
 import posts.*;
 import comments.*;
 import exceptions.UserCannotCommentOnPostException;

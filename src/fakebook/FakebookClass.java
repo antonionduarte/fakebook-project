@@ -58,6 +58,8 @@ public class FakebookClass implements Fakebook {
             case SELFCENTERED:
                 users.put(userId, new SelfcenteredUserClass(userId));
                 break;
+            default:
+                break;
         }
     }
     

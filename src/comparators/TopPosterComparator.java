@@ -1,6 +1,5 @@
 package comparators;
 
-import posts.Post;
 import users.User;
 
 import java.util.Comparator;

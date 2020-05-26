@@ -11,7 +11,6 @@ import exceptions.PostHasNoCommentsException;
 import users.*;
 import comments.*;
 import enums.Stance;
-import exceptions.UserDoesNotHaveAccessToPostException;
 
 public class PostClass implements Post {
 
