@@ -340,13 +340,21 @@ public class FakebookClass implements Fakebook {
 
     public Iterator<Post> newTopicPostsIterator(String hashtag, int amount) throws InvalidNumberOfPostsException, InvalidHashtagException {
         if (amount < 1) {
-            throw new InvalidNumberOfPostsException();
+             throw new InvalidNumberOfPostsException();
         }
         if (!topicsPosts.containsKey(hashtag)) {
-            throw new InvalidHashtagException(hashtag);
+             throw new InvalidHashtagException(hashtag);
         }
-        
-        return topicsPosts.get(hashtag).subSet(1, amount+1).values().iterator();
+
+        List<Post> auxiliarList = new LinkedList<Post>();
+        Iterator<Post> auxiliarIterator = topicsPosts.get(hashtag).iterator();
+
+        for (int i = 0; i < amount && auxiliarIterator.hasNext(); i++) {
+            Post nextPost = auxiliarIterator.next();
+            auxiliarList.add(nextPost);
+        }
+
+        return auxiliarList.iterator();
     }
     
     /* Private methods */
