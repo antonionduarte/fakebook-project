@@ -6,7 +6,7 @@ public class UserDoesNotHaveAccessToPostException extends RuntimeException {
     private static final long serialVersionUID = 9185586726477864031L;
 
     /* Exception message */
-    private static final String MESSAGE = "%s has no access to post %d by user %s!";
+    private static final String MESSAGE = "%s has no access to post %d by %s!";
     
     /**
      * Constructor.

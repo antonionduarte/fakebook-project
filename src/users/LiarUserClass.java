@@ -1,5 +1,6 @@
 package users;
 
+import exceptions.InvalidCommentStanceException;
 import exceptions.InvalidStanceException;
 import exceptions.UserDoesNotHaveAccessToPostException;
 import posts.*;
@@ -52,12 +53,12 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
      * @return True if the user can comment, false if otherwise.
      */
     @Override
-    public void canCommentPost(Post post, Comment comment) throws InvalidStanceException {
+    public void canCommentPost(Post post, Comment comment) throws UserDoesNotHaveAccessToPostException, InvalidCommentStanceException {
         if (!post.getAuthorFriends().containsKey(this.getId()) && !post.getAuthorId().equals(this.getId())) {
             throw new UserDoesNotHaveAccessToPostException(this.getId(), post.getId(), post.getAuthorId());
         }
         if (post.getTruthfulness().getValue() == comment.getStance().getValue()) {
-            throw new InvalidStanceException();
+            throw new InvalidCommentStanceException();
         }
     }
 }
