@@ -31,7 +31,7 @@ public interface Post {
      * @param comment New comment.
      * @param toComment The user to comment on the post.
      */
-    void addComment(Comment comment, User toComment) throws UserDoesNotHaveAccessToPostException;
+    void addComment(Comment comment, User toComment);
     
     /**
      * @return Number of comments on the post.

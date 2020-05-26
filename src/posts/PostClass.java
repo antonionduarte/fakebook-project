@@ -69,11 +69,7 @@ public class PostClass implements Post {
      * @param comment New comment.
      */
     @Override
-    public void addComment(Comment comment, User userComment) throws UserDoesNotHaveAccessToPostException {
-        if (!authorFriends.containsKey(userComment.getId())) {
-            throw new UserDoesNotHaveAccessToPostException(userComment.getId(), postId, author.getId());
-        }
-        
+    public void addComment(Comment comment, User userComment) {
         comments.add(comment);
     }
 
