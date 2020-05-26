@@ -1,10 +1,12 @@
 package fanaticisms;
 
+import enums.Stance;
+
 public class FanaticismClass implements Fanaticism {
     
     /* Variables */
     private String hashtag;
-    private boolean stance;
+    private Stance stance;
     
     /**
      * Constructor.
@@ -13,7 +15,7 @@ public class FanaticismClass implements Fanaticism {
      */
     public FanaticismClass(String hashtag, String stance) {
         this.hashtag = hashtag;
-        this.stance = stance.equals("loves");
+        this.stance = Stance.valueOf(stance.toUpperCase());
     }
     
     /**
@@ -29,7 +31,7 @@ public class FanaticismClass implements Fanaticism {
      */
     @Override
     public boolean getStance() {
-        return stance;
+        return stance.getValue();
     }
     
 }

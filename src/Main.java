@@ -178,6 +178,7 @@ public class Main {
 		}
 		catch (InvalidFanaticismListException e) {
 			System.out.println(e.getMessage());
+			in.nextLine();
 		}
 	}
 	
@@ -247,7 +248,7 @@ public class Main {
 					System.out.print(", ");
 				}
 			}
-			System.out.println();
+			System.out.println(".");
 		}
 		catch (UserDoesNotExistException e) {
 			System.out.println(e.getMessage());
@@ -296,6 +297,8 @@ public class Main {
 		}
 		catch (InvalidHashtagListException e) {
 			System.out.println(e.getMessage());
+			in.nextLine();
+			in.nextLine();
 		}
 		catch (InvalidStanceException e) {
 			System.out.println(e.getMessage());
@@ -317,8 +320,8 @@ public class Main {
 			while (posts.hasNext()) {
 				Post post = posts.next();
 				
-				System.out.printf("%d. [%s] %s [%d comments]\n", post.getId(), post.getTruthfulness(),
-					post.getMessage(), post.getNumComments());
+				System.out.printf("%d. [%s] %s [%d comments]\n", post.getId(),
+					post.getTruthfulness().toString().toLowerCase(), post.getMessage(), post.getNumComments());
 			}
 		}
 		catch (UserDoesNotExistException e) {

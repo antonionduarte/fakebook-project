@@ -6,6 +6,7 @@ import comparators.TopLiarComparator;
 import comparators.TopPostComparator;
 import comparators.TopPosterComparator;
 import comparators.TopResponsiveComparator;
+import enums.UserKind;
 import exceptions.*;
 import fanaticisms.Fanaticism;
 import posts.Post;
@@ -40,6 +41,9 @@ public class FakebookClass implements Fakebook {
      */
     @Override
     public void registerUser(String userKind, String userId) throws InvalidUserKindException, UserAlreadyExistsException {
+        if (!validUserKind(userKind)) {
+            throw new InvalidUserKindException(userKind);
+        }
         if (users.containsKey(userId)) {
             throw new UserAlreadyExistsException(userId);
         }
@@ -54,8 +58,6 @@ public class FakebookClass implements Fakebook {
             case "selfcentered":
                 users.put(userId, new SelfcenteredUserClass(userId));
                 break;
-            default:
-                throw new InvalidUserKindException(userKind);
         }
     }
     
@@ -121,6 +123,7 @@ public class FakebookClass implements Fakebook {
         
         User user = users.get(userId);
         user.post(postHashtags, postTruthfulness, postMessage);
+        
         updateTopPoster(user);
         
         if (user instanceof LiarUser) {
@@ -170,7 +173,7 @@ public class FakebookClass implements Fakebook {
         Post post = userPost.getPost(postId);
         Comment comment = new CommentClass(userComment, post, commentStance, commentMessage);
         
-        userComment.canCommentPost(userPost.getPost(postId), comment); 
+        userComment.canCommentPost(post, comment);
         userPost.commentPost(postId, comment, userComment);
         userComment.newComment(comment);
         
@@ -326,6 +329,15 @@ public class FakebookClass implements Fakebook {
     }
     
     /* Private methods */
+    
+    private boolean validUserKind(String userKind) {
+        for (UserKind kind: UserKind.values()) {
+            if (kind.toString().equals(userKind.toUpperCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
     
     private void updateTopPost(Post post) {
         if (new TopPostComparator().compare(post, topPost) > 0) {

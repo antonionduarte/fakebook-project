@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 someRandomCommand
 epic fail
 seriously
@@ -5,3 +6,12 @@ are you still here?
 come on
 yes, it works.
 ExIt
+=======
+someRandomCommand
+epic fail
+seriously
+are you still here?
+come on
+yes, it works.
+ExIt
+>>>>>>> Stashed changes

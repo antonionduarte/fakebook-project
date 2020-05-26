@@ -34,7 +34,7 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
      */
     @Override
     public void post(Set<String> postHashtags, String postTruthfulness, String postMessage) throws InvalidStanceException {
-        if (validPostHashtags(postHashtags)) {
+        if (!validPostHashtags(postHashtags, Stance.valueOf(postTruthfulness.toUpperCase()))) {
             throw new InvalidStanceException();
         }
         
@@ -67,13 +67,9 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
 
     /* Private methods */
     
-    private boolean validPostHashtags(Set<String> postHashtags) {
-        Iterator<Fanaticism> iterator = fanaticisms.iterator();
-
-        while (iterator.hasNext()) {
-            Fanaticism fanaticism = iterator.next();
-
-            if (postHashtags.contains(fanaticism.getHashtag()) && !fanaticism.getStance()) {
+    private boolean validPostHashtags(Set<String> postHashtags, Stance postTruthfulness) {
+        for (Fanaticism fanaticism: fanaticisms) {
+            if (postHashtags.contains(fanaticism.getHashtag()) && (fanaticism.getStance() != postTruthfulness.getValue())) {
                 return false;
             }
         }

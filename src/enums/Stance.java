@@ -8,7 +8,11 @@ public enum Stance {
 
     /* Stance (comments) */
     POSITIVE("positive", true),
-    NEGATIVE("negative", false);
+    NEGATIVE("negative", false),
+    
+    /* Stance (fanaticisms) */
+    LOVES("loves", true),
+    HATES("hates", false);
 
     /* Variables */
     private final String message;

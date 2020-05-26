@@ -22,7 +22,8 @@ public class NaiveUserClass extends AbstractUser implements NaiveUser {
      */ 
     @Override
     public void canCommentPost(Post post, Comment comment) throws InvalidStanceException {
-        Stance commentStance = comment.getStance();
-        if (!commentStance.getValue()) throw new InvalidStanceException();
+        if (!comment.getStance().getValue()) {
+            throw new InvalidStanceException();
+        }
     }
 }
