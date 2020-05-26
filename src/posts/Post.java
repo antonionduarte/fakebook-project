@@ -29,9 +29,9 @@ public interface Post {
     /**
      * Adds a new comment to the post.
      * @param comment New comment.
-     * @param toComment The user to comment on the post.
+     *
      */
-    void addComment(Comment comment, User toComment);
+    void addComment(Comment comment);
     
     /**
      * @return Number of comments on the post.

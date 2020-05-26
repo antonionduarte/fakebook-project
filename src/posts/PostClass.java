@@ -68,7 +68,7 @@ public class PostClass implements Post {
      * @param comment New comment.
      */
     @Override
-    public void addComment(Comment comment, User userComment) {
+    public void addComment(Comment comment) {
         comments.add(comment);
     }
 
