@@ -60,8 +60,7 @@ public class CommentClass implements Comment {
      */
     @Override
     public String getPostTruthfulness() {
-        // TODO: Make this work with an enum
-        return null;
+        return post.getTruthfulness().getMessage();
     }
 
     /**

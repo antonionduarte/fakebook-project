@@ -84,7 +84,16 @@ public class FakebookClass implements Fakebook {
             throw new UserAlreadyExistsException(userId);
         }
         
-        users.put(userId, new FanaticUserClass(userId, fanaticisms));
+        FanaticUser user = new FanaticUserClass(userId, fanaticisms);
+        users.put(userId, user);
+        
+        for (Fanaticism fanaticism: fanaticisms) {
+            if (!topicsFanatics.containsKey(fanaticism.getHashtag())) {
+                topicsFanatics.put(fanaticism.getHashtag(), new TreeMap<>());
+            }
+            
+            topicsFanatics.get(fanaticism.getHashtag()).put(userId, user);
+        }
     }
     
     /**

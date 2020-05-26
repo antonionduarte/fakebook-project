@@ -413,7 +413,7 @@ public class Main {
 			while (comments.hasNext()) {
 				Comment comment = comments.next();
 				System.out.printf("[%s %s %d %s] %s\n", comment.getPostAuthorId(), comment.getPostTruthfulness(),
-					comment.getPostId(), comment.getStance(), comment.getMessage());
+					comment.getPostId(), comment.getStance().toString().toLowerCase(), comment.getMessage());
 			}
 		}
 		catch (UserDoesNotExistException e) {
