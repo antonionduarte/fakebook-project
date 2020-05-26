@@ -377,14 +377,14 @@ public class Main {
 		
 		try {
 			Post post = fakebook.getUserPost(userId, postId);
-			System.out.printf("[%s %s] %s\n", post.getAuthorId(), post.getTruthfulness(), post.getMessage());
+			System.out.printf("[%s %s] %s\n", post.getAuthorId(), post.getTruthfulness().toString().toLowerCase(), post.getMessage());
 			
 			Iterator<Comment> comments = post.newCommentsIterator();
 			
 			while (comments.hasNext()) {
 				Comment comment = comments.next();
 				
-				System.out.printf("[%s %s] %s\n", comment.getAuthorId(), comment.getStance(), comment.getMessage());
+				System.out.printf("[%s %s] %s\n", comment.getAuthorId(), comment.getStance().toString().toLowerCase(), comment.getMessage());
 			}
 		}
 		catch (UserDoesNotExistException e) {
