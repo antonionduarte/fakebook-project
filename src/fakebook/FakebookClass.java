@@ -72,7 +72,7 @@ public class FakebookClass implements Fakebook {
      */
     @Override
     public boolean userKindIsFanatic(String userKind) {
-        return userKind.equals("fanatic");
+        return UserKind.valueOf(userKind.toUpperCase()) == UserKind.FANATIC;
     }
     
     /**
@@ -195,7 +195,7 @@ public class FakebookClass implements Fakebook {
         Comment comment = new CommentClass(userComment, post, commentStance, commentMessage);
         
         userComment.canCommentPost(post, comment);
-        userPost.commentPost(postId, comment, userComment);
+        userPost.commentPost(postId, comment);
         userComment.newComment(comment);
         
         updateTopPost(post);
@@ -266,7 +266,8 @@ public class FakebookClass implements Fakebook {
         if (topLiar == null) {
             throw new NoTopLiarException();
         }
-        return null;
+        
+        return topLiar;
     }
     
     /**

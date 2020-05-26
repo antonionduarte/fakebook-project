@@ -98,17 +98,16 @@ public abstract class AbstractUser implements User {
     
     /**
      * Adds another users' comment to a post.
-     * @param comment The other users' comment.
      * @param postId The ID of the post to add the comment to.
-     * @param userComment The user to comment on the post.
+     * @param comment The other users' comment.
      */
     @Override
-    public void commentPost(int postId, Comment comment, User userComment) throws UserDoesNotHavePostException {
+    public void commentPost(int postId, Comment comment) throws UserDoesNotHavePostException {
         if (!posts.containsKey(postId)) {
             throw new UserDoesNotHavePostException(userId, postId);
         }
         
-        posts.get(postId).addComment(comment, userComment);
+        posts.get(postId).addComment(comment);
     }
     
     /**
