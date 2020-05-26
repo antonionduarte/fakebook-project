@@ -1,8 +1,6 @@
 # Default ignored files
 /shelf/
 /.idea/
-/tests/
-/log/
 /out/
 /bin/
 /fakebook-project.iml
@@ -11,3 +9,6 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+# Log files
+/log/fakebook**test_log.txt
+
