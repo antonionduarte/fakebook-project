@@ -64,6 +64,17 @@ public abstract class AbstractUser implements User {
         return posts.size();
     }
     
+    @Override
+    public int getNumAvailablePosts() {
+        int numAvailablePosts = posts.size();
+    
+        for (User friend: friends.values()) {
+            numAvailablePosts += friend.getNumPosts();
+        }
+        
+        return numAvailablePosts;
+    }
+    
     /**
      * @return Number of comments.
      */
@@ -147,13 +158,7 @@ public abstract class AbstractUser implements User {
      */
     @Override
     public double getResponsiveness() {
-        int numAvailablePosts = 0;
-        
-        for (User friend: friends.values()) {
-            numAvailablePosts += friend.getNumPosts();
-        }
-        
-        return commentedPosts.size()/(double)numAvailablePosts;
+        return commentedPosts.size()/(double)getNumAvailablePosts();
     }
     
     /**

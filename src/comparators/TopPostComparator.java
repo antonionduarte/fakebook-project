@@ -17,7 +17,7 @@ public class TopPostComparator implements Comparator<Post> {
         }
         
         if (post.getAuthorId().compareTo(topPost.getAuthorId()) != 0) {
-            return post.getAuthorId().compareTo(topPost.getAuthorId());
+            return topPost.getAuthorId().compareTo(post.getAuthorId());
         }
         
         return post.getId() - topPost.getId();

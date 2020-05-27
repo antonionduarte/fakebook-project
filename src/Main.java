@@ -512,7 +512,7 @@ public class Main {
 	private static void topResponsive(Fakebook fakebook) {
 		try {
 			User responsive = fakebook.getTopResponsive();
-			System.out.printf("%s %d %d.\n", responsive.getId(), responsive.getNumComments(), responsive.getNumPosts());
+			System.out.printf("%s %d %d.\n", responsive.getId(), responsive.getNumComments(), responsive.getNumAvailablePosts());
 		}
 		catch (NoTopResponsiveException e) {
 			System.out.println(e.getMessage());

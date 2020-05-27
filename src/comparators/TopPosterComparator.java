@@ -20,7 +20,7 @@ public class TopPosterComparator implements Comparator<User> {
             return user.getNumComments() - topPoster.getNumComments();
         }
         
-        return user.getId().compareTo(topPoster.getId());
+        return topPoster.getId().compareTo(user.getId());
     }
     
 }

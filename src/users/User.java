@@ -95,12 +95,18 @@ public interface User {
      * Returns the friends of the User.
      * @return The map of the users' friends.
      */
-    public SortedMap<String, User> getFriends();
+    SortedMap<String, User> getFriends();
 
     /**
      * Checks if the user can comment on a specific post.
      * @param post The post that user would comment on.
      * @param comment The comment to put on the post.
      */
-    public void canCommentPost(Post post, Comment comment);
+    void canCommentPost(Post post, Comment comment);
+    
+    /**
+     * @return Number of available posts.
+     */
+    int getNumAvailablePosts();
+    
 }
