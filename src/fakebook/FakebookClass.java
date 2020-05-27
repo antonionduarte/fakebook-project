@@ -198,10 +198,7 @@ public class FakebookClass implements Fakebook {
         updateTopPost(post);
         updateTopPoster(userPost);
         updateTopResponsive(userComment);
-    
-        if (userComment instanceof LiarUser) {
-            updateTopLiar((LiarUser) userComment);
-        }
+        updateTopLiar(userComment);
     }
     
     /**

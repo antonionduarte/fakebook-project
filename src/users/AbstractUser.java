@@ -18,7 +18,7 @@ public abstract class AbstractUser implements User {
     private Map<String, List<Comment>> comments;
     private Set<Post> commentedPosts;
     private int numComments, numLies;
-
+    
     /**
      * Constructor.
      * @param userId The users' ID.
@@ -107,7 +107,10 @@ public abstract class AbstractUser implements User {
     @Override
     public void post(Set<String> postHashtags, String postTruthfulness, String postMessage) {
         posts.put(posts.size()+1, new PostClass(posts.size()+1, postHashtags, postTruthfulness, postMessage, this));
-        if (Stance.valueOf(postTruthfulness.toUpperCase()).equals(Stance.FAKE)) numLies++;
+        
+        if (Stance.valueOf(postTruthfulness.toUpperCase()) == Stance.FAKE) {
+            numLies++;
+        }
     }
     
     /**
@@ -122,6 +125,10 @@ public abstract class AbstractUser implements User {
         }
         
         posts.get(postId).addComment(comment);
+    
+        if (comment.getStance().getValue() != comment.getPost().getTruthfulness().getValue()) {
+            numLies++;
+        }
     }
  
     /**
