@@ -126,10 +126,6 @@ public abstract class AbstractUser implements User {
         }
         
         posts.get(postId).addComment(comment);
-    
-        if (comment.getStance().getValue() != comment.getPost().getTruthfulness().getValue()) {
-            numLies++;
-        }
     }
     
     /**
@@ -144,6 +140,10 @@ public abstract class AbstractUser implements User {
             }
         
             comments.get(hashtag).add(comment);
+        }
+
+        if (comment.getStance().getValue() != comment.getPost().getTruthfulness().getValue()) {
+            numLies++;
         }
         
         commentedPosts.add(comment.getPost());
