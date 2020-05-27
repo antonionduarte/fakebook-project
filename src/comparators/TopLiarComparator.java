@@ -17,7 +17,7 @@ public class TopLiarComparator implements Comparator<User> {
         }
         
         if (user.getNumPosts() + user.getNumComments() != topLiar.getNumPosts() + topLiar.getNumComments()) {
-            return (user.getNumPosts() + user.getNumComments()) - (topLiar.getNumPosts() + topLiar.getNumComments());
+            return (topLiar.getNumPosts() + topLiar.getNumComments()) - (user.getNumPosts() + user.getNumComments());
         }
         
         return topLiar.getId().compareTo(user.getId());
