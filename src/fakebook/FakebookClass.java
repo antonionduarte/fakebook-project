@@ -21,7 +21,7 @@ public class FakebookClass implements Fakebook {
     private SortedMap<String, User> users;
     private Post topPost;
     private User topPoster, topResponsive;
-    private User topLiar;
+    private List<User> topLiars;
     private Map<String, SortedMap<String, FanaticUser>> topicsFanatics;
     private Map<String, List<Post>> topicsPosts;
     
@@ -31,7 +31,7 @@ public class FakebookClass implements Fakebook {
         topPost = null;
         topPoster = null;
         topResponsive = null;
-        topLiar = null;
+        topLiars = new LinkedList<>();
         topicsFanatics = new HashMap<>();
         topicsPosts = new HashMap<>();
     }
@@ -257,11 +257,11 @@ public class FakebookClass implements Fakebook {
      */
     @Override
     public User getTopLiar() throws NoTopLiarException {
-        if (topLiar == null) {
+        if (topLiars.isEmpty()) {
             throw new NoTopLiarException();
         }
         
-        return topLiar;
+        return topLiars.get(0);
     }
     
     /**
@@ -383,8 +383,11 @@ public class FakebookClass implements Fakebook {
     }
     
     private void updateTopLiar(User user) {
-        if (new TopLiarComparator().compare(user, topLiar) > 0) {
-            topLiar = user;
+        if (!topLiars.contains(user) && user.getNumLies() > 0) {
+            topLiars.add(user);
         }
+        
+        topLiars.sort(new TopLiarComparator());
     }
+    
 }

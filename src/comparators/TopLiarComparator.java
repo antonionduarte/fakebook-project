@@ -7,20 +7,16 @@ import java.util.Comparator;
 public class TopLiarComparator implements Comparator<User> {
     
     @Override
-    public int compare(User user, User topLiar) {
-        if (topLiar == null) {
-            return user.getNumLies();
+    public int compare(User user1, User user2) {
+        if (user1.getNumLies() != user2.getNumLies()) {
+            return user2.getNumLies() - user1.getNumLies();
         }
         
-        if (user.getNumLies() != topLiar.getNumLies()) {
-            return user.getNumLies() - topLiar.getNumLies();
+        if (user1.getNumPosts() + user1.getNumComments() != user2.getNumPosts() + user2.getNumComments()) {
+            return (user1.getNumPosts() + user1.getNumComments()) - (user2.getNumPosts() + user2.getNumComments());
         }
         
-        if (user.getNumPosts() + user.getNumComments() != topLiar.getNumPosts() + topLiar.getNumComments()) {
-            return (topLiar.getNumPosts() + topLiar.getNumComments()) - (user.getNumPosts() + user.getNumComments());
-        }
-        
-        return topLiar.getId().compareTo(user.getId());
+        return user1.getId().compareTo(user2.getId());
     }
     
 }
