@@ -23,7 +23,7 @@ public class FakebookClass implements Fakebook {
     private User topPoster, topResponsive;
     private LiarUser topLiar;
     private Map<String, SortedMap<String, FanaticUser>> topicsFanatics;
-    private Map<String, SortedSet<Post>> topicsPosts;
+    private Map<String, List<Post>> topicsPosts;
     
     /* Constructor */
     public FakebookClass() {
@@ -145,7 +145,7 @@ public class FakebookClass implements Fakebook {
     
         for (String hashtag: postHashtags) {
             if (!topicsPosts.containsKey(hashtag)) {
-                topicsPosts.put(hashtag, new TreeSet<>(new TopicPostsComparator()));
+                topicsPosts.put(hashtag, new LinkedList<>());
             }
             
             topicsPosts.get(hashtag).add(user.getPost(user.getNumPosts()));
@@ -347,7 +347,8 @@ public class FakebookClass implements Fakebook {
              throw new InvalidHashtagException(hashtag);
         }
         
-        List<Post> auxiliaryList = new LinkedList<Post>();
+        List<Post> auxiliaryList = new LinkedList<>();
+        topicsPosts.get(hashtag).sort(new TopicPostsComparator());
         Iterator<Post> auxiliaryIterator = topicsPosts.get(hashtag).iterator();
         
         for (int i = 0; i < amount && auxiliaryIterator.hasNext(); i++) {
@@ -355,7 +356,6 @@ public class FakebookClass implements Fakebook {
             auxiliaryList.add(nextPost);
         }
         
-        auxiliaryList.sort(new TopicPostsComparator());
         return auxiliaryList.iterator();
     }
     
