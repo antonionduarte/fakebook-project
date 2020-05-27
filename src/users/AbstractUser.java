@@ -17,7 +17,8 @@ public abstract class AbstractUser implements User {
     protected SortedMap<Integer, Post> posts;
     private Map<String, List<Comment>> comments;
     private Set<Post> commentedPosts;
-    private int numComments, numLies;
+    private int numComments;
+    protected int numLies;
     
     /**
      * Constructor.
@@ -129,13 +130,6 @@ public abstract class AbstractUser implements User {
         if (comment.getStance().getValue() != comment.getPost().getTruthfulness().getValue()) {
             numLies++;
         }
-    }
- 
-    /**
-     * Increments the numLies of the user.
-     */
-    public void incrementNumLies() {
-        numLies++;
     }
     
     /**

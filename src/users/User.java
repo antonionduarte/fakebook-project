@@ -29,11 +29,6 @@ public interface User {
      * @return Number of friends.
      */
     int getNumFriends();
-
-    /**
-     * Increments the numLies of the user.
-     */
-    public void incrementNumLies();
     
     /**
      * @return Number of posts.
