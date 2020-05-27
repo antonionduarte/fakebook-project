@@ -44,6 +44,7 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
         }
         
         posts.put(posts.size()+1, new PostClass(posts.size()+1, postHashtags, postTruthfulness, postMessage, this));
+        numLies++;
     }
 
     /**
