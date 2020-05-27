@@ -9,14 +9,18 @@ public class TopLiarComparator implements Comparator<User> {
     @Override
     public int compare(User user, User topLiar) {
         if (topLiar == null) {
-            return 1;
+            return user.getNumLies();
         }
         
         if (user.getNumLies() != topLiar.getNumLies()) {
             return user.getNumLies() - topLiar.getNumLies();
         }
         
-        return user.getNumPosts() + user.getNumComments() - (topLiar.getNumPosts() + topLiar.getNumComments());
+        if (user.getNumPosts() + user.getNumComments() != topLiar.getNumPosts() + topLiar.getNumComments()) {
+            return topLiar.getNumPosts() + topLiar.getNumComments() - (user.getNumPosts() + user.getNumComments());
+        }
+        
+        return topLiar.getId().compareTo(user.getId());
     }
     
 }
