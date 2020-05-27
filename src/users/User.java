@@ -14,6 +14,11 @@ public interface User {
      * @return The users' ID.
      */
     String getId();
+
+    /**
+     * @return The number of lies.
+     */
+    int getNumLies();
     
     /**
      * @return The users' kind.
@@ -24,6 +29,11 @@ public interface User {
      * @return Number of friends.
      */
     int getNumFriends();
+
+    /**
+     * Increments the numLies of the user.
+     */
+    public void incrementNumLies();
     
     /**
      * @return Number of posts.

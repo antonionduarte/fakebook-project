@@ -116,5 +116,4 @@ public class PostClass implements Post {
     public SortedMap<String, User> getAuthorFriends() {
         return authorFriends;
     }
-    
 }

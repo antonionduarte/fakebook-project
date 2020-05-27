@@ -5,7 +5,6 @@ import exceptions.*;
 import fanaticisms.Fanaticism;
 import posts.Post;
 import users.FanaticUser;
-import users.LiarUser;
 import users.User;
 
 import java.util.Iterator;
@@ -101,7 +100,7 @@ public interface Fakebook {
     /**
      * @return The user with the most lies.
      */
-    LiarUser getTopLiar();
+    User getTopLiar();
     
     /**
      * @return New users iterator.

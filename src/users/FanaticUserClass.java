@@ -39,6 +39,7 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
         }
         
         posts.put(posts.size()+1, new PostClass(posts.size()+1, postHashtags, postTruthfulness, postMessage, this));
+        if (Stance.valueOf(postTruthfulness.toUpperCase()).equals(Stance.FAKE)) this.incrementNumLies();
     }
 
     /**

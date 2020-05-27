@@ -58,5 +58,4 @@ public interface Post {
      * @return The friend list of the post's author at creation time.
      */
     SortedMap<String, User> getAuthorFriends();
-    
 }

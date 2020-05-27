@@ -3,6 +3,7 @@ package users;
 import java.util.*;
 
 import comments.*;
+import enums.Stance;
 import enums.UserKind;
 import exceptions.*;
 import posts.*;
@@ -16,7 +17,7 @@ public abstract class AbstractUser implements User {
     protected SortedMap<Integer, Post> posts;
     private Map<String, List<Comment>> comments;
     private Set<Post> commentedPosts;
-    private int numComments;
+    private int numComments, numLies;
 
     /**
      * Constructor.
@@ -26,6 +27,7 @@ public abstract class AbstractUser implements User {
     protected AbstractUser(String userId, UserKind userKind) {
         this.userId = userId;
         this.userKind = userKind;
+        this.numLies = 0;
         friends = new TreeMap<>();
         posts = new TreeMap<>();
         comments = new HashMap<>();
@@ -105,6 +107,7 @@ public abstract class AbstractUser implements User {
     @Override
     public void post(Set<String> postHashtags, String postTruthfulness, String postMessage) {
         posts.put(posts.size()+1, new PostClass(posts.size()+1, postHashtags, postTruthfulness, postMessage, this));
+        if (Stance.valueOf(postTruthfulness.toUpperCase()).equals(Stance.FAKE)) numLies++;
     }
     
     /**
@@ -119,6 +122,13 @@ public abstract class AbstractUser implements User {
         }
         
         posts.get(postId).addComment(comment);
+    }
+ 
+    /**
+     * Increments the numLies of the user.
+     */
+    public void incrementNumLies() {
+        numLies++;
     }
     
     /**
@@ -159,6 +169,14 @@ public abstract class AbstractUser implements User {
     @Override
     public double getResponsiveness() {
         return commentedPosts.size()/(double)getNumAvailablePosts();
+    }
+
+    /**
+     * @return The number of lies.
+     */
+    @Override
+    public int getNumLies() {
+        return numLies;
     }
     
     /**
@@ -215,5 +233,4 @@ public abstract class AbstractUser implements User {
      */    
     @Override
     public abstract void canCommentPost(Post post, Comment comment);
-    
 }

@@ -7,11 +7,6 @@ import exceptions.*;
 import java.util.Set;
 
 public interface LiarUser extends User {
-    
-    /**
-     * @return The number of lies.
-     */
-    int getNumLies();
 
     /**
      * Makes a new post (visible to friends).

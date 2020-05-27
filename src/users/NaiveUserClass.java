@@ -30,5 +30,4 @@ public class NaiveUserClass extends AbstractUser implements NaiveUser {
             throw new InvalidStanceException();
         }
     }
-    
 }

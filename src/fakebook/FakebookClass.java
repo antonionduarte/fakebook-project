@@ -21,7 +21,7 @@ public class FakebookClass implements Fakebook {
     private SortedMap<String, User> users;
     private Post topPost;
     private User topPoster, topResponsive;
-    private LiarUser topLiar;
+    private User topLiar;
     private Map<String, SortedMap<String, FanaticUser>> topicsFanatics;
     private Map<String, List<Post>> topicsPosts;
     
@@ -138,10 +138,7 @@ public class FakebookClass implements Fakebook {
         user.post(postHashtags, postTruthfulness, postMessage);
         
         updateTopPoster(user);
-        
-        if (user instanceof LiarUser) {
-            updateTopLiar((LiarUser) user);
-        }
+        updateTopLiar(user);
     
         for (String hashtag: postHashtags) {
             if (!topicsPosts.containsKey(hashtag)) {
@@ -262,7 +259,7 @@ public class FakebookClass implements Fakebook {
      * @return The user with the most lies.
      */
     @Override
-    public LiarUser getTopLiar() throws NoTopLiarException {
+    public User getTopLiar() throws NoTopLiarException {
         if (topLiar == null) {
             throw new NoTopLiarException();
         }
@@ -388,7 +385,7 @@ public class FakebookClass implements Fakebook {
         }
     }
     
-    private void updateTopLiar(LiarUser user) {
+    private void updateTopLiar(User user) {
         if (new TopLiarComparator().compare(user, topLiar) > 0) {
             topLiar = user;
         }

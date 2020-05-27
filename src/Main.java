@@ -525,7 +525,7 @@ public class Main {
 	 */
 	private static void topLiar(Fakebook fakebook) {
 		try {
-			LiarUser liar = fakebook.getTopLiar();
+			User liar = fakebook.getTopLiar();
 			System.out.printf("%s %d.\n", liar.getId(), liar.getNumLies());
 		}
 		catch (NoTopLiarException e) {

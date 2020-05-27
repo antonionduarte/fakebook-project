@@ -33,5 +33,4 @@ public class FanaticismClass implements Fanaticism {
     public boolean getStance() {
         return stance.getValue();
     }
-    
 }

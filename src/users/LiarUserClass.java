@@ -10,9 +10,6 @@ import enums.*;
 import java.util.Set;
 
 public class LiarUserClass extends AbstractUser implements LiarUser {
-
-    /* Variables */
-    private int numLies;
     
     /**
      * Constructor.
@@ -20,15 +17,6 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
      */
     public LiarUserClass(String userId) {
         super(userId, UserKind.LIAR);
-        this.numLies = 0;
-    }
-
-    /**
-     * @return The number of lies.
-     */
-    @Override
-    public int getNumLies() {
-        return numLies;
     }
     
     /**
@@ -44,7 +32,7 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
         }
         
         posts.put(posts.size()+1, new PostClass(posts.size()+1, postHashtags, postTruthfulness, postMessage, this));
-        numLies++;
+        incrementNumLies();
     }
 
     /**

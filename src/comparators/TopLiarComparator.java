@@ -1,13 +1,13 @@
 package comparators;
 
-import users.LiarUser;
+import users.User;
 
 import java.util.Comparator;
 
-public class TopLiarComparator implements Comparator<LiarUser> {
+public class TopLiarComparator implements Comparator<User> {
     
     @Override
-    public int compare(LiarUser user, LiarUser topLiar) {
+    public int compare(User user, User topLiar) {
         if (topLiar == null) {
             return 1;
         }

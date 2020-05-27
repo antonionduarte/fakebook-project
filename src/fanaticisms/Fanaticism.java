@@ -11,5 +11,4 @@ public interface Fanaticism {
      * @return The fanaticisms' stance.
      */
     boolean getStance();
-    
 }
