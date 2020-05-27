@@ -72,7 +72,7 @@ public class FakebookClass implements Fakebook {
      */
     @Override
     public boolean userKindIsFanatic(String userKind) {
-        return UserKind.valueOf(userKind.toUpperCase()) == UserKind.FANATIC;
+        return userKind.toUpperCase().equals(UserKind.FANATIC.toString());
     }
     
     /**
