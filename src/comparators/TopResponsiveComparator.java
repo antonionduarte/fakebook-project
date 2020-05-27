@@ -4,6 +4,11 @@ import users.User;
 
 import java.util.Comparator;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
+
 public class TopResponsiveComparator implements Comparator<User> {
     
     @Override

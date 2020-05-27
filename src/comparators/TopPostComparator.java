@@ -4,6 +4,11 @@ import posts.Post;
 
 import java.util.Comparator;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
+
 public class TopPostComparator implements Comparator<Post> {
     
     @Override

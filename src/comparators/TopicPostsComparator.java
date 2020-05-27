@@ -3,6 +3,11 @@ package comparators;
 import java.util.Comparator;
 import posts.*;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
+
 public class TopicPostsComparator implements Comparator<Post> {
 
     @Override

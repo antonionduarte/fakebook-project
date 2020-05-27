@@ -8,6 +8,11 @@ import enums.UserKind;
 import exceptions.*;
 import posts.*;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
+
 public abstract class AbstractUser implements User {
 
     /* Variables */

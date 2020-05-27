@@ -12,6 +12,11 @@ import enums.*;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
+
 public class FanaticUserClass extends AbstractUser implements FanaticUser {
     
     /* Variables */

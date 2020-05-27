@@ -8,6 +8,10 @@ import users.*;
 import comments.*;
 import java.util.*;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
 
 public class Main {
 	

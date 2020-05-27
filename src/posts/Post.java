@@ -9,6 +9,11 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.Iterator;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
+
 public interface Post {
     
     /**

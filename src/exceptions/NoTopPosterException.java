@@ -1,7 +1,11 @@
 package exceptions;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
+
 public class NoTopPosterException extends RuntimeException {
-    
     
     /* Serial version UID */
     private static final long serialVersionUID = 7109479092766658286L;
