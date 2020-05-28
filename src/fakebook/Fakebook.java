@@ -85,22 +85,22 @@ public interface Fakebook {
     /**
      * @return The most popular post.
      */
-    Post getTopPost();
+    Post getTopPost() throws NoTopPostException;
     
     /**
      * @return The top poster.
      */
-    User getTopPoster();
+    User getTopPoster() throws NoTopPosterException;
     
     /**
      * @return The top responsive user.
      */
-    User getTopResponsive();
+    User getTopResponsive() throws NoTopResponsiveException;
     
     /**
      * @return The user with the most lies.
      */
-    User getTopLiar();
+    User getTopLiar() throws NoTopLiarException;
     
     /**
      * @return New users iterator.
@@ -119,7 +119,7 @@ public interface Fakebook {
      * @param userId The users' ID.
      * @return New users' posts iterator.
      */
-    Iterator<Post> newUserPostsIterator(String userId);
+    Iterator<Post> newUserPostsIterator(String userId) throws UserDoesNotExistException;
     
     /**
      * Creates a new iterator for a users' comments about a certain hashtag.
@@ -127,14 +127,14 @@ public interface Fakebook {
      * @param hashtag The posts' hashtag.
      * @return New user comments iterator.
      */
-    Iterator<Comment> newUserCommentsIterator(String userId, String hashtag);
+    Iterator<Comment> newUserCommentsIterator(String userId, String hashtag) throws UserDoesNotExistException;
     
     /**
      * Creates a new iterator for all of a specified hashtags' fanatics.
      * @param hashtag The specified hashtag.
      * @return New topic fanatics iterator.
      */
-    Iterator<FanaticUser> newTopicFanaticsIterator(String hashtag);
+    Iterator<FanaticUser> newTopicFanaticsIterator(String hashtag) throws InvalidFanaticismException;
     
     /**
      *
@@ -142,5 +142,6 @@ public interface Fakebook {
      * @param amount Amount of posts to iterate.
      * @return New topic posts iterator.
      */
-    Iterator<Post> newTopicPostsIterator(String hashtag, int amount) throws InvalidNumberOfPostsException, InvalidHashtagException; 
+    Iterator<Post> newTopicPostsIterator(String hashtag, int amount) throws InvalidNumberOfPostsException, InvalidHashtagException;
+    
 }

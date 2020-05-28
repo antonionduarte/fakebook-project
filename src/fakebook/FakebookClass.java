@@ -145,7 +145,7 @@ public class FakebookClass implements Fakebook {
         user.post(postHashtags, postTruthfulness, postMessage);
         
         updateTopPoster(user);
-        updateTopLiar(user);
+        updateTopLiars(user);
     
         for (String hashtag: postHashtags) {
             if (!topicsPosts.containsKey(hashtag)) {
@@ -194,7 +194,7 @@ public class FakebookClass implements Fakebook {
         updateTopPost(post);
         updateTopPoster(userPost);
         updateTopResponsive(userComment);
-        updateTopLiar(userComment);
+        updateTopLiars(userComment);
     }
     
     /**
@@ -352,9 +352,9 @@ public class FakebookClass implements Fakebook {
     /* Private methods */
     
     /**
-     * Checks if a given userKind exists in Fakebook.
-     * @param userKind The userKind to check for.
-     * @return True if the userKind exists, false if otherwise.
+     * Checks if a given user kind exists in Fakebook.
+     * @param userKind The user kind to check.
+     * @return True if the user kind exists.
      */
     private boolean validUserKind(String userKind) {
         for (UserKind kind: UserKind.values()) {
@@ -367,7 +367,7 @@ public class FakebookClass implements Fakebook {
     
     /**
      * Updates the topPost.
-     * @param post To verify if new topPost.
+     * @param post Post to verify if new topPost.
      */
     private void updateTopPost(Post post) {
         if (new TopPostComparator().compare(post, topPost) > 0) {
@@ -377,7 +377,7 @@ public class FakebookClass implements Fakebook {
     
     /**
      * Updates the topPoster.
-     * @param user To verify if new topPoster.
+     * @param user User to verify if new topPoster.
      */
     private void updateTopPoster(User user) {
         if (new TopPosterComparator().compare(user, topPoster) > 0) {
@@ -387,7 +387,7 @@ public class FakebookClass implements Fakebook {
     
     /**
      * Updates the topResponsive.
-     * @param user To verify if new topResponsive.
+     * @param user User to verify if new topResponsive.
      */
     private void updateTopResponsive(User user) {
         if (new TopResponsiveComparator().compare(user,topResponsive) > 0) {
@@ -396,10 +396,10 @@ public class FakebookClass implements Fakebook {
     }
     
     /**
-     * Updates the topLiar.
-     * @param user To verify if new topLiar.
+     * Updates the topLiars list.
+     * @param user User to insert or update topLiars list.
      */
-    private void updateTopLiar(User user) {
+    private void updateTopLiars(User user) {
         if (!topLiars.contains(user) && user.getNumLies() > 0) {
             topLiars.add(user);
         }
