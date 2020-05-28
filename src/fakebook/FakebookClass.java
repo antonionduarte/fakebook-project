@@ -18,6 +18,8 @@ import java.util.*;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Manages all the fakebook operations and interactions between users.
  */
 
 public class FakebookClass implements Fakebook {
@@ -155,23 +157,12 @@ public class FakebookClass implements Fakebook {
     }
     
     /**
-     * Gets a users' number of friends.
+     * Gets a specified user.
      * @param userId The users' ID.
-     * @return The users' number of friends.
+     * @return The specified user.
      */
-    @Override
-    public int getUserNumFriends(String userId) {
-        return users.get(userId).getNumFriends();
-    }
-    
-    /**
-     * Gets a users' number of posts.
-     * @param userId The users' ID.
-     * @return The users' number of posts.
-     */
-    @Override
-    public int getUserNumPosts(String userId) {
-        return users.get(userId).getNumPosts();
+    public User getUser(String userId) {
+        return users.get(userId);
     }
     
     /**

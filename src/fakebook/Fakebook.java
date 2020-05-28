@@ -14,6 +14,8 @@ import java.util.Set;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Manages all the fakebook operations and interactions between users.
  */
 
 public interface Fakebook {
@@ -53,21 +55,14 @@ public interface Fakebook {
      * @param postTruthfulness The posts' truthfulness.
      * @param postMessage The posts' message.
      */
-    void post(String userId, Set<String> postHashtags, String postTruthfulness, String postMessage);
+    void post(String userId, Set<String> postHashtags, String postTruthfulness, String postMessage) throws UserDoesNotExistException;
     
     /**
-     * Gets a users' number of friends.
+     * Gets a specified user.
      * @param userId The users' ID.
-     * @return The users' number of friends.
+     * @return The specified user.
      */
-    int getUserNumFriends(String userId);
-    
-    /**
-     * Gets a users' number of posts.
-     * @param userId The users' ID.
-     * @return The users' number of posts.
-     */
-    int getUserNumPosts(String userId);
+    User getUser(String userId);
     
     /**
      * Allows a user to comment on another users' (or his own) post.

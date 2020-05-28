@@ -212,7 +212,7 @@ public class Main {
 			
 			while (users.hasNext()) {
 				User user = users.next();
-				System.out.printf("%s [%s] %d %d %d\n", user.getId(), user.getKind(), user.getNumFriends(),
+				System.out.printf(Output.LIST_USER.getMessage(), user.getId(), user.getKind(), user.getNumFriends(),
 					user.getNumPosts(), user.getNumComments());
 			}
 		}
@@ -232,7 +232,7 @@ public class Main {
 		
 		try {
 			fakebook.addFriend(userId1, userId2);
-			System.out.printf("%s is friend of %s.\n", userId1, userId2);
+			System.out.printf(Output.FRIEND_ADDED.getMessage(), userId1, userId2);
 		}
 		catch (UserDoesNotExistException e) {
 			System.out.println(e.getMessage());
@@ -290,8 +290,8 @@ public class Main {
 			String postMessage = in.next() + in.nextLine();
 			
 			fakebook.post(userId, postHashtags, postTruthfulness, postMessage);
-			System.out.printf(Output.MESSAGE_SENT.getMessage(), userId, postTruthfulness,
-				fakebook.getUserNumFriends(userId), fakebook.getUserNumPosts(userId));
+			System.out.printf(Output.POST_SENT.getMessage(), userId, postTruthfulness,
+				fakebook.getUser(userId).getNumFriends(), fakebook.getUser(userId).getNumPosts());
 		}
 		catch (UserDoesNotExistException e) {
 			System.out.println(e.getMessage());
@@ -349,7 +349,7 @@ public class Main {
 			while (posts.hasNext()) {
 				Post post = posts.next();
 				
-				System.out.printf("%d. [%s] %s [%d comments]\n", post.getId(),
+				System.out.printf(Output.LIST_POST.getMessage(), post.getId(),
 					post.getTruthfulness().toString().toLowerCase(), post.getMessage(), post.getNumComments());
 			}
 		}
@@ -406,14 +406,13 @@ public class Main {
 		
 		try {
 			Post post = fakebook.getUserPost(userId, postId);
-			System.out.printf("[%s %s] %s\n", post.getAuthorId(), post.getTruthfulness().toString().toLowerCase(), post.getMessage());
+			System.out.printf(Output.READ_POST.getMessage(), post.getAuthorId(), post.getTruthfulness().toString().toLowerCase(), post.getMessage());
 			
 			Iterator<Comment> comments = post.newCommentsIterator();
 			
 			while (comments.hasNext()) {
 				Comment comment = comments.next();
-				
-				System.out.printf("[%s %s] %s\n", comment.getAuthorId(), comment.getStance().toString().toLowerCase(), comment.getMessage());
+				System.out.printf(Output.READ_POST.getMessage(), comment.getAuthorId(), comment.getStance().toString().toLowerCase(), comment.getMessage());
 			}
 		}
 		catch (UserDoesNotExistException e) {
@@ -441,7 +440,7 @@ public class Main {
 
 			while (comments.hasNext()) {
 				Comment comment = comments.next();
-				System.out.printf("[%s %s %d %s] %s\n", comment.getPostAuthorId(), comment.getPostTruthfulness(),
+				System.out.printf(Output.LIST_COMMENT.getMessage(), comment.getPostAuthorId(), comment.getPostTruthfulness(),
 					comment.getPostId(), comment.getStance().toString().toLowerCase(), comment.getMessage());
 			}
 		}
@@ -495,7 +494,7 @@ public class Main {
 			
 			while (posts.hasNext()) {
 				Post post = posts.next();
-				System.out.printf("%s %d %d: %s\n", post.getAuthorId(), post.getId(), post.getNumComments(), post.getMessage());
+				System.out.printf(Output.LIST_TOPIC_POST.getMessage(), post.getAuthorId(), post.getId(), post.getNumComments(), post.getMessage());
 			}
 		}
 		catch (InvalidNumberOfPostsException e) {
@@ -513,7 +512,7 @@ public class Main {
 	private static void topPost(Fakebook fakebook) {
 		try {
 			Post post = fakebook.getTopPost();
-			System.out.printf("%s %d %d: %s\n", post.getAuthorId(), post.getId(), post.getNumComments(), post.getMessage());
+			System.out.printf(Output.TOP_POST.getMessage(), post.getAuthorId(), post.getId(), post.getNumComments(), post.getMessage());
 		}
 		catch (NoTopPostException e) {
 			System.out.println(e.getMessage());
@@ -527,7 +526,7 @@ public class Main {
 	private static void topPoster(Fakebook fakebook) {
 		try {
 			User topPoster = fakebook.getTopPoster();
-			System.out.printf("%s %d %d.\n", topPoster.getId(), topPoster.getNumPosts(), topPoster.getNumComments());
+			System.out.printf(Output.TOP_POSTER.getMessage(), topPoster.getId(), topPoster.getNumPosts(), topPoster.getNumComments());
 		}
 		catch (NoTopPosterException e) {
 			System.out.println(e.getMessage());
@@ -541,7 +540,7 @@ public class Main {
 	private static void topResponsive(Fakebook fakebook) {
 		try {
 			User responsive = fakebook.getTopResponsive();
-			System.out.printf("%s %d %d.\n", responsive.getId(), responsive.getNumComments(), responsive.getNumAvailablePosts());
+			System.out.printf(Output.TOP_RESPONSIVE.getMessage(), responsive.getId(), responsive.getNumComments(), responsive.getNumAvailablePosts());
 		}
 		catch (NoTopResponsiveException e) {
 			System.out.println(e.getMessage());
@@ -555,7 +554,7 @@ public class Main {
 	private static void topLiar(Fakebook fakebook) {
 		try {
 			User liar = fakebook.getTopLiar();
-			System.out.printf("%s %d.\n", liar.getId(), liar.getNumLies());
+			System.out.printf(Output.TOP_LIAR.getMessage(), liar.getId(), liar.getNumLies());
 		}
 		catch (NoTopLiarException e) {
 			System.out.println(e.getMessage());
