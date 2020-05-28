@@ -3,6 +3,8 @@ package enums;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * All outputs and formatting.
  */
 
 public enum Output {
@@ -36,7 +38,11 @@ public enum Output {
 		this.message = message;
 	}
 	
+	/**
+	 * @return The output message.
+	 */
 	public String getMessage() {
 		return message;
 	}
+	
 }

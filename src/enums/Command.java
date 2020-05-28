@@ -3,6 +3,8 @@ package enums;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * All input commands and their corresponding descriptions.
  */
 
 public enum Command {
@@ -38,7 +40,11 @@ public enum Command {
 		this.description = description;
 	}
 	
+	/**
+	 * @return The commands' description.
+	 */
 	public String getDescription() {
 		return description;
 	}
+	
 }

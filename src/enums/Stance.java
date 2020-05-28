@@ -3,6 +3,8 @@ package enums;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * All post, comment and fanaticism stances.
  */
 
 public enum Stance {
@@ -31,12 +33,19 @@ public enum Stance {
         this.message = message;
         this.value = value;
     }
-
+    
+    /**
+     * @return The stances' string.
+     */
     public String getMessage() {
         return message;
     }
-
+    
+    /**
+     * @return The stances' boolean value.
+     */
     public boolean getValue() {
         return value;
     }
+    
 } 
