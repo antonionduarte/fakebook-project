@@ -11,6 +11,10 @@ import java.util.*;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * This program simulates a simple social network in which users are seperated into various categories (naive,
+ * liar, fanatic and selfcentered), with each their own unique atributes.
+ * Users can make posts and comment on others' (or their own) posts, with either a positive or negative stance.
  */
 
 public class Main {
@@ -148,8 +152,7 @@ public class Main {
 		
 		try {
 			if (fakebook.userKindIsFanatic(userKind)) {
-				List<Fanaticism> fanaticisms = readFanaticisms(in);
-				fakebook.registerFanatic(userId, fanaticisms);
+				fakebook.registerFanatic(userId, readFanaticisms(in));
 			}
 			else {
 				fakebook.registerUser(userKind, userId);
@@ -192,6 +195,7 @@ public class Main {
 			}
 		}
 		in.nextLine();
+		
 		return fanaticisms;
 	}
 	
@@ -281,27 +285,11 @@ public class Main {
 		int numHashtags = in.nextInt();
 		
 		try {
-			if (numHashtags < 0) {
-				throw new InvalidHashtagListException();
-			}
-			
-			Set<String> hashtags = new HashSet<>();
-			
-			for (int i = 0; i < numHashtags; i++) {
-				String hashtag = in.next();
-				
-				if (!hashtags.contains(hashtag)) {
-					hashtags.add(hashtag);
-				}
-				else {
-					throw new InvalidHashtagListException();
-				}
-			}
-			
+			Set<String> postHashtags = readPostHashtags(numHashtags, in);
 			String postTruthfulness = in.next();
 			String postMessage = in.next() + in.nextLine();
 			
-			fakebook.post(userId, hashtags, postTruthfulness, postMessage);
+			fakebook.post(userId, postHashtags, postTruthfulness, postMessage);
 			System.out.printf(Output.MESSAGE_SENT.getMessage(), userId, postTruthfulness,
 				fakebook.getUserNumFriends(userId), fakebook.getUserNumPosts(userId));
 		}
@@ -316,6 +304,34 @@ public class Main {
 		catch (InvalidStanceException e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	/**
+	 * Reads a list of post hashtags.
+	 * @param numHashtags Number of hashtags to read.
+	 * @param in Input scanner.
+	 * @return Set of valid hashtags.
+	 */
+	private static Set<String> readPostHashtags(int numHashtags, Scanner in) {
+		if (numHashtags < 0) {
+			throw new InvalidHashtagListException();
+		}
+		
+		Set<String> postHashtags = new HashSet<>();
+		
+		for (int i = 0; i < numHashtags; i++) {
+			String hashtag = in.next();
+			
+			if (!postHashtags.contains(hashtag)) {
+				postHashtags.add(hashtag);
+			}
+			else {
+				throw new InvalidHashtagListException();
+			}
+		}
+		in.nextLine();
+		
+		return postHashtags;
 	}
 	
 	/**
