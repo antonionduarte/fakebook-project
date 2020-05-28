@@ -20,5 +20,5 @@ public class UserDoesNotExistException extends RuntimeException {
     public UserDoesNotExistException(String userId) {
         super(String.format(MESSAGE, userId));
     }
-    
 }
+    

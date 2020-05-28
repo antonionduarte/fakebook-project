@@ -15,6 +15,5 @@ public class InvalidFanaticismListException extends RuntimeException {
     
     public InvalidFanaticismListException() {
         super(MESSAGE);
-    }
-    
+    } 
 }

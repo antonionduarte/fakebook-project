@@ -21,5 +21,5 @@ public class UsersAlreadyFriendsException extends RuntimeException {
     public UsersAlreadyFriendsException(String userId1, String userId2) {
         super(String.format(MESSAGE, userId1, userId2));
     }
-    
 }
+    

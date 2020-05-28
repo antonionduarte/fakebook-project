@@ -18,5 +18,4 @@ public class InvalidNumberOfPostsException extends RuntimeException {
     public InvalidNumberOfPostsException() {
         super(MESSAGE);
     }
-    
 }

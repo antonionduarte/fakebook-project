@@ -27,5 +27,4 @@ public class TopPostComparator implements Comparator<Post> {
         
         return post.getId() - topPost.getId();
     }
-    
 }

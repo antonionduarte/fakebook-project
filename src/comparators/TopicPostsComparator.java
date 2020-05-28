@@ -21,6 +21,5 @@ public class TopicPostsComparator implements Comparator<Post> {
         }
         
         return post2.getId() - post1.getId();
-    }
-    
+    }   
 }

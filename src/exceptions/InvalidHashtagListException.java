@@ -16,5 +16,4 @@ public class InvalidHashtagListException extends RuntimeException {
     public InvalidHashtagListException() {
         super(MESSAGE);
     }
-    
 }

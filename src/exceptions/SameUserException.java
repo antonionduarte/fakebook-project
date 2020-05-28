@@ -20,5 +20,5 @@ public class SameUserException extends RuntimeException {
     public SameUserException(String userId) {
         super(String.format(MESSAGE, userId, userId));
     }
-    
 }
+    

@@ -16,5 +16,5 @@ public class InvalidStanceException extends RuntimeException {
     public InvalidStanceException() {
         super(MESSAGE);
     }
-    
 }
+    

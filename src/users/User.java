@@ -118,5 +118,4 @@ public interface User {
      * @return Number of available posts.
      */
     int getNumAvailablePosts();
-    
 }

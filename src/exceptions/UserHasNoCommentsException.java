@@ -17,5 +17,5 @@ public class UserHasNoCommentsException extends RuntimeException {
     public UserHasNoCommentsException() {
         super(MESSAGE);
     }
-    
 }
+    

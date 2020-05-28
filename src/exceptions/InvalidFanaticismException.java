@@ -16,6 +16,5 @@ public class InvalidFanaticismException extends RuntimeException {
     /* Constructor */
     public InvalidFanaticismException(String hashtag) {
         super(String.format(MESSAGE, hashtag));
-    }
-    
+    } 
 }

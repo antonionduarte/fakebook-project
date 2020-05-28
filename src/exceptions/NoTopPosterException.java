@@ -17,5 +17,5 @@ public class NoTopPosterException extends RuntimeException {
     public NoTopPosterException() {
         super(MESSAGE);
     }
-    
 }
+    

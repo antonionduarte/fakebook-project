@@ -51,5 +51,4 @@ public interface Comment {
      * @return New post hashtags iterator.
      */
     Set<String> getPostHashtags();
-    
 }

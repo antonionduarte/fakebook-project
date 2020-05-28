@@ -23,5 +23,4 @@ public class TopLiarComparator implements Comparator<User> {
         
         return user1.getId().compareTo(user2.getId());
     }
-    
 }

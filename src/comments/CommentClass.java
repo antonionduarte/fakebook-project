@@ -90,6 +90,5 @@ public class CommentClass implements Comment {
     @Override
     public Set<String> getPostHashtags() {
         return post.getHashtags();
-    }
-    
+    }   
 }

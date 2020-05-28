@@ -27,5 +27,4 @@ public class TopPosterComparator implements Comparator<User> {
         
         return topPoster.getId().compareTo(user.getId());
     }
-    
 }
