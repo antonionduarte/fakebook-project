@@ -360,6 +360,11 @@ public class FakebookClass implements Fakebook {
     
     /* Private methods */
     
+    /**
+     * Checks if a given userKind exists in Fakebook.
+     * @param userKind The userKind to check for.
+     * @return True if the userKind exists, false if otherwise.
+     */
     private boolean validUserKind(String userKind) {
         for (UserKind kind: UserKind.values()) {
             if (kind.toString().equals(userKind.toUpperCase())) {
@@ -369,24 +374,40 @@ public class FakebookClass implements Fakebook {
         return false;
     }
     
+    /**
+     * Updates the topPost.
+     * @param post To verify if new topPost.
+     */
     private void updateTopPost(Post post) {
         if (new TopPostComparator().compare(post, topPost) > 0) {
             topPost = post;
         }
     }
     
+    /**
+     * Updates the topPoster.
+     * @param user To verify if new topPoster.
+     */
     private void updateTopPoster(User user) {
         if (new TopPosterComparator().compare(user, topPoster) > 0) {
             topPoster = user;
         }
     }
     
+    /**
+     * Updates the topResponsive.
+     * @param user To verify if new topResponsive.
+     */
     private void updateTopResponsive(User user) {
         if (new TopResponsiveComparator().compare(user,topResponsive) > 0) {
             topResponsive = user;
         }
     }
     
+    /**
+     * Updates the topLiar.
+     * @param user To verify if new topLiar.
+     */
     private void updateTopLiar(User user) {
         if (!topLiars.contains(user) && user.getNumLies() > 0) {
             topLiars.add(user);
@@ -394,5 +415,4 @@ public class FakebookClass implements Fakebook {
         
         topLiars.sort(new TopLiarComparator());
     }
-    
 }
