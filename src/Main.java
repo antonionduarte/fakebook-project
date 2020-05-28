@@ -144,24 +144,7 @@ public class Main {
 		
 		try {
 			if (fakebook.userKindIsFanatic(userKind)) {
-				int numFanaticisms = in.nextInt();
-				Set<String> fanaticismsChecker = new HashSet<>();
-				List<Fanaticism> fanaticisms = new ArrayList<>();
-				
-				for (int i = 0; i < numFanaticisms; i++) {
-					String stance = in.next();
-					String hashtag = in.next();
-					
-					if (!fanaticismsChecker.contains(hashtag)) {
-						fanaticismsChecker.add(hashtag);
-						fanaticisms.add(new FanaticismClass(hashtag, stance));
-					}
-					else {
-						throw new InvalidFanaticismListException();
-					}
-				}
-				in.nextLine();
-				
+				List<Fanaticism> fanaticisms = readFanaticisms(in);
 				fakebook.registerFanatic(userId, fanaticisms);
 			}
 			else {
@@ -180,6 +163,32 @@ public class Main {
 			System.out.println(e.getMessage());
 			in.nextLine();
 		}
+	}
+
+	/**
+	 * Reads a list of fanaticisms.
+	 * @param in Input scanner.
+	 * @return List of fanaticisms.
+	 */
+	private static List<Fanaticism> readFanaticisms(Scanner in) {
+		int numFanaticisms = in.nextInt();
+		Set<String> fanaticismsChecker = new HashSet<>();
+		List<Fanaticism> fanaticisms = new ArrayList<>();
+		
+		for (int i = 0; i < numFanaticisms; i++) {
+			String stance = in.next();
+			String hashtag = in.next();
+			
+			if (!fanaticismsChecker.contains(hashtag)) {
+				fanaticismsChecker.add(hashtag);
+				fanaticisms.add(new FanaticismClass(hashtag, stance));
+			}
+			else {
+				throw new InvalidFanaticismListException();
+			}
+		}
+		in.nextLine();
+		return fanaticisms;
 	}
 	
 	/**
