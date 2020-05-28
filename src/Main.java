@@ -12,7 +12,7 @@ import java.util.*;
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
  *
- * This program simulates a simple social network in which users are seperated into various categories (naive,
+ * This program simulates a simple social network in which users are separated into various categories (naive,
  * liar, fanatic and selfcentered), with each their own unique atributes.
  * Users can make posts and comment on others' (or their own) posts, with either a positive or negative stance.
  */
