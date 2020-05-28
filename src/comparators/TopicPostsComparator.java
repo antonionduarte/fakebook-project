@@ -6,6 +6,8 @@ import posts.*;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Compares 2 posts by: the number of comments, the post authors' ID, and the posts' ID.
  */
 
 public class TopicPostsComparator implements Comparator<Post> {
@@ -21,5 +23,6 @@ public class TopicPostsComparator implements Comparator<Post> {
         }
         
         return post2.getId() - post1.getId();
-    }   
+    }
+    
 }

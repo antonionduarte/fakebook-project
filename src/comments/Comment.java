@@ -8,6 +8,8 @@ import posts.Post;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Contains all the information regarding a users' comment on a post.
  */
 
 public interface Comment {
@@ -51,4 +53,5 @@ public interface Comment {
      * @return New post hashtags iterator.
      */
     Set<String> getPostHashtags();
+    
 }

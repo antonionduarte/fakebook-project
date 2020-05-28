@@ -7,6 +7,8 @@ import java.util.Comparator;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Compares 2 users by: their responsiveness percentage, and their ID.
  */
 
 public class TopResponsiveComparator implements Comparator<User> {
@@ -23,4 +25,5 @@ public class TopResponsiveComparator implements Comparator<User> {
         
         return user.getId().compareTo(topResponsive.getId());
     }
+    
 }

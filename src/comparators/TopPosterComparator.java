@@ -7,6 +7,8 @@ import java.util.Comparator;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Compares 2 users by: The number of posts, the number of comments, and the users' ID.
  */
 
 public class TopPosterComparator implements Comparator<User> {
@@ -27,4 +29,5 @@ public class TopPosterComparator implements Comparator<User> {
         
         return topPoster.getId().compareTo(user.getId());
     }
+    
 }

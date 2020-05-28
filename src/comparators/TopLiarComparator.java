@@ -7,6 +7,8 @@ import java.util.Comparator;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Compares 2 users by: number of lies, number of total posts and comments, and user ID.
  */
 
 public class TopLiarComparator implements Comparator<User> {
@@ -23,4 +25,5 @@ public class TopLiarComparator implements Comparator<User> {
         
         return user1.getId().compareTo(user2.getId());
     }
+    
 }

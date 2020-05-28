@@ -9,6 +9,8 @@ import java.util.Set;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Contains all the information regarding a users' comment on a post.
  */
 
 public class CommentClass implements Comment {
@@ -19,6 +21,13 @@ public class CommentClass implements Comment {
     private String message;
     private Stance stance;
     
+    /**
+     * Constructor.
+     * @param userComment The comments' author.
+     * @param post The post in which the comment is located in.
+     * @param commentStance The comments' stance.
+     * @param commentMessage The comments' message.
+     */
     public CommentClass(User userComment, Post post, String commentStance, String commentMessage) {
         this.userComment = userComment;
         this.post = post;
@@ -41,8 +50,6 @@ public class CommentClass implements Comment {
     public Stance getStance() {
         return stance;
     }
-
-
 
     /**
      * @return The comments' message.
@@ -90,5 +97,6 @@ public class CommentClass implements Comment {
     @Override
     public Set<String> getPostHashtags() {
         return post.getHashtags();
-    }   
+    }
+    
 }

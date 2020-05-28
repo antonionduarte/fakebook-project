@@ -406,4 +406,5 @@ public class FakebookClass implements Fakebook {
         
         topLiars.sort(new TopLiarComparator());
     }
+    
 }
