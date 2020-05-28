@@ -16,5 +16,6 @@ public class InvalidCommentStanceException extends RuntimeException {
     /* Constructor */
     public InvalidCommentStanceException() {
         super(MESSAGE);
-    } 
+    }
+    
 }

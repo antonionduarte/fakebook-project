@@ -20,5 +20,5 @@ public class UserAlreadyExistsException extends RuntimeException {
     public UserAlreadyExistsException(String userId) {
         super(String.format(MESSAGE, userId));
     }
-}
     
+}

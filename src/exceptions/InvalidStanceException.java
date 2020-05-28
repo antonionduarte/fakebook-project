@@ -13,8 +13,9 @@ public class InvalidStanceException extends RuntimeException {
     /* Exception message */
     private static final String MESSAGE = "Inadequate stance!";
     
+    /* Constructor */
     public InvalidStanceException() {
         super(MESSAGE);
     }
-}
     
+}

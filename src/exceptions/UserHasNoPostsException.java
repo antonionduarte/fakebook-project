@@ -20,5 +20,5 @@ public class UserHasNoPostsException extends RuntimeException {
     public UserHasNoPostsException(String userId) {
         super(String.format(MESSAGE, userId));
     }
-}
     
+}

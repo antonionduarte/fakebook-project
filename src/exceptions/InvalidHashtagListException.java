@@ -13,7 +13,9 @@ public class InvalidHashtagListException extends RuntimeException {
     /* Exception message */
     private static final String MESSAGE = "Invalid hashtags list!";
     
+    /* Constructor */
     public InvalidHashtagListException() {
         super(MESSAGE);
     }
+    
 }

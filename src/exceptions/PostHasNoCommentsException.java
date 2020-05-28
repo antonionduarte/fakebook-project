@@ -17,5 +17,5 @@ public class PostHasNoCommentsException extends RuntimeException {
     public PostHasNoCommentsException() {
         super(MESSAGE);
     }
-}
     
+}

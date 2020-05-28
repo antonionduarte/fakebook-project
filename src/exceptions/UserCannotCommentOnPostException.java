@@ -20,5 +20,5 @@ public class UserCannotCommentOnPostException extends RuntimeException {
     public UserCannotCommentOnPostException(String userId) {
         super(String.format(MESSAGE, userId));
     }
-}
     
+}

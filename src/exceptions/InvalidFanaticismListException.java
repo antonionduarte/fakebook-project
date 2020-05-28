@@ -13,7 +13,9 @@ public class InvalidFanaticismListException extends RuntimeException {
     /* Exception message */
     private static final String MESSAGE = "Invalid fanaticism list!";
     
+    /* Constructor */
     public InvalidFanaticismListException() {
         super(MESSAGE);
-    } 
+    }
+    
 }

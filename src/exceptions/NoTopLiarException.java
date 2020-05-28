@@ -17,4 +17,5 @@ public class NoTopLiarException extends RuntimeException {
     public NoTopLiarException() {
         super(MESSAGE);
     }
+    
 }

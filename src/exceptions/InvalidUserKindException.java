@@ -20,5 +20,5 @@ public class InvalidUserKindException extends RuntimeException {
     public InvalidUserKindException(String userKind) {
         super(String.format(MESSAGE, userKind));
     }
+    
 }
-

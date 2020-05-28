@@ -22,5 +22,5 @@ public class UserDoesNotHaveAccessToPostException extends RuntimeException {
     public UserDoesNotHaveAccessToPostException(String userIdComment, int postId, String userIdAuthor) {
         super(String.format(MESSAGE, userIdComment, postId, userIdAuthor));
     }
-}
     
+}

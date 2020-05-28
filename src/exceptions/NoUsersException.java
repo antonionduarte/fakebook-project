@@ -17,5 +17,5 @@ public class NoUsersException extends RuntimeException {
     public NoUsersException() {
         super(MESSAGE);
     }
-}
     
+}

@@ -7,15 +7,15 @@ package exceptions;
 
 public class InvalidNumberOfPostsException extends RuntimeException {
     
-    /**
-     * Serial version UID.
-     */
+    /* Serial version UID */
     private static final long serialVersionUID = 970572607340229809L;
 
     /* Exception message */
     private static final String MESSAGE = "Invalid number of posts to present!";
     
+    /* Constructor */
     public InvalidNumberOfPostsException() {
         super(MESSAGE);
     }
+    
 }

@@ -21,5 +21,5 @@ public class UserDoesNotHavePostException extends RuntimeException {
     public UserDoesNotHavePostException(String userId, int postId) {
         super(String.format(MESSAGE, userId, postId));
     }
-}
     
+}

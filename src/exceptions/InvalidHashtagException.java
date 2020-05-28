@@ -21,5 +21,6 @@ public class InvalidHashtagException extends RuntimeException {
      */
     public InvalidHashtagException(String hashtag) {
         super(String.format(MESSAGE, hashtag));
-    }   
+    }
+    
 }

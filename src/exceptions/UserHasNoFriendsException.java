@@ -20,5 +20,5 @@ public class UserHasNoFriendsException extends RuntimeException {
     public UserHasNoFriendsException(String userId) {
         super(String.format(MESSAGE, userId));
     }
-}
     
+}
