@@ -6,6 +6,11 @@ import posts.*;
 
 import java.util.Set;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
+
 public class CommentClass implements Comment {
 
     /* Variables */

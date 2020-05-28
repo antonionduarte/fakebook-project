@@ -6,6 +6,11 @@ import comments.*;
 import enums.*;
 import exceptions.InvalidStanceException;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
+
 public class NaiveUserClass extends AbstractUser implements NaiveUser {
     
     /**

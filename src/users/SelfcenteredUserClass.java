@@ -5,6 +5,11 @@ import posts.*;
 import comments.*;
 import exceptions.UserCannotCommentOnPostException;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
+
 public class SelfcenteredUserClass extends AbstractUser implements SelfcenteredUser {
     
     /**

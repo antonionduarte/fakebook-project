@@ -12,6 +12,11 @@ import users.*;
 import comments.*;
 import enums.Stance;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
+
 public class PostClass implements Post {
 
     /* Variables */

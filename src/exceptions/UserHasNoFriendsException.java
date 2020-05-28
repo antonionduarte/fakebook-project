@@ -1,5 +1,10 @@
 package exceptions;
 
+/**
+ * @author Antonio Duarte (58278).
+ * @author Goncalo Virginia (56773).
+ */
+
 public class UserHasNoFriendsException extends RuntimeException {
     
     /* Serial version UID */
