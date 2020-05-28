@@ -9,6 +9,8 @@ import exceptions.InvalidStanceException;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Manages the functionality concerning a naive user.
  */
 
 public class NaiveUserClass extends AbstractUser implements NaiveUser {
@@ -35,4 +37,6 @@ public class NaiveUserClass extends AbstractUser implements NaiveUser {
             throw new InvalidStanceException();
         }
     }
+    
 }
+

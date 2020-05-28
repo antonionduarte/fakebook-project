@@ -15,6 +15,8 @@ import enums.Stance;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Manages all the operations and information regarding a users' post.
  */
 
 public class PostClass implements Post {
@@ -121,4 +123,5 @@ public class PostClass implements Post {
     public SortedMap<String, User> getAuthorFriends() {
         return authorFriends;
     }
+    
 }

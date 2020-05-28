@@ -8,13 +8,15 @@ import exceptions.UserCannotCommentOnPostException;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Manages the functionality concerning a self centered user.
  */
 
 public class SelfcenteredUserClass extends AbstractUser implements SelfcenteredUser {
     
     /**
      * Constructor.
-     * @param userId The ID of the selfcentered user.
+     * @param userId The ID of the self centered user.
      */
     public SelfcenteredUserClass(String userId) {
         super(userId, UserKind.SELFCENTERED);

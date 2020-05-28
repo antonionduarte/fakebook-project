@@ -5,6 +5,8 @@ import enums.Stance;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Contains the information regarding a fanatics' fanaticism.
  */
 
 public class FanaticismClass implements Fanaticism {
@@ -38,4 +40,5 @@ public class FanaticismClass implements Fanaticism {
     public boolean getStance() {
         return stance.getValue();
     }
+    
 }

@@ -11,6 +11,8 @@ import java.util.Set;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Serves as a base to all other user types.
  */
 
 public interface User {
@@ -19,11 +21,6 @@ public interface User {
      * @return The users' ID.
      */
     String getId();
-
-    /**
-     * @return The number of lies.
-     */
-    int getNumLies();
     
     /**
      * @return The users' kind.
@@ -39,6 +36,11 @@ public interface User {
      * @return Number of posts.
      */
     int getNumPosts();
+    
+    /**
+     * @return Number of available posts.
+     */
+    int getNumAvailablePosts();
     
     /**
      * @return Number of comments.
@@ -85,6 +87,18 @@ public interface User {
     double getResponsiveness();
     
     /**
+     * @return The number of lies.
+     */
+    int getNumLies();
+    
+    /**
+     * Checks if the user can comment on a specific post.
+     * @param post The post that user would comment on.
+     * @param comment The comment to put on the post.
+     */
+    void canCommentPost(Post post, Comment comment);
+    
+    /**
      * @return New friends iterator.
      */
     Iterator<User> newFriendsIterator() throws UserHasNoFriendsException;
@@ -106,16 +120,5 @@ public interface User {
      * @return The map of the users' friends.
      */
     SortedMap<String, User> getFriends();
-
-    /**
-     * Checks if the user can comment on a specific post.
-     * @param post The post that user would comment on.
-     * @param comment The comment to put on the post.
-     */
-    void canCommentPost(Post post, Comment comment);
     
-    /**
-     * @return Number of available posts.
-     */
-    int getNumAvailablePosts();
 }

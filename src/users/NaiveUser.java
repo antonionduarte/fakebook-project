@@ -7,6 +7,8 @@ import exceptions.*;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Manages the functionality concerning a naive user.
  */
 
 public interface NaiveUser extends User {
@@ -17,4 +19,5 @@ public interface NaiveUser extends User {
      * @param comment The comment to place on the post.
      */    
     void canCommentPost(Post post, Comment comment) throws UserDoesNotHaveAccessToPostException, InvalidStanceException;
+    
 }

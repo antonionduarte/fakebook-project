@@ -9,6 +9,8 @@ import java.util.Set;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Manages the information and functionality concerning a fanatic user.
  */
 
 public interface FanaticUser extends User {
@@ -27,4 +29,5 @@ public interface FanaticUser extends User {
      * @param comment The comment to place on the post.
      */
     void canCommentPost(Post post, Comment comment) throws InvalidCommentStanceException;
+    
 }

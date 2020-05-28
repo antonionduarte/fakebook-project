@@ -11,6 +11,8 @@ import posts.*;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Serves as a base to all other user types.
  */
 
 public abstract class AbstractUser implements User {
@@ -72,6 +74,9 @@ public abstract class AbstractUser implements User {
         return posts.size();
     }
     
+    /**
+     * @return Number of available posts.
+     */
     @Override
     public int getNumAvailablePosts() {
         int numAvailablePosts = posts.size();
@@ -186,6 +191,14 @@ public abstract class AbstractUser implements User {
     }
     
     /**
+     * Checks if the user can comment on a specific post.
+     * @param post The post that user would comment on.
+     * @param comment The comment to place on the post.
+     */
+    @Override
+    public abstract void canCommentPost(Post post, Comment comment);
+    
+    /**
      * @return New friends iterator.
      */
     @Override
@@ -231,12 +244,5 @@ public abstract class AbstractUser implements User {
     public SortedMap<String, User> getFriends() {
         return friends;
     }
-
-    /**
-     * Checks if the user can comment on a specific post.
-     * @param post The post that user would comment on.
-     * @param comment The comment to place on the post.
-     */    
-    @Override
-    public abstract void canCommentPost(Post post, Comment comment);
+    
 }

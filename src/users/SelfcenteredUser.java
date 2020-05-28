@@ -6,6 +6,8 @@ import comments.*;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Manages the functionality concerning a self centered user.
  */
 
 public interface SelfcenteredUser extends User {

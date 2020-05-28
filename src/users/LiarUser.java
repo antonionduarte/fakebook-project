@@ -9,6 +9,8 @@ import java.util.Set;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Manages the functionality concerning a liar user.
  */
 
 public interface LiarUser extends User {
@@ -26,5 +28,6 @@ public interface LiarUser extends User {
      * @param post The post that user would comment on.
      * @param comment The comment to place on the post.
      */
-    void canCommentPost(Post post, Comment comment) throws InvalidStanceException;
+    void canCommentPost(Post post, Comment comment) throws UserDoesNotHaveAccessToPostException, InvalidStanceException;
+    
 }

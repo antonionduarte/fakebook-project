@@ -12,6 +12,8 @@ import java.util.Set;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Manages the functionality concerning a liar user.
  */
 
 public class LiarUserClass extends AbstractUser implements LiarUser {
@@ -44,7 +46,6 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
      * Checks if the user can comment on a specific post.
      * @param post The post that user would comment on.
      * @param comment The comment to place on the post.
-     * @return True if the user can comment, false if otherwise.
      */
     @Override
     public void canCommentPost(Post post, Comment comment) throws UserDoesNotHaveAccessToPostException, InvalidCommentStanceException {
@@ -55,4 +56,5 @@ public class LiarUserClass extends AbstractUser implements LiarUser {
             throw new InvalidCommentStanceException();
         }
     }
+    
 }

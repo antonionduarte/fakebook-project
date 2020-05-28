@@ -12,6 +12,8 @@ import java.util.Iterator;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Manages all the operations and information regarding a users' post.
  */
 
 public interface Post {
@@ -63,4 +65,5 @@ public interface Post {
      * @return The friend list of the post's author at creation time.
      */
     SortedMap<String, User> getAuthorFriends();
+    
 }

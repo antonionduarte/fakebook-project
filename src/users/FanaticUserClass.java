@@ -15,6 +15,8 @@ import java.util.Set;
 /**
  * @author Antonio Duarte (58278).
  * @author Goncalo Virginia (56773).
+ *
+ * Manages the information and functionality concerning a fanatic user.
  */
 
 public class FanaticUserClass extends AbstractUser implements FanaticUser {
@@ -25,6 +27,7 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
     /**
      * Constructor.
      * @param userId The ID of the fanatic user.
+     * @param fanaticisms The list of fanaticisms.
      */
     public FanaticUserClass(String userId, List<Fanaticism> fanaticisms) {
         super(userId, UserKind.FANATIC);
@@ -77,6 +80,12 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
 
     /* Private methods */
     
+    /**
+     * Checks if the hashtags in a new post are valid according to the fanatics' fanaticisms.
+     * @param postHashtags The posts' hashtags.
+     * @param postTruthfulness The posts' truthfulness.
+     * @return True if the post hashtags are valid.
+     */
     private boolean validPostHashtags(Set<String> postHashtags, Stance postTruthfulness) {
         for (Fanaticism fanaticism: fanaticisms) {
             if (postHashtags.contains(fanaticism.getHashtag()) && (fanaticism.getStance() != postTruthfulness.getValue())) {
@@ -85,4 +94,5 @@ public class FanaticUserClass extends AbstractUser implements FanaticUser {
         }
         return true;
     }
+    
 }
