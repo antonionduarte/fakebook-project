@@ -137,7 +137,7 @@ public interface Fakebook {
     Iterator<FanaticUser> newTopicFanaticsIterator(String hashtag) throws InvalidFanaticismException;
     
     /**
-     *
+     * Creates a new Iterator of a specific amount of posts on a given topic.
      * @param hashtag Topic hashtag to iterate posts from.
      * @param amount Amount of posts to iterate.
      * @return New topic posts iterator.

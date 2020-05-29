@@ -329,6 +329,13 @@ public class FakebookClass implements Fakebook {
         return topicsFanatics.get(hashtag).values().iterator();
     }
 
+    /**
+     * Creates a new Iterator of a specific amount of posts on a given topic.
+     * @param hashtag Topic hashtag to iterate posts from.
+     * @param amount Amount of posts to iterate.
+     * @return New topic posts iterator.
+     */
+    @Override
     public Iterator<Post> newTopicPostsIterator(String hashtag, int amount) throws InvalidNumberOfPostsException, InvalidHashtagException {
         if (amount < 1) {
              throw new InvalidNumberOfPostsException();
